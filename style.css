@@ -579,6 +579,48 @@ body.student-page {
   color: #d5e7e3;
 }
 
+/* Creator landing theme */
+
+body.creator-page {
+  --bg: #fbf6ef;
+  --paper: #ffffff;
+  --ink: #1f1711;
+  --muted: #74695f;
+  --line: #eadccf;
+  --blue: #b45309;
+  --blue-dark: #92400e;
+  --soft-blue: #fff0dc;
+  --shadow: 0 24px 70px rgba(120, 53, 15, 0.11);
+}
+
+.creator-page .topbar {
+  background: rgba(251, 246, 239, 0.92);
+}
+
+.creator-page .top-button,
+.creator-page .primary-button {
+  box-shadow: 0 12px 30px rgba(180, 83, 9, 0.22);
+}
+
+.creator-page .record-footer,
+.creator-page .sample-links,
+.creator-page .step-card,
+.creator-page .limits-row span {
+  background: #fffaf3;
+}
+
+.creator-page .faq-block {
+  background: #22160e;
+}
+
+.creator-page .faq-block .blue-label {
+  color: #f2b56b;
+}
+
+.creator-page .faq-block p {
+  color: #ead7c1;
+}
+
 /* Limits */
 
 .limits-row {
