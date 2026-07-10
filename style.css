@@ -515,6 +515,70 @@ h3 {
   border-color: var(--blue);
 }
 
+
+
+/* Shared list cards */
+
+.sample-links .list-item {
+  display: block;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--paper);
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.sample-links .list-item span {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-weight: 500;
+  font-size: 13px;
+}
+
+/* Student landing theme */
+
+body.student-page {
+  --bg: #f2f8f6;
+  --paper: #ffffff;
+  --ink: #10201d;
+  --muted: #5f706b;
+  --line: #d3e3df;
+  --blue: #0f766e;
+  --blue-dark: #0b5f59;
+  --soft-blue: #dff3ee;
+  --shadow: 0 24px 70px rgba(12, 74, 70, 0.11);
+}
+
+.student-page .topbar {
+  background: rgba(242, 248, 246, 0.92);
+}
+
+.student-page .top-button,
+.student-page .primary-button {
+  box-shadow: 0 12px 30px rgba(15, 118, 110, 0.22);
+}
+
+.student-page .record-footer,
+.student-page .sample-links,
+.student-page .step-card,
+.student-page .limits-row span {
+  background: #f7fcfa;
+}
+
+.student-page .faq-block {
+  background: #10201d;
+}
+
+.student-page .faq-block .blue-label {
+  color: #9ce0d6;
+}
+
+.student-page .faq-block p {
+  color: #d5e7e3;
+}
+
 /* Limits */
 
 .limits-row {
