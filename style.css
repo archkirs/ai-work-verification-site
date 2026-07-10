@@ -488,7 +488,7 @@ h3 {
   color: var(--ink);
 }
 
-/* Sample links */
+/* Sample links and list cards */
 
 .sample-links {
   display: grid;
@@ -517,10 +517,6 @@ h3 {
 .sample-links a:hover {
   border-color: var(--blue);
 }
-
-
-
-/* Shared list cards */
 
 .sample-links .list-item {
   display: block;
@@ -582,8 +578,9 @@ body.student-page {
   color: #d5e7e3;
 }
 
-/* Creator landing theme */
+/* Artist landing theme */
 
+body.artist-page,
 body.creator-page {
   --bg: #fbf6ef;
   --paper: #ffffff;
@@ -596,15 +593,22 @@ body.creator-page {
   --shadow: 0 24px 70px rgba(120, 53, 15, 0.11);
 }
 
+.artist-page .topbar,
 .creator-page .topbar {
   background: rgba(251, 246, 239, 0.92);
 }
 
+.artist-page .top-button,
+.artist-page .primary-button,
 .creator-page .top-button,
 .creator-page .primary-button {
   box-shadow: 0 12px 30px rgba(180, 83, 9, 0.22);
 }
 
+.artist-page .record-footer,
+.artist-page .sample-links,
+.artist-page .step-card,
+.artist-page .limits-row span,
 .creator-page .record-footer,
 .creator-page .sample-links,
 .creator-page .step-card,
@@ -612,21 +616,24 @@ body.creator-page {
   background: #fffaf3;
 }
 
+.artist-page .faq-block,
 .creator-page .faq-block {
   background: #22160e;
 }
 
+.artist-page .faq-block .blue-label,
 .creator-page .faq-block .blue-label {
   color: #f2b56b;
 }
 
+.artist-page .faq-block p,
 .creator-page .faq-block p {
   color: #ead7c1;
 }
 
+/* Reviewer landing theme */
 
-/* Registry landing theme */
-
+body.reviewer-page,
 body.registry-page {
   --bg: #f6f4fb;
   --paper: #ffffff;
@@ -639,15 +646,22 @@ body.registry-page {
   --shadow: 0 24px 70px rgba(88, 28, 135, 0.11);
 }
 
+.reviewer-page .topbar,
 .registry-page .topbar {
   background: rgba(246, 244, 251, 0.92);
 }
 
+.reviewer-page .top-button,
+.reviewer-page .primary-button,
 .registry-page .top-button,
 .registry-page .primary-button {
   box-shadow: 0 12px 30px rgba(109, 40, 217, 0.22);
 }
 
+.reviewer-page .record-footer,
+.reviewer-page .sample-links,
+.reviewer-page .step-card,
+.reviewer-page .limits-row span,
 .registry-page .record-footer,
 .registry-page .sample-links,
 .registry-page .step-card,
@@ -655,14 +669,17 @@ body.registry-page {
   background: #fbf9ff;
 }
 
+.reviewer-page .faq-block,
 .registry-page .faq-block {
   background: #181326;
 }
 
+.reviewer-page .faq-block .blue-label,
 .registry-page .faq-block .blue-label {
   color: #c4b5fd;
 }
 
+.reviewer-page .faq-block p,
 .registry-page .faq-block p {
   color: #ded6ec;
 }
