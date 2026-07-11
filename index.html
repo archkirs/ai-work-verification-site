@@ -3,287 +3,164 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Human Contribution Record — Pilot Product</title>
-  <meta name="description" content="AI helped with the work? Show what you did. Create a short process record from final work, AI chats, drafts, notes, and files." />
+  <title>Human Contribution Record — AI-Assisted Work Process</title>
+  <meta name="description" content="AI helped with the work? Create a short record that shows what you did, how AI helped, and what process materials exist." />
   <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-  <header class="topbar">
-    <a class="brand" href="index.html" aria-label="Human Contribution Record home">
-      <span class="brand-code">HCR</span>
-      <span class="brand-divider" aria-hidden="true"></span>
-      <span class="brand-title">Human Contribution Record</span>
-    </a>
+  <header class="site-header">
+    <div class="topbar">
+      <a class="brand" href="index.html" aria-label="Human Contribution Record home">
+        <span class="brand-code">HCR</span>
+        <span class="brand-copy">
+          <strong>Human Contribution Record</strong>
+          <small>General</small>
+        </span>
+      </a>
 
-    <nav class="nav" aria-label="Primary navigation">
-      <a href="index.html">Home</a>
-      <a href="student.html">Students</a>
-      <a href="artist.html">Creators</a>
-      <a href="reviewer.html">Reviewers</a>
-      <a href="#pilot">Pilot</a>
-    </nav>
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="active" aria-current="page" href="index.html">Home</a>
+        <a href="student.html">Students</a>
+        <a href="artist.html">Creative Work</a>
+        <a href="reviewer.html">Reviewers</a>
+        <a href="#pilot">Pilot</a>
+      </nav>
 
-    <a class="top-button" href="https://tally.so/r/J9YvzJ?landing=general" target="_blank" rel="noopener">
-      Request a pilot record
-    </a>
+      <a class="top-button" href="https://tally.so/r/J9YvzJ?landing=general" target="_blank" rel="noopener">Join the pilot</a>
+    </div>
   </header>
 
-  <main id="top">
+  <main>
     <section class="hero-stage" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="blue-label">Early manual pilot / process record</p>
+        <p class="section-label">Early manual pilot</p>
         <h1 id="hero-title">AI helped with the work? Show what you did.</h1>
-        <p class="hero-lede">
-          Upload your work materials. We create a short Human Contribution Record you can share with a teacher, client, editor, or reviewer.
-        </p>
-        <a class="primary-button" href="https://tally.so/r/J9YvzJ?landing=general" target="_blank" rel="noopener">
-          Request a pilot record
-        </a>
-        <p class="micro-note">
-          <span aria-hidden="true">i</span>Not an AI detector. Not legal certification. Evidence of process, not automatic judgment.
-        </p>
+        <p class="hero-lede">Turn your final work, AI chats, drafts, and notes into a short record that shows what you did and how AI helped.</p>
+        <a class="primary-button" href="https://tally.so/r/J9YvzJ?landing=general" target="_blank" rel="noopener">Join the pilot</a>
+        <p class="micro-note"><span aria-hidden="true">i</span>Not an AI detector. A clear record of the work process.</p>
       </div>
 
-      <aside class="record-card" aria-label="Record preview">
+      <aside class="record-card" aria-label="Example Human Contribution Record preview">
         <div class="record-head">
-          <div class="doc-symbol" aria-hidden="true">
-            <svg viewBox="0 0 44 54" role="img">
-              <path d="M8 3h20l8 8v40H8V3Z" />
-              <path d="M28 3v11h8" />
-              <path d="M15 25h14" />
-              <path d="M15 32h14" />
-              <path d="M15 39h10" />
-            </svg>
+          <div>
+            <p class="demo-label">Example preview</p>
+            <h2>Human Contribution Record</h2>
           </div>
-          <span class="record-head-rule" aria-hidden="true"></span>
-          <div class="record-title">Human Contribution Record</div>
-          <div class="record-status"><span>Status</span><b><i></i>Manual pilot</b></div>
+          <span class="status-badge">Example only</span>
         </div>
-
         <dl class="record-table">
-          <div>
-            <dt>What you did:</dt>
-            <dd>planning, choices, edits, final decision</dd>
-          </div>
-          <div>
-            <dt>How AI helped:</dt>
-            <dd>declared and summarized</dd>
-          </div>
-          <div>
-            <dt>Materials:</dt>
-            <dd>final work, drafts, notes, files, AI chats</dd>
-          </div>
-          <div>
-            <dt>Reviewer:</dt>
-            <dd>teacher, client, editor, platform, or other reviewer</dd>
-          </div>
-          <div>
-            <dt>Limits:</dt>
-            <dd>not copyright proof, not automatic judgment</dd>
-          </div>
+          <div><dt>What the person did</dt><dd>Planning, choices, edits, and final decisions</dd></div>
+          <div><dt>How AI helped</dt><dd>Declared and summarized</dd></div>
+          <div><dt>Materials</dt><dd>Final work, drafts, notes, files, and AI chats</dd></div>
+          <div><dt>Open questions</dt><dd>What still needs reviewer judgment</dd></div>
         </dl>
-
         <div class="record-footer">
-          <div><strong>Record ID:</strong><br>PILOT-GENERAL-0001</div>
-          <div><strong>Format:</strong><br>HCR v0.3 Pilot</div>
-          <div><strong>Output:</strong><br>short shareable record</div>
+          <div><strong>Record ID</strong><span>DEMO-GENERAL-0001</span></div>
+          <div><strong>Format</strong><span>HCR pilot</span></div>
         </div>
       </aside>
     </section>
 
-    <section id="send-get" class="content-block split-block">
+    <section class="content-block problem-block" aria-labelledby="problem-title">
       <div>
-        <p class="blue-label">The practical offer</p>
-        <h2>You send materials. You get a short record.</h2>
-        <p>
-          The pilot turns scattered process materials into one simple review document.
-        </p>
+        <p class="section-label">The problem</p>
+        <h2 id="problem-title">A final file shows the result, not the process.</h2>
       </div>
+      <div class="plain-copy">
+        <p>A long AI chat is difficult to review. Drafts and notes may be spread across several tools.</p>
+        <p>A short record brings the main information together without pretending to make the final decision.</p>
+      </div>
+    </section>
 
-      <div class="two-card-stack">
-        <div class="mini-card">
-          <h3>You send</h3>
+    <section class="content-block split-block" aria-labelledby="provide-title">
+      <div>
+        <p class="section-label">What goes in</p>
+        <h2 id="provide-title">You provide the work and the process materials.</h2>
+        <p>The record is based on materials provided by the person who made the work. It helps review the process, but it is not independent proof.</p>
+      </div>
+      <div class="paired-lists">
+        <article class="mini-card">
+          <h3>You provide</h3>
           <ul>
             <li>final work</li>
             <li>AI chats or prompts</li>
-            <li>drafts, notes, screenshots</li>
-            <li>file history, if available</li>
+            <li>drafts and notes</li>
+            <li>versions, screenshots, or file history</li>
           </ul>
-        </div>
-        <div class="mini-card">
-          <h3>You get</h3>
+        </article>
+        <article class="mini-card">
+          <h3>The record shows</h3>
           <ul>
-            <li>a short Human Contribution Record</li>
-            <li>a summary of what you did</li>
-            <li>a summary of how AI helped</li>
-            <li>a clear limits note</li>
+            <li>what you did</li>
+            <li>how AI helped</li>
+            <li>what materials exist</li>
+            <li>what still needs review</li>
           </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="before-after" class="content-block">
-      <p class="blue-label">Before / After</p>
-      <h2>Make the work process easier to review.</h2>
-      <div class="compare-grid">
-        <article class="compare-card">
-          <h3>Before</h3>
-          <p>A final file alone does not show the work behind it.</p>
-          <p>A long AI chat is hard to review.</p>
-          <p>Drafts and notes are scattered.</p>
-        </article>
-        <article class="compare-card positive">
-          <h3>After</h3>
-          <p>One short record shows what the person did.</p>
-          <p>AI help is disclosed clearly.</p>
-          <p>Evidence is organized in one place.</p>
         </article>
       </div>
     </section>
 
-    <section id="record" class="content-block split-block">
-      <div>
-        <p class="blue-label">What the record shows</p>
-        <h2>A readable summary, not a verdict.</h2>
-        <p>
-          The record gives context for review. It does not replace human judgment.
-        </p>
-      </div>
-
-      <div class="sample-links">
-        <h3>Core fields</h3>
-        <div class="list-item">What the person did <span>planning, choices, edits, approvals</span></div>
-        <div class="list-item">How AI helped <span>where AI was used and for what purpose</span></div>
-        <div class="list-item">Submitted evidence <span>drafts, notes, files, AI chats, screenshots</span></div>
-        <div class="list-item">Limits <span>what the record cannot prove</span></div>
-      </div>
-    </section>
-
-    <section id="how" class="steps-section" aria-labelledby="how-title">
-      <h2 id="how-title">How it works</h2>
-
+    <section id="how" class="content-block" aria-labelledby="how-title">
+      <p class="section-label">How it works</p>
+      <h2 id="how-title">Four simple steps.</h2>
       <div class="steps-grid">
-        <article class="step-card">
-          <div class="icon-circle" aria-hidden="true">
-            <svg viewBox="0 0 48 48"><path d="M13 6h20l7 7v31H13V6Z"/><path d="M33 6v10h7"/><path d="M20 25h14"/><path d="M20 32h14"/><path d="M20 39h9"/></svg>
-          </div>
-          <div class="step-line"><span>1</span><h3>Send the work</h3></div>
-          <p>Start with the final file, assignment, image, text, design, article, or other work.</p>
-          <b>Work</b>
-        </article>
-        <article class="step-card">
-          <div class="icon-circle" aria-hidden="true">
-            <svg viewBox="0 0 48 48"><path d="M7 19h34l-4 20H11L7 19Z"/><path d="M11 19v-8h12l4 5h10v3"/></svg>
-          </div>
-          <div class="step-line"><span>2</span><h3>Add materials</h3></div>
-          <p>Add AI chats, prompts, drafts, notes, screenshots, versions, source files, or file history.</p>
-          <b>Materials</b>
-        </article>
-        <article class="step-card">
-          <div class="icon-circle" aria-hidden="true">
-            <svg viewBox="0 0 48 48"><path d="M13 6h20l7 7v31H13V6Z"/><path d="M33 6v10h7"/><path d="M20 25h14"/><path d="M20 32h14"/><path d="M20 39h9"/></svg>
-          </div>
-          <div class="step-line"><span>3</span><h3>Create the record</h3></div>
-          <p>The process is summarized into what you did, how AI helped, materials, and limits.</p>
-          <b>Record</b>
-        </article>
-        <article class="step-card">
-          <div class="icon-circle" aria-hidden="true">
-            <svg viewBox="0 0 48 48"><path d="M19 15 9 24l10 9"/><path d="m29 15 10 9-10 9"/><path d="m27 11-6 26"/></svg>
-          </div>
-          <div class="step-line"><span>4</span><h3>Share it</h3></div>
-          <p>A reviewer sees a short process summary instead of guessing from the final file alone.</p>
-          <b>Review</b>
-        </article>
+        <article class="step-card"><span>1</span><h3>Start with the work</h3><p>Use the final assignment, image, text, design, research, or other work.</p></article>
+        <article class="step-card"><span>2</span><h3>Add process materials</h3><p>Add the drafts, notes, AI chats, versions, and files that already exist.</p></article>
+        <article class="step-card"><span>3</span><h3>Create the record</h3><p>The main human decisions, AI help, materials, and limits are summarized.</p></article>
+        <article class="step-card"><span>4</span><h3>Share it</h3><p>A reviewer reads a short process summary and asks follow-up questions if needed.</p></article>
       </div>
     </section>
 
-    <section id="use-cases" class="content-block split-block">
+    <section class="content-block split-block" aria-labelledby="roles-title">
       <div>
-        <p class="blue-label">Choose your role</p>
-        <h2>Same record idea. Different review situations.</h2>
-        <p>
-          Each page explains one role. All roles are being tested equally in the pilot.
-        </p>
+        <p class="section-label">Use cases</p>
+        <h2 id="roles-title">One record idea. Different review situations.</h2>
+        <p>All four directions are being tested equally. The strongest use case has not been chosen yet.</p>
       </div>
-
-      <div class="sample-links">
-        <h3>Role pages</h3>
-        <a href="student.html">Students <span>Show your teacher how the work was made.</span></a>
-        <a href="artist.html">Creators <span>Show the human process behind creative work.</span></a>
-        <a href="reviewer.html">Reviewers <span>Ask for a clear record instead of guessing.</span></a>
+      <div class="role-links">
+        <a href="student.html"><strong>Students</strong><span>Show a teacher how the work was made.</span></a>
+        <a href="artist.html"><strong>Creative Work</strong><span>Show the ideas, choices, drafts, and edits that came from you.</span></a>
+        <a href="reviewer.html"><strong>Reviewers</strong><span>Ask for a short process record instead of guessing.</span></a>
       </div>
     </section>
 
-    <section id="samples" class="content-block split-block">
+    <section id="samples" class="content-block split-block" aria-labelledby="samples-title">
       <div>
-        <p class="blue-label">Samples</p>
-        <h2>Sample records are being prepared.</h2>
-        <p>
-          Samples will be added during the pilot. They should show student, creator, and reviewer-facing records clearly.
-        </p>
+        <p class="section-label">Samples</p>
+        <h2 id="samples-title">Real sample records are being prepared.</h2>
+        <p>The samples will be built together with the review method. No placeholder record is presented as a finished product.</p>
       </div>
-
-      <div class="sample-links">
-        <h3>Coming soon</h3>
-        <div class="list-item muted-card">Student sample record <span>assignment, AI help, drafts, limits</span></div>
-        <div class="list-item muted-card">Creator sample record <span>idea, choices, drafts, edits, AI use</span></div>
-        <div class="list-item muted-card">Reviewer-facing sample <span>summary, evidence list, questions still open</span></div>
+      <div class="sample-status" aria-label="Upcoming sample records">
+        <div><strong>General sample</strong><span>Universal process record</span></div>
+        <div><strong>Student sample</strong><span>Assignment and AI-use record</span></div>
+        <div><strong>Creative sample</strong><span>Creative decisions and production process</span></div>
+        <div><strong>Reviewer sample</strong><span>Summary, materials, and open questions</span></div>
       </div>
     </section>
 
-    <section id="pilot" class="content-block split-block">
-      <div>
-        <p class="blue-label">Manual pilot</p>
-        <h2>Request a pilot record.</h2>
-        <p>
-          This is an early manual pilot. Records are prepared manually while the format is being tested.
-        </p>
-        <p>
-          Please do not upload confidential, private, legal, school-restricted, client-restricted, or sensitive materials at this stage.
-        </p>
-        <a class="primary-button small" href="https://tally.so/r/J9YvzJ?landing=general" target="_blank" rel="noopener">
-          Request a pilot record
-        </a>
-      </div>
-
-      <div class="sample-links">
-        <h3>Who this may help</h3>
-        <a href="student.html">Students</a>
-        <a href="artist.html">Creators and creative workers</a>
-        <a href="reviewer.html">Teachers, clients, editors, and reviewers</a>
-      </div>
-    </section>
-
-    <section id="guidelines" class="content-block">
-      <p class="blue-label">What this is not</p>
-      <h2>Evidence of process, not automatic judgment.</h2>
+    <section id="limits" class="content-block limits-block" aria-labelledby="limits-title">
+      <p class="section-label">Limits</p>
+      <h2 id="limits-title">The record helps review. It does not make the decision.</h2>
       <div class="limits-row">
         <span>Not an AI detector</span>
         <span>Not legal certification</span>
-        <span>Not copyright proof</span>
-        <span>Not ownership proof</span>
-        <span>Not a 100% human claim</span>
-        <span>Not a punishment system</span>
+        <span>Not copyright or ownership proof</span>
+        <span>Does not replace human review</span>
       </div>
     </section>
 
-    <section id="faq" class="content-block faq-block">
-      <p class="blue-label">FAQ</p>
-      <h2>A record helps review. It does not replace review.</h2>
-      <p>
-        The pilot record is based on materials provided by the person who made the work. It does not decide originality, ownership, academic acceptance, platform compliance, or quality.
-      </p>
-      <p>
-        The goal is simple: make AI-assisted work more understandable by showing what the person did and how AI helped.
-      </p>
+    <section id="pilot" class="content-block final-cta" aria-labelledby="pilot-title">
+      <div>
+        <p class="section-label">Manual pilot</p>
+        <h2 id="pilot-title">Help test the first Human Contribution Records.</h2>
+        <p>Tell us what kind of work you may need to document and who would review it.</p>
+      </div>
+      <a class="primary-button" href="https://tally.so/r/J9YvzJ?landing=general" target="_blank" rel="noopener">Join the pilot</a>
     </section>
   </main>
 
   <footer class="footer">
-    <p>Based on research by Eyeball Publishing Lab. AI Work Verification — Product MVP is a separate product exploration.</p>
-    <p><a href="index.html">Home</a> · <a href="student.html">Students</a> · <a href="artist.html">Creators</a> · <a href="reviewer.html">Reviewers</a> · Contact: <a href="mailto:eyeballpublishinglab@gmail.com">eyeballpublishinglab@gmail.com</a></p>
+    <p><strong>Human Contribution Record</strong> is a working product concept for clearer AI-assisted work processes.</p>
   </footer>
 </body>
 </html>
