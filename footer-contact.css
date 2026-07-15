@@ -84,11 +84,15 @@
 }
 
 .copy-button {
-  background: var(--ink);
+  border-color: var(--accent);
+  background: var(--accent);
   color: #fff;
 }
 
-.copy-button:hover { background: #333331; }
+.copy-button:hover {
+  border-color: color-mix(in srgb, var(--accent) 84%, black);
+  background: color-mix(in srgb, var(--accent) 84%, black);
+}
 
 .secondary-button {
   background: transparent;
@@ -130,9 +134,94 @@
 .contact-facts dt { color: var(--muted); }
 .contact-facts dd { color: var(--ink); }
 
+/* Audience-colour primary actions */
+.top-button,
+.primary-button {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+.top-button:hover,
+.primary-button:hover {
+  border-color: color-mix(in srgb, var(--accent) 84%, black);
+  background: color-mix(in srgb, var(--accent) 84%, black);
+}
+
+/* The visible CTA replaces the redundant Pilot navigation item on all sizes. */
+.nav a[href="#pilot"] { display: none; }
+
 @media (max-width: 760px) {
   .footer-links { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
   .contact-layout { grid-template-columns: 1fr; gap: 28px; }
+
+  html { scroll-padding-top: 102px; }
+  #made,
+  #how,
+  #limits,
+  #pilot { scroll-margin-top: 102px; }
+
+  .site-header { background: rgba(250, 249, 246, .985); }
+
+  .topbar {
+    width: min(100% - 24px, 1180px);
+    min-height: 0;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas: "brand cta" "nav nav";
+    column-gap: 16px;
+    row-gap: 0;
+    padding: 8px 0 0;
+  }
+
+  .brand { align-self: center; }
+  .brand img { width: 64px; }
+
+  .top-button {
+    min-height: 40px;
+    max-width: none;
+    padding: 0 13px;
+    border-radius: 7px;
+    font-size: 10.75px;
+    white-space: nowrap;
+  }
+
+  .nav {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    width: 100%;
+    margin-top: 8px;
+    border-top: 1px solid var(--line);
+    gap: 0;
+    overflow: visible;
+    font-size: 10.75px;
+    letter-spacing: -.012em;
+    white-space: normal;
+  }
+
+  .nav a {
+    min-width: 0;
+    padding: 10px 3px 11px;
+    line-height: 1.16;
+    text-align: center;
+  }
+
+  .nav a::after {
+    left: 8px;
+    right: 8px;
+    bottom: -1px;
+    height: 2px;
+  }
+
+  .record-head .grid-mark {
+    display: grid;
+    grid-template-columns: repeat(4, 3px);
+    gap: 3px;
+    padding: 1px;
+  }
+
+  .record-head .grid-mark i {
+    width: 3px;
+    height: 3px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -142,4 +231,10 @@
   .copy-button,
   .secondary-button { width: 100%; }
   .contact-facts div { grid-template-columns: 1fr; gap: 4px; }
+
+  .topbar { width: min(100% - 20px, 1180px); column-gap: 12px; }
+  .top-button { padding-inline: 11px; font-size: 10.25px; }
+  .nav { font-size: 10.25px; }
+
+  .record-head .grid-mark { display: grid; }
 }
