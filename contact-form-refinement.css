@@ -1,0 +1,53 @@
+.contact-form-layout {
+  display: block;
+  max-width: 760px;
+}
+
+.contact-email-fallback {
+  padding-top: 2px;
+  border-top: 1px solid var(--line);
+}
+
+.contact-email-fallback p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.contact-email-fallback a,
+.copy-address-button {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.copy-address-button {
+  appearance: none;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+}
+
+.copy-address-button:hover,
+.contact-email-fallback a:hover {
+  color: var(--accent);
+}
+
+.copy-address-button:focus-visible,
+.contact-email-fallback a:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--focus) 70%, white);
+  outline-offset: 3px;
+}
+
+.contact-email-fallback .copy-status {
+  min-height: 18px;
+  margin: 5px 0 0 !important;
+}
+
+@media (max-width: 760px) {
+  .contact-form-layout { max-width: none; }
+}
