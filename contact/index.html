@@ -9,6 +9,7 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="/style.css" />
   <link rel="stylesheet" href="/footer-contact.css" />
+  <link rel="stylesheet" href="/contact-form-refinement.css" />
   <script src="/contact-form.js" defer></script>
 </head>
 <body>
@@ -90,19 +91,13 @@
               <button class="primary-button" type="submit">Send message</button>
               <p class="form-status" role="status" aria-live="polite"></p>
             </div>
+
+            <div class="contact-email-fallback">
+              <p>Prefer email? Write to <a href="mailto:hello@useasmade.com">hello@useasmade.com</a> or <button class="copy-address-button" type="button" data-copy-email="hello@useasmade.com">copy the address</button>.</p>
+              <p class="copy-status" role="status" aria-live="polite"></p>
+            </div>
           </form>
         </div>
-
-        <aside class="contact-card" aria-labelledby="email-title">
-          <h2 id="email-title">Email instead</h2>
-          <p>The public email address reaches the same AsMade team.</p>
-          <a class="contact-address" href="mailto:hello@useasmade.com">hello@useasmade.com</a>
-          <div class="contact-actions">
-            <button class="copy-button" type="button" data-copy-email="hello@useasmade.com">Copy email address</button>
-            <a class="secondary-button" href="mailto:hello@useasmade.com">Open email app</a>
-          </div>
-          <p class="copy-status" role="status" aria-live="polite"></p>
-        </aside>
       </section>
 
       <section class="legal-section" aria-labelledby="operator-title">
