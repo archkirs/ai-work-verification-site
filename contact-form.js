@@ -103,7 +103,8 @@
       const error = form.querySelector(`[data-error-for="${name}"]`);
       form.elements[name].removeAttribute('aria-invalid');
       if (error) error.textContent = '';
-      if (!deliveryUncertain) requestId = null;
+      requestId = null;
+      deliveryUncertain = false;
     });
   });
 
