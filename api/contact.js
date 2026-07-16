@@ -12,6 +12,9 @@ const TOPICS = Object.freeze({
   other: 'Other',
 });
 
+const INVALID_REQUEST_MESSAGE = 'We could not process your message. Please check the form and try again.';
+const PROVIDER_ERROR_MESSAGE = 'We could not send your message. Please try again later or email hello@useasmade.com.';
+
 function sendJson(res, status, payload) {
   res.statusCode = status;
   res.setHeader('Content-Type', 'application/json; charset=utf-8');
@@ -54,15 +57,20 @@ function isAllowedOrigin(origin) {
 }
 
 async function readBody(req) {
-  if (isPlainObject(req.body)) return req.body;
+  if (Object.prototype.hasOwnProperty.call(req, 'body') && req.body !== undefined) {
+    if (isPlainObject(req.body) || req.body === null || Array.isArray(req.body)) return req.body;
 
-  if (typeof req.body === 'string') {
-    if (Buffer.byteLength(req.body, 'utf8') > MAX_BODY_BYTES) {
-      const error = new Error('body_too_large');
-      error.code = 'body_too_large';
-      throw error;
+    if (typeof req.body === 'string' || Buffer.isBuffer(req.body)) {
+      const rawBody = Buffer.isBuffer(req.body) ? req.body.toString('utf8') : req.body;
+      if (Buffer.byteLength(rawBody, 'utf8') > MAX_BODY_BYTES) {
+        const error = new Error('body_too_large');
+        error.code = 'body_too_large';
+        throw error;
+      }
+      return rawBody ? JSON.parse(rawBody) : {};
     }
-    return JSON.parse(req.body);
+
+    return req.body;
   }
 
   const chunks = [];
@@ -93,7 +101,6 @@ function normaliseMessage(value) {
 }
 
 function isValidEmail(value) {
-  if (!value || value.length > 254 || /[\r\n]/.test(value)) return false;
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 }
 
@@ -112,11 +119,19 @@ function validate(body) {
   const errors = {};
 
   if (name.length > 100) errors.name = 'Name must be 100 characters or fewer.';
-  if (!isValidEmail(email)) errors.email = 'Enter a valid email address.';
-  if (!Object.prototype.hasOwnProperty.call(TOPICS, topic)) errors.topic = 'Choose a valid topic.';
-  if (!message) errors.message = 'Enter a message.';
-  if (message.length > 3000) errors.message = 'Message must be 3,000 characters or fewer.';
-  if (!isValidRequestId(requestId)) errors.form = 'Please reload the page and try again.';
+
+  if (!email) errors.email = 'Please enter your email address.';
+  else if (email.length > 254) errors.email = 'Email must be 254 characters or fewer.';
+  else if (!isValidEmail(email)) errors.email = 'Please enter a valid email address.';
+
+  if (!Object.prototype.hasOwnProperty.call(TOPICS, topic)) errors.topic = 'Please select a topic.';
+
+  if (!message) errors.message = 'Please enter a message.';
+  else if (message.length > 3000) {
+    errors.message = 'Message must be 3,000 characters or fewer. Please shorten it and try again.';
+  }
+
+  if (!isValidRequestId(requestId)) errors.form = INVALID_REQUEST_MESSAGE;
 
   return {
     values: { name, email, topic, message, requestId, website },
@@ -154,9 +169,10 @@ module.exports = async function contactHandler(req, res) {
   }
 
   const contentType = String(req.headers['content-type'] || '').toLowerCase();
-  if (!contentType.includes('application/json')) {
+  const mediaType = contentType.split(';', 1)[0].trim();
+  if (mediaType !== 'application/json') {
     logResult({ requestId, result: 'rejected', status: 415, startedAt, errorCode: 'unsupported_media_type' });
-    return sendJson(res, 415, { ok: false, message: 'Request rejected.' });
+    return sendJson(res, 415, { ok: false, message: INVALID_REQUEST_MESSAGE });
   }
 
   const declaredLength = Number(req.headers['content-length'] || 0);
@@ -174,11 +190,16 @@ module.exports = async function contactHandler(req, res) {
     logResult({ requestId, result: 'rejected', status, startedAt, errorCode: tooLarge ? 'body_too_large' : 'invalid_json' });
     return sendJson(res, status, {
       ok: false,
-      message: tooLarge ? 'Your message is too large. Please shorten it.' : 'Invalid request.',
+      message: tooLarge ? 'Your message is too large. Please shorten it.' : INVALID_REQUEST_MESSAGE,
     });
   }
 
-  if (!isPlainObject(body) || Buffer.byteLength(JSON.stringify(body), 'utf8') > MAX_BODY_BYTES) {
+  if (!isPlainObject(body)) {
+    logResult({ requestId, result: 'rejected', status: 400, startedAt, errorCode: 'invalid_json_shape' });
+    return sendJson(res, 400, { ok: false, message: INVALID_REQUEST_MESSAGE });
+  }
+
+  if (Buffer.byteLength(JSON.stringify(body), 'utf8') > MAX_BODY_BYTES) {
     logResult({ requestId, result: 'rejected', status: 413, startedAt, errorCode: 'body_too_large' });
     return sendJson(res, 413, { ok: false, message: 'Your message is too large. Please shorten it.' });
   }
@@ -188,21 +209,18 @@ module.exports = async function contactHandler(req, res) {
 
   if (values.website) {
     logResult({ requestId, result: 'rejected', status: 200, startedAt, errorCode: 'honeypot' });
-    return sendJson(res, 200, { ok: true, message: 'Your message has been received.' });
+    return sendJson(res, 200, { ok: true, message: 'Thank you. Your message has been received.' });
   }
 
   if (Object.keys(errors).length > 0) {
     logResult({ requestId, result: 'rejected', status: 422, startedAt, errorCode: 'validation_failed' });
-    return sendJson(res, 422, { ok: false, message: 'Check the highlighted fields.', errors });
+    return sendJson(res, 422, { ok: false, message: 'Please check the highlighted fields.', errors });
   }
 
   const apiKey = process.env.RESEND_CONTACT_API_KEY;
   if (!apiKey) {
     logResult({ requestId, result: 'provider_error', status: 503, startedAt, errorCode: 'missing_api_key' });
-    return sendJson(res, 503, {
-      ok: false,
-      message: 'We could not send your message. Please try again later or email hello@useasmade.com.',
-    });
+    return sendJson(res, 503, { ok: false, message: PROVIDER_ERROR_MESSAGE });
   }
 
   let providerResponse;
@@ -230,10 +248,7 @@ module.exports = async function contactHandler(req, res) {
     });
   } catch (error) {
     logResult({ requestId, result: 'provider_error', status: 502, startedAt, errorCode: 'provider_network_error' });
-    return sendJson(res, 502, {
-      ok: false,
-      message: 'We could not send your message. Please try again later or email hello@useasmade.com.',
-    });
+    return sendJson(res, 502, { ok: false, message: PROVIDER_ERROR_MESSAGE });
   }
 
   if (!providerResponse.ok) {
@@ -244,12 +259,12 @@ module.exports = async function contactHandler(req, res) {
       startedAt,
       errorCode: `provider_http_${providerResponse.status}`,
     });
-    return sendJson(res, 502, {
-      ok: false,
-      message: 'We could not send your message. Please try again later or email hello@useasmade.com.',
-    });
+    return sendJson(res, 502, { ok: false, message: PROVIDER_ERROR_MESSAGE });
   }
 
   logResult({ requestId, result: 'sent', status: 200, startedAt });
-  return sendJson(res, 200, { ok: true, message: 'Your message has been sent.' });
+  return sendJson(res, 200, {
+    ok: true,
+    message: 'Thank you. Your message has been sent to the AsMade team. We will reply to the email address you provided if a response is needed.',
+  });
 };

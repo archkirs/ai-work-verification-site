@@ -30,7 +30,6 @@
   const status = form.querySelector('.form-status');
   const fields = ['name', 'email', 'topic', 'message'];
   let requestId = null;
-  let deliveryUncertain = false;
 
   function makeRequestId() {
     if (window.crypto && typeof window.crypto.randomUUID === 'function') {
@@ -80,14 +79,21 @@
     const message = form.elements.message.value.trim();
 
     if (name.length > 100) errors.name = 'Name must be 100 characters or fewer.';
-    if (!email || email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      errors.email = 'Enter a valid email address.';
+
+    if (!email) errors.email = 'Please enter your email address.';
+    else if (email.length > 254) errors.email = 'Email must be 254 characters or fewer.';
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errors.email = 'Please enter a valid email address.';
     }
+
     if (!['general', 'pilot', 'privacy', 'other'].includes(topic)) {
-      errors.topic = 'Choose a topic.';
+      errors.topic = 'Please select a topic.';
     }
-    if (!message) errors.message = 'Enter a message.';
-    if (message.length > 3000) errors.message = 'Message must be 3,000 characters or fewer.';
+
+    if (!message) errors.message = 'Please enter a message.';
+    else if (message.length > 3000) {
+      errors.message = 'Message must be 3,000 characters or fewer. Please shorten it and try again.';
+    }
 
     return errors;
   }
@@ -104,7 +110,6 @@
       form.elements[name].removeAttribute('aria-invalid');
       if (error) error.textContent = '';
       requestId = null;
-      deliveryUncertain = false;
     });
   });
 
@@ -118,9 +123,8 @@
     if (Object.keys(clientErrors).length > 0) {
       showErrors(clientErrors);
       status.classList.add('is-error');
-      status.textContent = 'Check the highlighted fields.';
+      status.textContent = 'Please check the highlighted fields.';
       requestId = null;
-      deliveryUncertain = false;
       return;
     }
 
@@ -154,24 +158,21 @@
       if (response.ok && data.ok) {
         form.reset();
         requestId = null;
-        deliveryUncertain = false;
         status.classList.add('is-success');
-        status.textContent = data.message || 'Your message has been sent.';
+        status.textContent = data.message || 'Thank you. Your message has been sent to the AsMade team. We will reply to the email address you provided if a response is needed.';
         return;
       }
 
       if (response.status === 422 && data.errors) {
         showErrors(data.errors);
         requestId = null;
-        deliveryUncertain = false;
         status.classList.add('is-error');
-        status.textContent = data.errors.form || data.message || 'Check the highlighted fields.';
+        status.textContent = data.errors.form || data.message || 'Please check the highlighted fields.';
         return;
       }
 
       if (response.status === 413) {
         requestId = null;
-        deliveryUncertain = false;
         status.classList.add('is-error');
         status.textContent = 'Your message is too large. Please shorten it.';
         return;
@@ -179,18 +180,15 @@
 
       if (response.status === 429) {
         requestId = null;
-        deliveryUncertain = false;
         status.classList.add('is-error');
         status.textContent = 'Too many attempts. Please try again later.';
         return;
       }
 
-      deliveryUncertain = response.status >= 500;
-      if (!deliveryUncertain) requestId = null;
+      if (response.status < 500) requestId = null;
       status.classList.add('is-error');
       status.textContent = data.message || 'We could not send your message. Please try again later or email hello@useasmade.com.';
     } catch (error) {
-      deliveryUncertain = true;
       status.classList.add('is-error');
       status.textContent = 'We could not send your message. Please try again later or email hello@useasmade.com.';
     } finally {
