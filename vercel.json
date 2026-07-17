@@ -1,0 +1,8 @@
+{
+  "redirects": [
+    { "source": "/creator.html", "destination": "/artist.html", "permanent": true },
+    { "source": "/registry.html", "destination": "/reviewer.html", "permanent": true },
+    { "source": "/index.html", "destination": "/", "permanent": true },
+    { "source": "/contact/index.html", "destination": "/contact", "permanent": true }
+  ]
+}
