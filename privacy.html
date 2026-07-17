@@ -23,6 +23,7 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="/footer-contact.css" />
+  <script src="/vercel-observability.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -39,7 +40,7 @@
       <p class="section-label">Legal and privacy</p>
       <h1 id="page-title">Privacy Policy</h1>
       <p class="hero-lede">How AsMade handles public-site visits, contact messages, and MVP pilot applications.</p>
-      <div class="page-meta"><span>Effective date: July 15, 2026</span><span>Last updated: July 16, 2026</span></div>
+      <div class="page-meta"><span>Effective date: July 15, 2026</span><span>Last updated: July 17, 2026</span></div>
     </section>
 
     <div class="legal-content">
@@ -68,8 +69,10 @@
       <section class="legal-section" aria-labelledby="visit-title">
         <h2 id="visit-title">2. Information handled when you visit the site</h2>
         <p>The AsMade site is hosted by Vercel. When your browser requests a page, asset, or form endpoint, Vercel may process technical information needed to deliver, protect, and diagnose the service, including IP address, approximate location, requested path, date and time, browser, device, operating system, language, network, referrer, performance information, and security events.</p>
+        <p>AsMade uses Vercel Web Analytics to understand aggregated site traffic. It may process the page URL, referrer, filtered query parameters, approximate geolocation, device type, operating system, browser, event time, and script version. Vercel states that Web Analytics does not use third-party cookies, identifies a visitor through a request-derived hash, and discards the visitor session after 24 hours.</p>
+        <p>AsMade uses Vercel Speed Insights to understand real-world page performance. It may process route and URL, network speed, browser, device type, operating system, country, Web Vital measurements, attribution information, SDK information, and server-received event time. Vercel states that these data points are not tied to an individual visitor or IP address and cannot be used to reconstruct a browsing session.</p>
         <p>The Contact endpoint may use the source IP at the infrastructure layer to enforce a rate limit. The AsMade application code does not intentionally write raw IP addresses, contact-form content, email addresses, or names into its own logs.</p>
-        <p>AsMade has not intentionally enabled a separate analytics or advertising service and does not maintain a separate visitor-profile database.</p>
+        <p>AsMade does not use these tools for advertising, marketing profiles, custom form events, or tracking information entered into the Contact form or Tally application.</p>
       </section>
 
       <section class="legal-section" aria-labelledby="contact-form-title">
@@ -98,15 +101,15 @@
 
       <section class="legal-section" aria-labelledby="purpose-title">
         <h2 id="purpose-title">6. Why we use information</h2>
-        <p>We use personal information to deliver and protect the site; read and respond to contact messages; handle privacy or deletion requests; evaluate voluntary pilot applications; contact applicants who requested or permitted follow-up; prevent abuse; protect rights and systems; and meet applicable legal obligations.</p>
-        <p>Depending on the request, processing is based on responding to steps you initiate, the operator’s legitimate interest in operating a secure communication channel and evaluating voluntary applications, or applicable legal obligations.</p>
+        <p>We use personal information to deliver and protect the site; understand aggregated site traffic and page performance; read and respond to contact messages; handle privacy or deletion requests; evaluate voluntary pilot applications; contact applicants who requested or permitted follow-up; prevent abuse; protect rights and systems; and meet applicable legal obligations.</p>
+        <p>Depending on the request, processing is based on responding to steps you initiate, the operator’s legitimate interest in operating and improving a secure public information site and communication channel, evaluating voluntary applications, or applicable legal obligations.</p>
         <p>Contact-form submission does not authorise marketing, newsletter subscription, or unrelated use of your information.</p>
       </section>
 
       <section class="legal-section" aria-labelledby="recipients-title">
         <h2 id="recipients-title">7. Who may receive information</h2>
-        <p>Personal information may be available to Ian Kirs and Daria Kirs where needed for project coordination; Vercel for hosting, endpoint execution, and security; Tally for the pilot application; Porkbun for domain and incoming-email forwarding; Google for Gmail infrastructure; Resend for email delivery and associated delivery records; and professional advisers or public authorities where legally required or reasonably necessary to protect rights and security.</p>
-        <p>AsMade does not sell contact or application information and does not use it for third-party advertising.</p>
+        <p>Personal information may be available to Ian Kirs and Daria Kirs where needed for project coordination; Vercel for hosting, endpoint execution, security, aggregated Web Analytics, and Speed Insights; Tally for the pilot application; Porkbun for domain and incoming-email forwarding; Google for Gmail infrastructure; Resend for email delivery and associated delivery records; and professional advisers or public authorities where legally required or reasonably necessary to protect rights and security.</p>
+        <p>AsMade does not sell contact, application, analytics, or performance information and does not use it for third-party advertising.</p>
       </section>
 
       <section class="legal-section" aria-labelledby="international-title">
@@ -116,8 +119,8 @@
 
       <section class="legal-section" aria-labelledby="retention-title">
         <h2 id="retention-title">9. Retention</h2>
-        <h3>Public-site technical data</h3>
-        <p>AsMade does not maintain a separate visitor analytics database. Technical hosting and security information is retained by Vercel according to the active service, account plan, and provider rules.</p>
+        <h3>Public-site technical, analytics, and performance data</h3>
+        <p>AsMade does not maintain its own separate visitor-profile or analytics database. Vercel Web Analytics discards its visitor session after 24 hours and retains aggregated analytics according to the active service, account plan, provider rules, and AsMade project settings. Vercel Speed Insights retains anonymous performance data according to the active service, account plan, provider rules, and AsMade project settings. Technical hosting and security information is also retained by Vercel under its applicable rules.</p>
         <h3>Contact messages and ordinary correspondence</h3>
         <p>Ordinary contact correspondence is normally retained for up to <strong>12 months after the last message in the thread</strong>, then deleted unless a documented operational or legal reason requires longer retention.</p>
         <p>Spam, tests, duplicate submissions, and clearly erroneous messages are deleted within <strong>30 days</strong>.</p>
@@ -143,8 +146,9 @@
 
       <section class="legal-section" aria-labelledby="cookies-title">
         <h2 id="cookies-title">12. Cookies and similar technologies</h2>
-        <p>AsMade does not intentionally set first-party analytics or advertising cookies on the current site. The site links to Tally as an external service, where Tally’s own cookies, notice, and settings apply.</p>
-        <p>No cookie-consent banner is planned unless a live check or later feature shows that non-essential cookies or similar tracking technologies are used.</p>
+        <p>AsMade does not intentionally set analytics or advertising cookies on the current site. Vercel Web Analytics is configured without third-party cookies, and Vercel Speed Insights is designed not to identify individual visitors or reconstruct browsing sessions.</p>
+        <p>The site links to Tally as an external service, where Tally’s own cookies, notice, and settings apply.</p>
+        <p>No separate cookie-consent banner is currently planned solely for Vercel Web Analytics and Speed Insights. This position will be reviewed if the implementation, provider behaviour, public-site features, or applicable requirements change.</p>
       </section>
 
       <section class="legal-section" aria-labelledby="security-title">
@@ -160,7 +164,7 @@
 
       <section class="legal-section" aria-labelledby="changes-title">
         <h2 id="changes-title">15. Changes and contact</h2>
-        <p>This Policy may change when the public flow, service providers, or pilot process changes. The effective date and last-updated date are shown at the top.</p>
+        <p>This Policy may change when the public flow, service providers, analytics or performance tools, or pilot process changes. The effective date and last-updated date are shown at the top.</p>
         <p>Privacy questions and requests: use the <a href="/contact">Contact page</a> or email <a href="mailto:hello@useasmade.com">hello@useasmade.com</a>.</p>
       </section>
     </div>
