@@ -1,10 +1,28 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="AsMade temporary favicon">
-  <rect x="64" y="64" width="384" height="384" rx="43"
-        fill="#ffffff" stroke="#111111" stroke-width="8"/>
-  <path d="M10 0 273 707H398L660 0H566L510 152H160L104 0ZM189 231H481L335 631Z" transform="translate(118.8740 277.5700) scale(0.198000 -0.198000)" fill="#111111"/>
-  <path d="M342 -8Q275 -8 215.5 10.5Q156 29 114.0 71.5Q72 114 57 185H148Q162 140 193.5 115.0Q225 90 266.0 80.5Q307 71 348 71Q389 71 424.5 82.5Q460 94 482.5 120.0Q505 146 505 187Q505 219 493.5 239.0Q482 259 461.5 271.5Q441 284 413 292Q376 304 334.0 312.0Q292 320 251.5 331.0Q211 342 176 359Q157 369 139.5 383.5Q122 398 109.5 417.5Q97 437 89.5 462.0Q82 487 82 517Q82 562 96.0 595.0Q110 628 134.0 651.0Q158 674 190.0 688.0Q222 702 258.5 708.5Q295 715 332 715Q393 715 446.5 696.5Q500 678 535.5 637.0Q571 596 574 526H489Q484 568 461.0 592.0Q438 616 404.0 626.0Q370 636 332 636Q304 636 275.5 631.0Q247 626 223.5 613.5Q200 601 186.0 579.5Q172 558 172 525Q172 499 181.5 479.0Q191 459 207.5 445.5Q224 432 244 423Q292 403 350.5 393.5Q409 384 460 366Q490 356 515.0 341.0Q540 326 557.5 306.0Q575 286 584.5 260.5Q594 235 594 203Q594 145 574.0 104.5Q554 64 519.0 39.0Q484 14 438.5 3.0Q393 -8 342 -8Z" transform="translate(273.5340 277.5700) scale(0.198000 -0.198000)" fill="#111111"/>
-  <path d="M87 0V707H219L431 318L640 707H769V0H682V615L449 185H409L174 615V0Z" transform="translate(113.8975 370.8530) scale(0.079000 -0.079000)" fill="#111111"/>
-  <path d="M10 0 273 707H398L660 0H566L510 152H160L104 0ZM189 231H481L335 631Z" transform="translate(200.0215 370.8530) scale(0.079000 -0.079000)" fill="#111111"/>
-  <path d="M87 0V707H338Q448 707 522.0 662.5Q596 618 633.5 538.5Q671 459 671 353Q671 248 634.0 168.5Q597 89 523.0 44.5Q449 0 338 0ZM174 79H332Q418 79 473.0 114.0Q528 149 555.0 210.5Q582 272 582 353Q582 432 555.5 494.0Q529 556 475.0 592.0Q421 628 337 628H174Z" transform="translate(271.4515 370.8530) scale(0.079000 -0.079000)" fill="#111111"/>
-  <path d="M87 0V707H562V628H174V390H523V310H174V79H562V0Z" transform="translate(346.8315 370.8530) scale(0.079000 -0.079000)" fill="#111111"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-labelledby="title desc">
+  <title id="title">AsMade favicon</title>
+  <desc id="desc">Sixteen equal squares arranged in a four by four grid.</desc>
+  <style>
+    .grid { fill: #191918; }
+    @media (prefers-color-scheme: dark) {
+      .grid { fill: #ffffff; }
+    }
+  </style>
+  <g class="grid" fill-opacity="0.72">
+    <rect x="2" y="2" width="4" height="4"/>
+    <rect x="10" y="2" width="4" height="4"/>
+    <rect x="18" y="2" width="4" height="4"/>
+    <rect x="26" y="2" width="4" height="4"/>
+    <rect x="2" y="10" width="4" height="4"/>
+    <rect x="10" y="10" width="4" height="4"/>
+    <rect x="18" y="10" width="4" height="4"/>
+    <rect x="26" y="10" width="4" height="4"/>
+    <rect x="2" y="18" width="4" height="4"/>
+    <rect x="10" y="18" width="4" height="4"/>
+    <rect x="18" y="18" width="4" height="4"/>
+    <rect x="26" y="18" width="4" height="4"/>
+    <rect x="2" y="26" width="4" height="4"/>
+    <rect x="10" y="26" width="4" height="4"/>
+    <rect x="18" y="26" width="4" height="4"/>
+    <rect x="26" y="26" width="4" height="4"/>
+  </g>
 </svg>
