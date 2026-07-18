@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" role="img" aria-labelledby="title desc">
+  <title id="title">Comic evidence source asset placeholder</title>
+  <desc id="desc">A neutral four-panel layout placeholder stating that the approved source visual has not yet been connected to the Preview build. This placeholder is not evidence.</desc>
+  <rect width="900" height="560" fill="#efeee9"/>
+  <rect x="42" y="42" width="816" height="476" rx="12" fill="#ffffff" stroke="#d8d6cf"/>
+  <g fill="#f5f4f0" stroke="#aaa79f">
+    <rect x="76" y="82" width="350" height="166" rx="6"/>
+    <rect x="474" y="82" width="350" height="166" rx="6"/>
+    <rect x="76" y="280" width="350" height="166" rx="6"/>
+    <rect x="474" y="280" width="350" height="166" rx="6"/>
+  </g>
+  <g fill="#d8d6cf">
+    <rect x="110" y="116" width="120" height="10" rx="3"/>
+    <rect x="110" y="138" width="190" height="8" rx="3"/>
+    <rect x="508" y="116" width="105" height="10" rx="3"/>
+    <rect x="508" y="138" width="180" height="8" rx="3"/>
+    <rect x="110" y="314" width="130" height="10" rx="3"/>
+    <rect x="110" y="336" width="170" height="8" rx="3"/>
+    <rect x="508" y="314" width="95" height="10" rx="3"/>
+    <rect x="508" y="336" width="185" height="8" rx="3"/>
+  </g>
+  <g font-family="Segoe UI, Arial, sans-serif" text-anchor="middle">
+    <text x="450" y="486" font-size="18" font-weight="600" fill="#191918">Approved source visual not connected in this Preview build</text>
+    <text x="450" y="511" font-size="13" fill="#66645f">Layout placeholder only · not Evidence · no fabricated image substituted</text>
+  </g>
+</svg>
