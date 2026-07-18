@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Privacy-safe preview of Ian Kirs bilingual CV</title>
+  <desc id="desc">Two simplified CV pages showing English and Serbian versions. Direct contact details and portrait are removed from this public presentation copy.</desc>
+  <rect width="1200" height="720" fill="#efeee9"/>
+  <g font-family="Segoe UI, Arial, sans-serif" fill="#191918">
+    <text x="60" y="50" font-size="18" font-weight="600">Redacted presentation copy</text>
+    <text x="60" y="76" font-size="13" fill="#66645f">Direct contact details and portrait removed. This is not the raw Evidence file.</text>
+  </g>
+
+  <g transform="translate(55 110)">
+    <rect width="520" height="560" rx="8" fill="#ffffff" stroke="#d8d6cf"/>
+    <rect width="150" height="560" rx="8" fill="#f5f4f0"/>
+    <circle cx="75" cy="72" r="42" fill="#d8d6cf"/>
+    <text x="75" y="68" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#66645f">PORTRAIT</text>
+    <text x="75" y="82" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#66645f">REMOVED</text>
+    <text x="26" y="145" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">CONTACT</text>
+    <rect x="26" y="160" width="98" height="10" rx="2" fill="#aaa79f"/>
+    <rect x="26" y="178" width="82" height="10" rx="2" fill="#aaa79f"/>
+    <rect x="26" y="196" width="110" height="10" rx="2" fill="#aaa79f"/>
+    <text x="26" y="228" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#66645f">Personal contact details redacted</text>
+    <line x1="24" y1="248" x2="126" y2="248" stroke="#aaa79f"/>
+    <text x="26" y="278" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">EDUCATION</text>
+    <text x="26" y="304" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#66645f">Saint Petersburg State University</text>
+    <text x="26" y="318" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#66645f">of Architecture and Civil Engineering</text>
+    <text x="26" y="342" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#66645f">Architecture · 2002–2008</text>
+    <line x1="24" y1="365" x2="126" y2="365" stroke="#aaa79f"/>
+    <text x="26" y="395" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">TECHNICAL SKILLS</text>
+    <text x="26" y="420" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#66645f">Autodesk Revit · AutoCAD</text>
+    <text x="26" y="438" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#66645f">Point cloud processing</text>
+    <text x="26" y="456" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#66645f">Scan-to-BIM · LOD 300–400</text>
+    <text x="26" y="474" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#66645f">Documentation · BIM delivery</text>
+    <line x1="24" y1="500" x2="126" y2="500" stroke="#aaa79f"/>
+    <text x="26" y="530" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">LANGUAGES</text>
+    <text x="26" y="550" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#66645f">Russian · Native</text>
+
+    <text x="178" y="58" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700" letter-spacing="4">IAN KIRS</text>
+    <text x="180" y="84" font-family="Segoe UI, Arial, sans-serif" font-size="12" letter-spacing="2">ARCHITECTURAL BIM SPECIALIST</text>
+    <text x="180" y="103" font-family="Segoe UI, Arial, sans-serif" font-size="12" letter-spacing="2">SCAN-TO-BIM · HERITAGE · DIGITAL TWIN</text>
+    <text x="180" y="151" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">PROFESSIONAL SUMMARY</text>
+    <line x1="360" y1="146" x2="490" y2="146" stroke="#aaa79f"/>
+    <text x="180" y="178" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#66645f">Architectural BIM specialist with 20+ years of architectural experience</text>
+    <text x="180" y="194" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#66645f">and 15+ years delivering Revit-based BIM solutions.</text>
+    <text x="180" y="210" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#66645f">Specialized in Scan-to-BIM, LOD 300–400 and heritage digitization.</text>
+    <text x="180" y="246" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">CORE EXPERTISE</text>
+    <line x1="315" y1="241" x2="490" y2="241" stroke="#aaa79f"/>
+    <text x="195" y="273" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#66645f">• Scan-to-BIM and point cloud modelling</text>
+    <text x="195" y="291" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#66645f">• Digital Twin-ready BIM models</text>
+    <text x="195" y="309" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#66645f">• Heritage and complex geometry</text>
+    <text x="195" y="327" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#66645f">• Architectural documentation and coordination</text>
+    <text x="180" y="372" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">PROFESSIONAL EXPERIENCE</text>
+    <line x1="385" y1="367" x2="490" y2="367" stroke="#aaa79f"/>
+    <text x="180" y="399" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="600">Architectural BIM Contractor</text>
+    <text x="180" y="420" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#66645f">Architectural design practice (2004 – present)</text>
+    <text x="180" y="446" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#66645f">Independent BIM specialist delivering Revit-based solutions for complex</text>
+    <text x="180" y="462" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#66645f">architectural and heritage projects.</text>
+    <text x="180" y="493" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#66645f">• Point cloud conversion and structured BIM modelling</text>
+    <text x="180" y="511" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#66645f">• LOD 300–400 production-ready models</text>
+    <text x="180" y="529" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#66645f">• Historic and geometrically complex structures</text>
+  </g>
+
+  <g transform="translate(625 110)">
+    <rect width="520" height="560" rx="8" fill="#ffffff" stroke="#d8d6cf"/>
+    <rect width="150" height="560" rx="8" fill="#f5f4f0"/>
+    <circle cx="75" cy="72" r="42" fill="#d8d6cf"/>
+    <text x="75" y="68" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#66645f">PORTRET</text>
+    <text x="75" y="82" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#66645f">UKLONJEN</text>
+    <text x="26" y="145" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">CONTACT</text>
+    <rect x="26" y="160" width="98" height="10" rx="2" fill="#aaa79f"/>
+    <rect x="26" y="178" width="82" height="10" rx="2" fill="#aaa79f"/>
+    <rect x="26" y="196" width="110" height="10" rx="2" fill="#aaa79f"/>
+    <text x="26" y="228" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#66645f">Lični kontakt podaci uklonjeni</text>
+    <line x1="24" y1="248" x2="126" y2="248" stroke="#aaa79f"/>
+    <text x="26" y="278" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">OBRAZOVANJE</text>
+    <text x="26" y="304" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#66645f">Sankt-Peterburški državni univerzitet</text>
+    <text x="26" y="318" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#66645f">arhitekture i građevinarstva</text>
+    <text x="26" y="342" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#66645f">Arhitektura · 2002–2008</text>
+    <line x1="24" y1="365" x2="126" y2="365" stroke="#aaa79f"/>
+    <text x="26" y="395" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">TEHNIČKE VEŠTINE</text>
+    <text x="26" y="420" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#66645f">Autodesk Revit · AutoCAD</text>
+    <text x="26" y="438" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#66645f">Obrada point cloud podataka</text>
+    <text x="26" y="456" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#66645f">Scan-to-BIM · LOD 300–400</text>
+    <text x="26" y="474" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#66645f">Dokumentacija · BIM isporuka</text>
+    <line x1="24" y1="500" x2="126" y2="500" stroke="#aaa79f"/>
+    <text x="26" y="530" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">JEZICI</text>
+    <text x="26" y="550" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#66645f">Ruski · maternji</text>
+
+    <text x="178" y="58" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700" letter-spacing="4">IAN KIRS</text>
+    <text x="180" y="84" font-family="Segoe UI, Arial, sans-serif" font-size="12" letter-spacing="2">SPECIJALISTA ZA ARHITEKTONSKI BIM</text>
+    <text x="180" y="103" font-family="Segoe UI, Arial, sans-serif" font-size="12" letter-spacing="2">SCAN-TO-BIM · KULTURNO NASLEĐE · DIGITAL TWIN</text>
+    <text x="180" y="151" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">PROFESIONALNI SAŽETAK</text>
+    <line x1="370" y1="146" x2="490" y2="146" stroke="#aaa79f"/>
+    <text x="180" y="178" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#66645f">Specijalista za arhitektonski BIM sa 20+ godina iskustva u arhitekturi</text>
+    <text x="180" y="194" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#66645f">i 15+ godina u isporuci Revit-baziranih BIM rešenja.</text>
+    <text x="180" y="210" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#66645f">Scan-to-BIM, LOD 300–400 i digitalizacija kulturnog nasleđa.</text>
+    <text x="180" y="246" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">KLJUČNE OBLASTI</text>
+    <line x1="323" y1="241" x2="490" y2="241" stroke="#aaa79f"/>
+    <text x="195" y="273" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#66645f">• Scan-to-BIM i modelovanje point cloud podataka</text>
+    <text x="195" y="291" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#66645f">• BIM modeli spremni za Digital Twin</text>
+    <text x="195" y="309" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#66645f">• Kulturno nasleđe i složena geometrija</text>
+    <text x="195" y="327" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#66645f">• Arhitektonska dokumentacija i koordinacija</text>
+    <text x="180" y="372" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">PROFESIONALNO ISKUSTVO</text>
+    <line x1="390" y1="367" x2="490" y2="367" stroke="#aaa79f"/>
+    <text x="180" y="399" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="600">Arhitektonski BIM konsultant / BIM kontraktor</text>
+    <text x="180" y="420" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#66645f">Arhitektonska praksa (projektovanje) (2004 – danas)</text>
+    <text x="180" y="446" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#66645f">Nezavisni BIM specijalista za složene arhitektonske i projekte</text>
+    <text x="180" y="462" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#66645f">kulturnog nasleđa.</text>
+    <text x="180" y="493" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#66645f">• Konverzija point cloud podataka u strukturisane BIM modele</text>
+    <text x="180" y="511" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#66645f">• Produkciono spremni LOD 300–400 modeli</text>
+    <text x="180" y="529" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#66645f">• Istorijski i geometrijski složeni objekti</text>
+  </g>
+</svg>
