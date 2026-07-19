@@ -1,4 +1,11 @@
 (() => {
+  // Keep the public-site header on Record demo pages aligned with the current
+  // production presentation: the primary navigation has four audience/site links,
+  // while Pilot remains the separate CTA button on the right.
+  document.querySelectorAll('.site-header .nav a').forEach((link) => {
+    if (link.textContent.trim() === 'Pilot') link.remove();
+  });
+
   const style = document.createElement('style');
   style.textContent = `
     .record-file-tabs {
