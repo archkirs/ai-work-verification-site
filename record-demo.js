@@ -41,7 +41,10 @@
       letter-spacing: -.035em;
       overflow-wrap: anywhere;
     }
-    .record-file-grid-mark { margin-left: 4px; }
+    .record-file-grid-mark {
+      display: grid !important;
+      margin-left: 4px;
+    }
     .record-file-grid-mark i { opacity: .68; }
     .finding-id {
       display: block;
@@ -53,16 +56,75 @@
       text-transform: uppercase;
     }
     @media (max-width: 760px) {
+      .record-file-header {
+        gap: 14px;
+      }
+      .record-file-brand {
+        width: 100%;
+      }
+      .record-file-grid-mark {
+        display: grid !important;
+        margin-left: auto;
+      }
       .record-file-tabs {
-        overflow-x: auto;
-        overscroll-behavior-x: contain;
-        padding-right: 14px;
-        padding-left: 14px;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        overflow: visible;
+        padding: 10px 8px 0;
       }
       .record-file-tab {
-        min-width: 118px;
-        padding-right: 18px;
-        padding-left: 18px;
+        width: 100%;
+        min-width: 0;
+        margin-right: -1px;
+        padding: 12px 3px 11px;
+        font-size: 11px;
+      }
+      .record-primary-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+      .record-primary-grid > :not(.work-preview) {
+        order: 1;
+      }
+      .record-primary-grid > .work-preview {
+        order: 2;
+      }
+    }
+    @media (max-width: 480px) {
+      .record-file-brand img {
+        width: 72px;
+      }
+      .record-file-product {
+        font-size: 11px;
+      }
+      .record-file-grid-mark {
+        display: grid !important;
+        transform: scale(.9);
+        transform-origin: right center;
+      }
+      .record-file-meta {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      }
+      .record-meta-item:first-child {
+        grid-column: 1 / -1;
+        padding-left: 0;
+        border-bottom: 1px solid var(--line);
+        border-left: 0;
+      }
+      .record-meta-item:nth-child(2) {
+        padding-left: 0;
+        border-top: 0;
+        border-left: 0;
+      }
+      .record-meta-item:nth-child(3) {
+        border-top: 0;
+        border-left: 1px solid var(--line);
+      }
+      .record-file-tab {
+        padding-right: 2px;
+        padding-left: 2px;
+        font-size: 10.5px;
       }
     }
   `;
