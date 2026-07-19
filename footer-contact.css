@@ -350,6 +350,28 @@
     height: 2px;
   }
 
+  /* Keep Record directory navigation on one compact row on phones. */
+  .record-demo-page main > div:first-child {
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
+    align-items: center;
+  }
+
+  .record-demo-page main > div:first-child .record-link-button {
+    min-width: 0;
+    padding-inline: 8px;
+    font-size: 0;
+    white-space: nowrap;
+  }
+
+  .record-demo-page main > div:first-child .record-link-button::before {
+    font-size: 10px;
+  }
+
+  .record-demo-page main > div:first-child .record-link-button[href="records.html"]::before { content: "← All Records"; }
+  .record-demo-page main > div:first-child .record-link-button[href="sample-cv.html"]::before { content: "Next: CV →"; }
+  .record-demo-page main > div:first-child .record-link-button[href="sample-comic.html"]::before { content: "← Previous: Comic"; }
+
   .record-head .grid-mark {
     display: grid;
     grid-template-columns: repeat(4, 3px);
