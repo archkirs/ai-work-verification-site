@@ -1,7 +1,5 @@
 (() => {
-  // Keep the public-site header on Record demo pages aligned with the current
-  // production presentation: the primary navigation has four audience/site links,
-  // while Pilot remains the separate CTA button on the right.
+  // Keep the public-site header on Record pages aligned with the current site navigation.
   document.querySelectorAll('.site-header .nav a').forEach((link) => {
     if (link.textContent.trim() === 'Pilot') link.remove();
   });
@@ -55,7 +53,8 @@
       margin-left: 4px;
     }
     .record-file-grid-mark i { opacity: .68; }
-    .finding-id {
+    .finding-id,
+    .material-id {
       display: block;
       margin-bottom: 4px;
       color: var(--muted);
@@ -85,13 +84,26 @@
       text-decoration-color: var(--line-strong);
       text-underline-offset: 3px;
     }
+    body.comic-stage-b-record .site-header .brand {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+    }
+    body.comic-stage-b-record .site-header .brand::after {
+      content: "MADE Record";
+      margin-left: 14px;
+      padding-left: 14px;
+      border-left: 1px solid var(--line-strong);
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -.015em;
+      white-space: nowrap;
+    }
     @media (max-width: 760px) {
-      .record-file-header {
-        gap: 14px;
-      }
-      .record-file-brand {
-        width: 100%;
-      }
+      .record-file-header { gap: 14px; }
+      .record-file-brand { width: 100%; }
       .record-file-grid-mark {
         display: grid !important;
         margin-left: auto;
@@ -109,14 +121,10 @@
         flex-direction: column;
         gap: 0;
       }
-      .record-primary-grid > :not(.work-preview) {
-        display: contents;
-      }
+      .record-primary-grid > :not(.work-preview) { display: contents; }
       .record-primary-grid > :not(.work-preview) > .record-tab-kicker,
       .record-primary-grid > :not(.work-preview) > .record-tab-title,
-      .record-primary-grid > :not(.work-preview) > .record-identity-block {
-        order: 1;
-      }
+      .record-primary-grid > :not(.work-preview) > .record-identity-block { order: 1; }
       .record-primary-grid > .work-preview {
         order: 2;
         margin-top: 24px;
@@ -125,14 +133,15 @@
         order: 3;
         margin-top: 28px;
       }
-    }
-    @media (max-width: 480px) {
-      .record-file-brand img {
-        width: 72px;
-      }
-      .record-file-product {
+      body.comic-stage-b-record .site-header .brand::after {
+        margin-left: 8px;
+        padding-left: 8px;
         font-size: 11px;
       }
+    }
+    @media (max-width: 480px) {
+      .record-file-brand img { width: 72px; }
+      .record-file-product { font-size: 11px; }
       .record-file-grid-mark {
         display: grid !important;
         transform: scale(.9);
@@ -166,7 +175,7 @@
       workTitle: 'The Count of Monte Cristo — Page 050',
       scope: 'This comic page, its planning, generated panels, selection, text and final assembly.',
       resultTitle: 'AI helped create the page. The Creator made the key creative choices.',
-      resultBody: 'The Creator planned the scenes, rejected weak options, chose the final images and assembled the finished page. AI helped generate images, develop scenes and work on parts of the text.',
+      resultBody: 'The Creator planned the scenes, rejected unsuitable options, chose the final images, and assembled the finished page. AI helped generate images, develop scenes, and work on parts of the text.',
       limitation: 'We do not have the complete history of every image that was generated or rejected. The Record also cannot show exactly which final words came from the Creator and which came from AI.',
       findings: {
         s001: ['S-001', 'The finished page has four panels.', 'The final page directly shows the four-panel structure.'],
@@ -228,11 +237,19 @@
     return mark;
   };
 
+  const replaceText = (root, selector, value) => {
+    const element = root.querySelector(selector);
+    if (element) element.textContent = value;
+  };
+
   const shells = document.querySelectorAll('[data-record-shell]');
 
   shells.forEach((shell) => {
     const recordId = shell.querySelector('.record-meta-item strong')?.textContent.trim();
     const refinement = recordRefinements[recordId];
+    const isComic = recordId === 'MR-PILOT-EC-P050-001';
+
+    if (isComic) document.body.classList.add('comic-stage-b-record');
 
     const brand = shell.querySelector('.record-file-brand');
     if (brand && !brand.querySelector('.record-file-grid-mark')) brand.appendChild(createGridMark());
@@ -251,7 +268,10 @@
       }
 
       const scopeRow = Array.from(shell.querySelectorAll('[data-record-panel="record"] .record-identity-row')).find((row) => row.querySelector('span')?.textContent.trim() === 'Scope');
-      if (scopeRow) scopeRow.querySelector('strong').textContent = refinement.scope;
+      if (scopeRow) {
+        scopeRow.querySelector('span').textContent = isComic ? 'This Record covers' : 'Scope';
+        scopeRow.querySelector('strong').textContent = refinement.scope;
+      }
 
       const result = shell.querySelector('[data-record-panel="record"] .record-result');
       if (result) {
@@ -261,8 +281,15 @@
         if (resultBody) resultBody.textContent = refinement.resultBody;
       }
 
-      const findingsHead = shell.querySelector('[data-record-panel="record"] .principal-findings-head p');
-      if (findingsHead) findingsHead.textContent = 'Open a finding to see what supports it and what Evidence this reader can access.';
+      const findingsHead = shell.querySelector('[data-record-panel="record"] .principal-findings-head');
+      if (findingsHead) {
+        const heading = findingsHead.querySelector('h2');
+        const note = findingsHead.querySelector('p');
+        if (heading) heading.textContent = isComic ? 'What we found' : 'Principal findings';
+        if (note) note.textContent = isComic
+          ? 'Each finding shows what the available information supports. Open it to see the related evidence.'
+          : 'Open a finding to see what supports it and what Evidence this reader can access.';
+      }
 
       shell.querySelectorAll('[data-record-panel="record"] .finding-item').forEach((item) => {
         const button = item.querySelector('[data-view-evidence]');
@@ -270,12 +297,125 @@
         if (!finding) return;
         const heading = item.querySelector('.finding-copy h3');
         const detail = item.querySelector('.finding-copy p');
-        if (heading) heading.innerHTML = `<span class="finding-id">${finding[0]}</span>${finding[1]}`;
+        if (heading) heading.innerHTML = isComic ? finding[1] : `<span class="finding-id">${finding[0]}</span>${finding[1]}`;
         if (detail) detail.textContent = finding[2];
+        if (button && isComic) button.textContent = 'See evidence';
       });
 
       const limitation = shell.querySelector('[data-record-panel="record"] .record-limitation p');
       if (limitation) limitation.textContent = refinement.limitation;
+    }
+
+    if (isComic) {
+      const previewCaption = shell.querySelector('[data-record-panel="record"] .work-preview-caption');
+      if (previewCaption) {
+        const strong = previewCaption.querySelector('strong');
+        const note = previewCaption.querySelector('span');
+        if (strong) strong.textContent = 'Work preview';
+        if (note) note.textContent = 'Public presentation copy';
+      }
+
+      // Recipient-facing Evidence Status labels; canonical semantics/classes remain unchanged.
+      shell.querySelectorAll('.evidence-status.source').forEach((el) => { el.textContent = 'Recorded in source tool'; });
+      shell.querySelectorAll('.evidence-status.inferred').forEach((el) => { el.textContent = 'Inferred from available materials'; });
+
+      // Process: keep the accepted sequence, remove technical Material/access strings from the first layer.
+      const processPanel = shell.querySelector('[data-record-panel="process"]');
+      if (processPanel) {
+        replaceText(processPanel, '.record-tab-lede', 'This view shows the main steps supported by the available information. It does not reconstruct every generation or selection event.');
+        processPanel.querySelectorAll('.process-materials').forEach((el) => el.remove());
+        const steps = processPanel.querySelectorAll('.process-step');
+        if (steps[1]) replaceText(steps[1], 'p', 'The available ChatGPT conversation includes scene breakdowns, dialogue and caption suggestions, and image-prompt wording produced in response to the Creator\'s direction.');
+        if (steps[3]) replaceText(steps[3], 'p', 'Available earlier panel versions and rejected alternatives show multiple rounds of image generation. The complete generation log is not available.');
+        if (steps[4]) replaceText(steps[4], 'p', 'The Creator replaced earlier panel versions with a later final set and selected the four panels used in the finished page.');
+        if (steps[5]) replaceText(steps[5], 'p', 'The selected panels, text, balloons, caption and page layout were assembled into the final page. Screenshots show a layered Clip Studio workflow; who operated the software remains partly based on the Creator\'s statement.');
+      }
+
+      // Evidence: explain the architecture in plain English, while preserving IDs and semantics deeper in the view.
+      const evidencePanel = shell.querySelector('[data-record-panel="evidence"]');
+      if (evidencePanel) {
+        replaceText(evidencePanel, '.record-tab-title', 'What supports each finding');
+        replaceText(evidencePanel, '.record-tab-lede', 'Choose a finding to see its Evidence Status and the Materials linked to it. Evidence Status describes how the finding is supported. Access shows whether you can open each Material.');
+
+        const selectorLabels = {
+          s001: 'Final page structure',
+          s002: 'Creative redirection',
+          s008: 'AI assistance',
+          s009: 'Iterative workflow',
+          s011: 'Final assembly'
+        };
+        evidencePanel.querySelectorAll('[data-evidence-select]').forEach((selector) => {
+          const label = selectorLabels[selector.dataset.evidenceSelect];
+          if (label) selector.textContent = label;
+        });
+
+        const evidenceCopy = {
+          s001: ['S-001', 'Final page structure and dramatic turning point', 'The final page directly supports this finding. Additional planning context is linked separately and is not public.'],
+          s002: ['S-002', 'Creator rejected repetitive staging', 'The available process conversation records the Creator\'s rejection and redirection. The conversation itself is restricted.'],
+          s008: ['S-008', 'AI-assisted scene, text and prompt work', 'The available ChatGPT process material records this AI assistance. The source material is restricted and is not public.'],
+          s009: ['S-009', 'Iterative correction, generation and selection', 'Earlier panel versions, final selected panels, rejected alternatives and process material support this inference. The available archive may be incomplete.'],
+          s011: ['S-011', 'Creator states he assembled the final page', 'Restricted Clip Studio screenshots support a layered assembly workflow. Creator correction and approval messages are represented as metadata only. Who operated the software is not independently established.']
+        };
+
+        evidencePanel.querySelectorAll('[data-evidence-group]').forEach((group) => {
+          const copy = evidenceCopy[group.dataset.evidenceGroup];
+          const head = group.querySelector('.evidence-group-head');
+          if (copy && head) {
+            const h2 = head.querySelector('h2');
+            const p = head.querySelector('p');
+            if (h2) h2.innerHTML = `<span class="finding-id">Finding ${copy[0]}</span>${copy[1]}`;
+            if (p) p.textContent = copy[2];
+          }
+        });
+
+        evidencePanel.querySelectorAll('.access-badge.access-restricted').forEach((badge) => { badge.textContent = 'Restricted'; });
+
+        evidencePanel.querySelectorAll('.material-card').forEach((card) => {
+          const heading = card.querySelector('h3');
+          if (heading) {
+            const match = heading.textContent.trim().match(/^((?:M|M2)-\d+(?:,\s*(?:M|M2)-\d+)*)\s*·\s*(.+)$/);
+            if (match) heading.innerHTML = `<span class="material-id">Material ${match[1]}</span>${match[2]}`;
+          }
+          card.querySelectorAll('.material-card-actions a').forEach((link) => { link.textContent = 'Open material'; });
+        });
+
+        const descriptionReplacements = new Map([
+          ['Approved public-presentation copy derived from a restricted private source Representation.', 'Public presentation copy. The original source file remains restricted.'],
+          ['One of four selected Final panel Materials.', 'One of the four final selected panels.'],
+          ['Records the Creator\'s rejection and redirection. No raw public Representation is authorised.', 'Records the Creator\'s rejection and redirection. The raw conversation is not public.'],
+          ['Contains the relevant AI responses and process context. The full raw conversation is not public.', 'Contains the relevant AI responses and process context. The raw conversation is not public.']
+        ]);
+        evidencePanel.querySelectorAll('.material-card p').forEach((p) => {
+          const replacement = descriptionReplacements.get(p.textContent.trim());
+          if (replacement) p.textContent = replacement;
+        });
+
+        const catalogueHead = evidencePanel.querySelector('.evidence-row-head');
+        if (catalogueHead?.children[3]) catalogueHead.children[3].textContent = 'Availability note';
+
+        evidencePanel.querySelectorAll('.full-catalogue .evidence-row:not(.evidence-row-head)').forEach((row) => {
+          const accessCell = row.children[2];
+          const noteCell = row.children[3];
+          if (accessCell?.textContent.trim() === 'Restricted / not public') accessCell.textContent = 'Restricted';
+          if (!noteCell) return;
+          const note = noteCell.textContent.trim();
+          if (note === 'Private source exists; no approved public derivative.' || note === 'Private project material; no approved public derivative.' || note === 'Private planning material; no public object in this batch.') {
+            noteCell.textContent = 'Source material exists but is not public.';
+          }
+          if (note === 'Approved public-presentation copy; private source remains restricted.') {
+            noteCell.textContent = 'Public presentation copy available; original source remains restricted.';
+          }
+        });
+      }
+
+      const historyPanel = shell.querySelector('[data-record-panel="history"]');
+      if (historyPanel) {
+        replaceText(historyPanel, '.record-tab-title', 'Version history');
+        replaceText(historyPanel, '.record-tab-lede', 'This view shows the issued history of this MADE Record. Internal working drafts are not treated as earlier public Record versions.');
+        const items = historyPanel.querySelectorAll('.history-item');
+        if (items[0]) replaceText(items[0], 'p', 'This is the current issued MADE Record for Work Version WV-003.');
+        if (items[1]) replaceText(items[1], 'p', 'An earlier superseded Record exists. It is listed as metadata only and is not the current issued Record.');
+      }
     }
 
     const availableLinks = catalogueLinks[recordId] || {};
