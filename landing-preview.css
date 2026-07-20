@@ -1,16 +1,80 @@
-/* Stage A landing-page layout refinement for Issue #65 Preview.
-   Editorial system: cards only where they represent objects or direct comparisons. */
+/* Issue #65 Stage A Preview — shared landing-page presentation system.
+   Applies only to Home, Students, Creative Work, and Reviewers through .landing-main. */
 
 .landing-main {
   width: min(1240px, calc(100% - 64px));
   margin-inline: auto;
 }
 
-/* Hero: use the page width deliberately instead of leaving a reserved empty column. */
+/* ------------------------------
+   Shared section labels
+   ------------------------------ */
+
+.landing-main .section-label {
+  margin: 0 0 18px !important;
+  color: var(--accent) !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  line-height: 1.25 !important;
+  letter-spacing: .1em !important;
+  text-transform: uppercase;
+}
+
+/* Public Record sections use one shared label across all four pages. */
+.landing-main .samples-section .section-label {
+  font-size: 0 !important;
+  line-height: 1 !important;
+  letter-spacing: 0 !important;
+}
+
+.landing-main .samples-section .section-label::after {
+  content: "See public MADE Records";
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+/* ------------------------------
+   CTA colour system
+   ------------------------------ */
+
+body .top-button,
+.landing-main .primary-button {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
+}
+
+body .top-button:hover,
+.landing-main .primary-button:hover {
+  border-color: color-mix(in srgb, var(--accent) 84%, black);
+  background: color-mix(in srgb, var(--accent) 84%, black);
+  color: #fff;
+}
+
+.landing-main .secondary-button {
+  border-color: var(--accent);
+  background: transparent;
+  color: var(--accent);
+}
+
+.landing-main .secondary-button:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+/* ------------------------------
+   Hero
+   ------------------------------ */
+
 .landing-main .hero-stage {
   display: block;
   max-width: none !important;
-  margin: 72px 0 60px !important;
+  margin: 72px 0 54px !important;
 }
 
 .landing-main .hero-copy {
@@ -52,11 +116,14 @@
   margin-top: 16px;
 }
 
-/* Shared section rhythm. */
+/* ------------------------------
+   Shared section rhythm
+   ------------------------------ */
+
 .landing-main .content-block,
 .landing-main .samples-section {
   width: 100%;
-  padding: clamp(62px, 6vw, 86px) 0;
+  padding: 42px 0 !important;
 }
 
 .landing-main .samples-section {
@@ -75,7 +142,15 @@
   line-height: 1.65;
 }
 
-/* Two-column editorial sections use both sides of the page. */
+/* Give explanatory notes room after a dense visual component. */
+.landing-main .comparison-table + p,
+.landing-main .trust-grid + p,
+.landing-main .steps-grid + p,
+.landing-main .limits-row + p {
+  margin-top: 22px;
+}
+
+/* Two-column editorial sections use the available width deliberately. */
 .landing-main .problem-block,
 .landing-main .split-block {
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -90,7 +165,11 @@
   max-width: none;
 }
 
-/* Three-way comparisons remain cards because each column is a peer object. */
+/* ------------------------------
+   Concept grids
+   ------------------------------ */
+
+/* Three peer concepts remain cards: Finished work / AI chat / MADE Record, etc. */
 .landing-main .trust-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
@@ -107,32 +186,17 @@
   line-height: 1.28;
 }
 
-/* Four or more conceptual items become editorial lists, not empty boxes.
-   Items flow down the left column first, then the right column, preserving reading order. */
+/* Four or more conceptual items become an editorial list rather than boxes. */
 .landing-main .trust-grid:has(> :nth-child(4):last-child),
 .landing-main .trust-grid:has(> :nth-child(5):last-child),
 .landing-main .trust-grid:has(> :nth-child(6):last-child),
 .landing-main .trust-grid:has(> :nth-child(7):last-child),
 .landing-main .trust-grid:has(> :nth-child(8):last-child) {
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-auto-flow: column;
+  grid-auto-flow: row;
   gap: 0 54px;
   margin-top: 30px;
   border-top: 1px solid var(--line-strong);
-}
-
-.landing-main .trust-grid:has(> :nth-child(4):last-child) {
-  grid-template-rows: repeat(2, auto);
-}
-
-.landing-main .trust-grid:has(> :nth-child(5):last-child),
-.landing-main .trust-grid:has(> :nth-child(6):last-child) {
-  grid-template-rows: repeat(3, auto);
-}
-
-.landing-main .trust-grid:has(> :nth-child(7):last-child),
-.landing-main .trust-grid:has(> :nth-child(8):last-child) {
-  grid-template-rows: repeat(4, auto);
 }
 
 .landing-main .trust-grid:has(> :nth-child(4):last-child) > .trust-card,
@@ -163,12 +227,30 @@
 .landing-main .trust-grid:has(> :nth-child(6):last-child) > .trust-card p,
 .landing-main .trust-grid:has(> :nth-child(7):last-child) > .trust-card p,
 .landing-main .trust-grid:has(> :nth-child(8):last-child) > .trust-card p {
-  max-width: 520px;
+  max-width: 540px;
   font-size: 14px;
   line-height: 1.58;
 }
 
-/* Process is a sequence, not a collection of unrelated cards. */
+/* Odd lists finish with one full-width item, preserving natural left-to-right reading order. */
+.landing-main .trust-grid:has(> :nth-child(5):last-child) > :last-child,
+.landing-main .trust-grid:has(> :nth-child(7):last-child) > :last-child {
+  grid-column: 1 / -1 !important;
+}
+
+/* Remove the final internal rule; the next section already supplies the section divider. */
+.landing-main .trust-grid:has(> :nth-child(4):last-child) > :nth-last-child(-n+2),
+.landing-main .trust-grid:has(> :nth-child(6):last-child) > :nth-last-child(-n+2),
+.landing-main .trust-grid:has(> :nth-child(8):last-child) > :nth-last-child(-n+2),
+.landing-main .trust-grid:has(> :nth-child(5):last-child) > :last-child,
+.landing-main .trust-grid:has(> :nth-child(7):last-child) > :last-child {
+  border-bottom: 0;
+}
+
+/* ------------------------------
+   How it works — sequential flow
+   ------------------------------ */
+
 .landing-main .steps-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -215,7 +297,10 @@
   line-height: 1.58;
 }
 
-/* MADE tables remain tables; they naturally express the four-part structure. */
+/* ------------------------------
+   MADE structure table
+   ------------------------------ */
+
 .landing-main .comparison-table {
   width: 100%;
   margin-top: 32px;
@@ -225,8 +310,10 @@
   grid-template-columns: minmax(220px, .68fr) minmax(0, 1.32fr);
 }
 
-/* Public Records are actual objects, so they remain cards.
-   These styles are self-contained so Students does not depend on record-demo.css. */
+/* ------------------------------
+   Public MADE Record cards
+   ------------------------------ */
+
 .landing-main .samples-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -278,31 +365,31 @@
   font-size: 13px;
 }
 
-/* Creative Work: the Comic is the primary example; CV is supporting proof that the format generalises. */
+/* Creative Work keeps the Comic as the primary example through a subtle border accent only. */
 .artist-page .landing-main .samples-grid {
-  grid-template-columns: minmax(0, 1.55fr) minmax(280px, .75fr);
-  align-items: stretch;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .artist-page .landing-main .sample-link-card:first-child {
-  border-color: color-mix(in srgb, var(--accent) 48%, var(--line));
+  border-color: color-mix(in srgb, var(--accent) 34%, var(--line));
 }
 
 .artist-page .landing-main .sample-link-card:last-child {
-  min-height: 0;
-  background: var(--surface-soft);
+  min-height: 220px;
+  background: var(--surface);
 }
 
 .artist-page .landing-main .sample-link-card:last-child h3 {
-  font-size: 19px;
+  font-size: 22px;
 }
 
-/* Limits are a structured list rather than a row of small technical pills. */
+/* ------------------------------
+   Limits
+   ------------------------------ */
+
 .landing-main .limits-row {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-template-rows: repeat(3, auto);
-  grid-auto-flow: column;
   gap: 0 48px;
   margin-top: 30px;
   border-top: 1px solid var(--line-strong);
@@ -325,14 +412,22 @@
   color: var(--accent);
 }
 
-/* Final CTA is deliberately more compact than a normal content section. */
+/* Avoid a second closing rule immediately before the next section divider. */
+.landing-main .limits-row span:nth-last-child(-n+2) {
+  border-bottom: 0;
+}
+
+/* ------------------------------
+   Final CTA
+   ------------------------------ */
+
 .landing-main .final-cta {
   width: min(1120px, 100%);
   grid-template-columns: minmax(0, 1fr) minmax(220px, 270px);
   gap: clamp(40px, 6vw, 72px);
   align-items: center;
   margin: 0 auto 72px;
-  padding: 38px 42px;
+  padding: 38px 42px !important;
 }
 
 .landing-main .final-cta > div {
@@ -353,6 +448,10 @@
   padding-inline: 22px;
   justify-self: stretch;
 }
+
+/* ------------------------------
+   Tablet
+   ------------------------------ */
 
 @media (max-width: 1050px) {
   .landing-main {
@@ -381,15 +480,20 @@
     border-left: 0;
     border-top: 1px solid var(--line-strong);
   }
-
-  .artist-page .landing-main .samples-grid {
-    grid-template-columns: minmax(0, 1.35fr) minmax(260px, .85fr);
-  }
 }
+
+/* ------------------------------
+   Mobile
+   ------------------------------ */
 
 @media (max-width: 760px) {
   .landing-main {
     width: min(100% - 28px, 1240px);
+  }
+
+  .landing-main .section-label,
+  .landing-main .samples-section .section-label::after {
+    font-size: 12px !important;
   }
 
   .landing-main .hero-stage {
@@ -419,7 +523,7 @@
 
   .landing-main .content-block,
   .landing-main .samples-section {
-    padding: 50px 0;
+    padding: 36px 0 !important;
   }
 
   .landing-main .problem-block,
@@ -430,24 +534,18 @@
     grid-template-columns: 1fr;
   }
 
-  /* Editorial lists become one clear reading column on mobile. */
   .landing-main .trust-grid:has(> :nth-child(4):last-child),
   .landing-main .trust-grid:has(> :nth-child(5):last-child),
   .landing-main .trust-grid:has(> :nth-child(6):last-child),
   .landing-main .trust-grid:has(> :nth-child(7):last-child),
   .landing-main .trust-grid:has(> :nth-child(8):last-child) {
     grid-template-columns: 1fr;
-    grid-template-rows: none;
-    grid-auto-flow: row;
     gap: 0;
   }
 
-  .landing-main .trust-grid:has(> :nth-child(4):last-child) > .trust-card p,
-  .landing-main .trust-grid:has(> :nth-child(5):last-child) > .trust-card p,
-  .landing-main .trust-grid:has(> :nth-child(6):last-child) > .trust-card p,
-  .landing-main .trust-grid:has(> :nth-child(7):last-child) > .trust-card p,
-  .landing-main .trust-grid:has(> :nth-child(8):last-child) > .trust-card p {
-    max-width: none;
+  .landing-main .trust-grid:has(> :nth-child(5):last-child) > :last-child,
+  .landing-main .trust-grid:has(> :nth-child(7):last-child) > :last-child {
+    grid-column: auto !important;
   }
 
   .landing-main .trust-grid:not(:has(> :nth-child(4))) {
@@ -488,9 +586,15 @@
 
   .landing-main .limits-row {
     grid-template-columns: 1fr;
-    grid-template-rows: none;
-    grid-auto-flow: row;
     gap: 0;
+  }
+
+  .landing-main .limits-row span:nth-last-child(-n+2) {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .landing-main .limits-row span:last-child {
+    border-bottom: 0;
   }
 
   .landing-main .sample-link-card {
@@ -499,7 +603,7 @@
 
   .landing-main .final-cta {
     gap: 24px;
-    padding: 30px 22px;
+    padding: 30px 22px !important;
   }
 
   .landing-main .final-cta .primary-button {
