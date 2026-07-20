@@ -5,6 +5,7 @@
     "postinstall": "node scripts/patch-evidence-previews.js"
   },
   "dependencies": {
+    "dejavu-fonts-ttf": "2.37.3",
     "pdf-lib": "1.17.1",
     "sharp": "0.34.3"
   }
