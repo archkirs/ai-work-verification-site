@@ -1,0 +1,117 @@
+/* Issue #71: Legal and utility page alignment with the current public-site system. */
+
+/* Match the stronger section-label treatment used on the main public pages. */
+body.legal-utility-page .section-label {
+  margin: 0 0 18px !important;
+  color: var(--accent) !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  line-height: 1.25 !important;
+  letter-spacing: .1em !important;
+  text-transform: uppercase;
+}
+
+/* Keep narrative utility copy readable by default. */
+.legal-content .legal-section > h2,
+.legal-content .legal-section > h3,
+.legal-content .legal-section > p,
+.legal-content .legal-section > ul,
+.legal-content .legal-section > ol,
+.legal-content .legal-section > .notice-card {
+  max-width: 760px;
+}
+
+/* About uses the full page measure so prose, lists, notices and Team align with the page width. */
+body.legal-utility-page:has(#record-purpose) .legal-content .legal-section > h2,
+body.legal-utility-page:has(#record-purpose) .legal-content .legal-section > h3,
+body.legal-utility-page:has(#record-purpose) .legal-content .legal-section > p,
+body.legal-utility-page:has(#record-purpose) .legal-content .legal-section > ul,
+body.legal-utility-page:has(#record-purpose) .legal-content .legal-section > ol,
+body.legal-utility-page:has(#record-purpose) .legal-content .legal-section > .notice-card {
+  max-width: none;
+}
+
+/* Formal document pages use the full legal-page measure so prose and data tables align. */
+body.legal-utility-page:has(.page-meta) .legal-content .legal-section > h2,
+body.legal-utility-page:has(.page-meta) .legal-content .legal-section > h3,
+body.legal-utility-page:has(.page-meta) .legal-content .legal-section > p,
+body.legal-utility-page:has(.page-meta) .legal-content .legal-section > ul,
+body.legal-utility-page:has(.page-meta) .legal-content .legal-section > ol,
+body.legal-utility-page:has(.page-meta) .legal-content .legal-section > .notice-card {
+  max-width: none;
+}
+
+/* Team cards: compact, stable vertical rhythm on desktop and mobile. */
+body.legal-utility-page .team-grid {
+  margin-top: 18px;
+  align-items: stretch;
+}
+
+body.legal-utility-page .team-card {
+  display: flex;
+  min-height: 0;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 18px 20px;
+}
+
+body.legal-utility-page .team-card h3,
+body.legal-utility-page .team-card p {
+  margin: 0 !important;
+}
+
+body.legal-utility-page .team-card .inline-links {
+  margin-top: auto !important;
+  padding-top: 4px;
+}
+
+body.legal-utility-page .team-grid + p {
+  margin-top: 16px;
+}
+
+/* Contact form: reduce unused vertical space without changing fields or validation behaviour. */
+body.legal-utility-page .contact-form {
+  gap: 16px;
+  margin-top: 22px;
+}
+
+body.legal-utility-page .form-field {
+  gap: 6px;
+}
+
+body.legal-utility-page .field-error:empty {
+  display: none;
+}
+
+/* Shared public-site footer information architecture: Site, Project, Legal. */
+.footer-links {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+}
+
+@media (max-width: 760px) {
+  /* Keep the three small navigation groups side by side instead of one very tall stack. */
+  .footer-links {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .footer-group {
+    gap: 7px;
+  }
+
+  .footer-heading {
+    font-size: 10px !important;
+  }
+
+  .footer-group a {
+    font-size: 11px;
+    line-height: 1.35;
+  }
+
+  body.legal-utility-page .contact-form {
+    gap: 14px;
+    margin-top: 20px;
+  }
+}
