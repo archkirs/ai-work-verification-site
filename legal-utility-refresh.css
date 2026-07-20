@@ -11,7 +11,7 @@ body.legal-utility-page .section-label {
   text-transform: uppercase;
 }
 
-/* Keep narrative project / utility copy readable by default. */
+/* Keep narrative utility copy readable by default. */
 .legal-content .legal-section > h2,
 .legal-content .legal-section > h3,
 .legal-content .legal-section > p,
@@ -19,6 +19,16 @@ body.legal-utility-page .section-label {
 .legal-content .legal-section > ol,
 .legal-content .legal-section > .notice-card {
   max-width: 760px;
+}
+
+/* About uses the full page measure so prose, lists, notices and Team align with the page width. */
+body.legal-utility-page:has(#record-purpose) .legal-content .legal-section > h2,
+body.legal-utility-page:has(#record-purpose) .legal-content .legal-section > h3,
+body.legal-utility-page:has(#record-purpose) .legal-content .legal-section > p,
+body.legal-utility-page:has(#record-purpose) .legal-content .legal-section > ul,
+body.legal-utility-page:has(#record-purpose) .legal-content .legal-section > ol,
+body.legal-utility-page:has(#record-purpose) .legal-content .legal-section > .notice-card {
+  max-width: none;
 }
 
 /* Formal document pages use the full legal-page measure so prose and data tables align. */
