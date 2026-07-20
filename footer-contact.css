@@ -403,3 +403,54 @@
 
   .record-head .grid-mark { display: grid; }
 }
+
+/* Issue #65 Preview landing refinements. */
+.student-page #hero-title .hero-title-line {
+  display: block;
+}
+
+@media (min-width: 761px) {
+  .landing-main .problem-block {
+    display: block;
+  }
+
+  .landing-main .problem-block > .plain-copy {
+    max-width: 1120px;
+    margin-top: 24px;
+  }
+
+  .landing-main .problem-block > .plain-copy p {
+    max-width: 1120px;
+  }
+}
+
+@media (max-width: 760px) {
+  .landing-main .comparison-table {
+    overflow: hidden;
+  }
+
+  .landing-main .comparison-head {
+    display: none;
+  }
+
+  .landing-main .comparison-row {
+    display: block;
+    grid-template-columns: none;
+  }
+
+  .landing-main .comparison-row span {
+    display: block;
+    padding: 15px 18px;
+  }
+
+  .landing-main .comparison-row span:first-child {
+    padding-bottom: 6px;
+    color: var(--accent);
+    font-weight: 650;
+  }
+
+  .landing-main .comparison-row span + span {
+    padding-top: 0;
+    border-left: 0;
+  }
+}
