@@ -50,6 +50,7 @@
 .landing-main .samples-section {
   width: 100%;
   padding: clamp(58px, 6vw, 82px) 0;
+  border-top: 1px solid var(--line);
 }
 
 .landing-main .content-block h2,
@@ -167,24 +168,54 @@
 }
 
 .landing-main .samples-grid {
+  display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
   margin-top: 30px;
 }
 
 .landing-main .sample-link-card {
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  gap: 11px;
+  min-width: 0;
   min-height: 230px;
   padding: 26px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  text-decoration: none;
+}
+
+.landing-main .sample-link-card:hover {
+  border-color: var(--line-strong);
+}
+
+.landing-main .sample-link-card span {
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: .08em;
+  text-transform: uppercase;
 }
 
 .landing-main .sample-link-card h3 {
+  margin: 0;
   font-size: 22px;
   line-height: 1.2;
 }
 
 .landing-main .sample-link-card p {
+  margin: 0;
+  color: var(--muted);
   font-size: 14px;
   line-height: 1.58;
+}
+
+.landing-main .sample-link-card strong {
+  align-self: end;
+  margin-top: 6px;
+  font-size: 13px;
 }
 
 .landing-main .final-cta {
