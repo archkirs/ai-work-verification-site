@@ -482,3 +482,35 @@ body:has(.landing-main) .site-header .brand::after {
     font-size: 11px;
   }
 }
+
+/* Footer legal hierarchy: copyright first, operator details below in smaller type. */
+.footer-legal > p:first-child {
+  margin-bottom: 8px;
+  font-size: 0;
+  line-height: 1.4;
+}
+
+.footer-legal > p:first-child::before {
+  content: "© 2026 AsMade.";
+  display: block;
+  margin-bottom: 5px;
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 520;
+}
+
+.footer-legal > p:first-child::after {
+  content: "Operated by IAN KIRS PR BANJA KOVILJAČA, Serbia. Registration no. 68433266 · Tax ID 115550070 · Not registered for VAT.";
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 430;
+  line-height: 1.45;
+  white-space: nowrap;
+}
+
+@media (max-width: 760px) {
+  .footer-legal > p:first-child::after {
+    white-space: normal;
+  }
+}
