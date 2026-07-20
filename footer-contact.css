@@ -258,148 +258,51 @@
 }
 
 .form-status.is-success { color: #2c6659; font-weight: 600; }
-.form-status.is-error { color: #8a2822; font-weight: 600; }
 
-/* Audience-colour primary actions */
-.top-button,
-.primary-button {
-  border-color: var(--accent);
-  background: var(--accent);
+/* Issue #65 Preview-only landing refinements.
+   Keep one visual language across Home, Students, Creative Work, and Reviewers. */
+.landing-main .content-block,
+.landing-main .samples-section {
+  padding-top: 42px !important;
+  padding-bottom: 42px !important;
 }
 
-.top-button:hover,
-.primary-button:hover {
-  border-color: color-mix(in srgb, var(--accent) 84%, black);
-  background: color-mix(in srgb, var(--accent) 84%, black);
+.landing-main .samples-section .section-label {
+  font-size: 0;
+  line-height: 1;
+  letter-spacing: 0;
 }
 
-/* The visible CTA replaces the redundant Pilot navigation item on all sizes. */
-.nav a[href="#pilot"] { display: none; }
+.landing-main .samples-section .section-label::after {
+  content: "See public MADE Records";
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.artist-page .landing-main .samples-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+
+.artist-page .landing-main .sample-link-card:first-child {
+  border-color: color-mix(in srgb, var(--accent) 34%, var(--line));
+}
+
+.artist-page .landing-main .sample-link-card:last-child {
+  min-height: 220px;
+  background: var(--surface);
+}
+
+.artist-page .landing-main .sample-link-card:last-child h3 {
+  font-size: 22px;
+}
 
 @media (max-width: 760px) {
-  .footer-links { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
-  .contact-layout,
-  .contact-form-layout { grid-template-columns: 1fr; gap: 28px; }
-  .contact-card { order: 2; }
-
-  html { scroll-padding-top: 102px; }
-  #made,
-  #how,
-  #limits,
-  #pilot { scroll-margin-top: 102px; }
-
-  .site-header { background: rgba(250, 249, 246, .985); }
-
-  .topbar {
-    width: min(100% - 24px, 1180px);
-    min-height: 0;
-    grid-template-columns: minmax(0, 1fr) auto;
-    grid-template-areas: "brand cta" "nav nav";
-    column-gap: 16px;
-    row-gap: 0;
-    padding: 8px 0 0;
+  .landing-main .content-block,
+  .landing-main .samples-section {
+    padding-top: 36px !important;
+    padding-bottom: 36px !important;
   }
-
-  .brand { align-self: center; }
-  .brand img { width: 64px; }
-
-  .top-button {
-    min-height: 40px;
-    max-width: none;
-    padding: 0 13px;
-    border-radius: 7px;
-    font-size: 10.75px;
-    white-space: nowrap;
-  }
-
-  .nav {
-    display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    width: 100%;
-    margin-top: 8px;
-    border-top: 1px solid var(--line);
-    gap: 0;
-    overflow: visible;
-    font-size: 10px;
-    letter-spacing: -.02em;
-    white-space: nowrap;
-  }
-
-  .nav a {
-    min-width: 0;
-    padding: 10px 2px 11px;
-    line-height: 1.16;
-    text-align: center;
-  }
-
-  /* Shorter mobile labels keep the five equal navigation cells visually balanced. */
-  .nav a[href$="artist.html"],
-  .nav a[href$="records.html"] { font-size: 0; }
-  .nav a[href$="artist.html"]::before,
-  .nav a[href$="records.html"]::before {
-    font-size: 10px;
-    letter-spacing: -.02em;
-  }
-  .nav a[href$="artist.html"]::before { content: "Creative"; }
-  .nav a[href$="records.html"]::before { content: "Records"; }
-
-  .nav a::after {
-    left: 6px;
-    right: 6px;
-    bottom: -1px;
-    height: 2px;
-  }
-
-  /* Keep Record directory navigation on one compact row on phones. */
-  .record-demo-page main > div:first-child {
-    flex-wrap: nowrap !important;
-    gap: 8px !important;
-    align-items: center;
-  }
-
-  .record-demo-page main > div:first-child .record-link-button {
-    min-width: 0;
-    padding-inline: 8px;
-    font-size: 0;
-    white-space: nowrap;
-  }
-
-  .record-demo-page main > div:first-child .record-link-button::before {
-    font-size: 10px;
-  }
-
-  .record-demo-page main > div:first-child .record-link-button[href="records.html"]::before { content: "← All Records"; }
-  .record-demo-page main > div:first-child .record-link-button[href="sample-cv.html"]::before { content: "Next: CV →"; }
-  .record-demo-page main > div:first-child .record-link-button[href="sample-comic.html"]::before { content: "← Previous: Comic"; }
-
-  .record-head .grid-mark {
-    display: grid;
-    grid-template-columns: repeat(4, 3px);
-    gap: 3px;
-    padding: 1px;
-  }
-
-  .record-head .grid-mark i {
-    width: 3px;
-    height: 3px;
-  }
-}
-
-@media (max-width: 480px) {
-  .footer-links { gap: 18px; }
-  .contact-card { padding: 22px; }
-  .contact-actions { display: grid; }
-  .copy-button,
-  .secondary-button { width: 100%; }
-  .contact-facts div { grid-template-columns: 1fr; gap: 4px; }
-  .form-submit-row { grid-template-columns: 1fr; }
-  .form-submit-row .primary-button { width: 100%; }
-
-  .topbar { width: min(100% - 20px, 1180px); column-gap: 12px; }
-  .top-button { padding-inline: 11px; font-size: 10.25px; }
-  .nav { font-size: 9.4px; letter-spacing: -.025em; }
-  .nav a[href$="artist.html"]::before,
-  .nav a[href$="records.html"]::before { font-size: 9.4px; }
-
-  .record-head .grid-mark { display: grid; }
 }
