@@ -4,7 +4,8 @@ const assets = require('../evidence-assets.json');
 
 const MAX_SOURCE_BYTES = 40 * 1024 * 1024;
 const INK = '#111214';
-const SVG_FONT = 'DejaVu Sans, sans-serif';
+const FONT_REGULAR = require.resolve('dejavu-fonts-ttf/ttf/DejaVuSans.ttf');
+const FONT_BOLD = require.resolve('dejavu-fonts-ttf/ttf/DejaVuSans-Bold.ttf');
 
 function clamp(value, min, max) {
   return Math.max(min, Math.min(max, value));
@@ -27,25 +28,36 @@ function gridSvg(x, y, size, opacity = 0.72) {
   return `<g fill="${INK}" fill-opacity="${opacity}">${squares.join('')}</g>`;
 }
 
-function imageBlock({ x, y, width, height, asset, opacity, strong }) {
+function blockGeometry({ x, y, width, height, opacity, strong }) {
   const markSize = height * 0.62;
   const markX = x + height * 0.16;
   const markY = y + (height - markSize) / 2;
   const textX = markX + markSize + height * 0.18;
-  const brandSize = height * (strong ? 0.22 : 0.20);
-  const labelSize = height * 0.145;
-  const metaSize = height * 0.12;
+  const textRight = x + width - height * 0.16;
+  return {
+    x,
+    y,
+    width,
+    height,
+    opacity,
+    strong,
+    markSize,
+    markX,
+    markY,
+    textX,
+    textWidth: Math.max(1, textRight - textX),
+  };
+}
+
+function imageBlockShape(block) {
   return `
-    <g opacity="${opacity}">
-      <rect x="${x}" y="${y}" width="${width}" height="${height}" fill="#fff" fill-opacity="0.80" stroke="${INK}" stroke-opacity="0.24" stroke-width="${Math.max(1, height * 0.012)}"/>
-      ${gridSvg(markX, markY, markSize)}
-      <text x="${textX}" y="${y + height * 0.35}" font-family="${SVG_FONT}" font-size="${brandSize}" font-weight="700" fill="${INK}">AsMade</text>
-      <text x="${textX}" y="${y + height * 0.57}" font-family="${SVG_FONT}" font-size="${labelSize}" font-weight="700" fill="${INK}">MADE Record</text>
-      <text x="${textX}" y="${y + height * 0.79}" font-family="${SVG_FONT}" font-size="${metaSize}" font-weight="600" fill="${INK}">${escapeXml(asset.recordId)} | ${escapeXml(asset.materialId)}</text>
+    <g opacity="${block.opacity}">
+      <rect x="${block.x}" y="${block.y}" width="${block.width}" height="${block.height}" fill="#fff" fill-opacity="0.80" stroke="${INK}" stroke-opacity="0.24" stroke-width="${Math.max(1, block.height * 0.012)}"/>
+      ${gridSvg(block.markX, block.markY, block.markSize)}
     </g>`;
 }
 
-function buildImageOverlay(width, height, asset) {
+function buildImageShapeOverlay(width, height) {
   const short = Math.min(width, height);
   const margin = clamp(short * 0.03, 18, 90);
   const stripH = clamp(short * 0.065, 44, 120);
@@ -55,43 +67,102 @@ function buildImageOverlay(width, height, asset) {
   const centreW = centreH * 3.55;
   const usableBottom = height - stripH;
 
-  const topLeft = { x: margin, y: margin, width: sideW, height: sideH };
-  const centre = {
-    x: (width - centreW) / 2,
-    y: clamp((usableBottom - centreH) / 2, margin, Math.max(margin, usableBottom - centreH - margin)),
-    width: centreW,
-    height: centreH,
-  };
-  const bottomRight = {
-    x: Math.max(margin, width - sideW - margin),
-    y: Math.max(margin, usableBottom - sideH - margin),
-    width: sideW,
-    height: sideH,
-  };
+  const blocks = [
+    blockGeometry({ x: margin, y: margin, width: sideW, height: sideH, opacity: 0.78, strong: false }),
+    blockGeometry({
+      x: (width - centreW) / 2,
+      y: clamp((usableBottom - centreH) / 2, margin, Math.max(margin, usableBottom - centreH - margin)),
+      width: centreW,
+      height: centreH,
+      opacity: 1,
+      strong: true,
+    }),
+    blockGeometry({
+      x: Math.max(margin, width - sideW - margin),
+      y: Math.max(margin, usableBottom - sideH - margin),
+      width: sideW,
+      height: sideH,
+      opacity: 0.78,
+      strong: false,
+    }),
+  ];
 
-  const stripFont = clamp(stripH * 0.27, 11, 28);
   const stripY = height - stripH;
-  const leftText = `AsMade | MADE Record | ${asset.recordId} | v${asset.recordVersion} | ${asset.materialId}`;
-  const rightText = 'useasmade.com';
-
-  return Buffer.from(`
+  const svg = Buffer.from(`
     <svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">
-      ${imageBlock({ ...topLeft, asset, opacity: 0.78, strong: false })}
-      ${imageBlock({ ...centre, asset, opacity: 1, strong: true })}
-      ${imageBlock({ ...bottomRight, asset, opacity: 0.78, strong: false })}
+      ${blocks.map(imageBlockShape).join('')}
       <rect x="0" y="${stripY}" width="${width}" height="${stripH}" fill="#fff" fill-opacity="0.94"/>
       <line x1="0" y1="${stripY}" x2="${width}" y2="${stripY}" stroke="${INK}" stroke-opacity="0.28" stroke-width="${Math.max(1, stripH * 0.018)}"/>
-      <text x="${margin}" y="${stripY + stripH * 0.62}" font-family="${SVG_FONT}" font-size="${stripFont}" font-weight="700" fill="${INK}">${escapeXml(leftText)}</text>
-      <text x="${width - margin}" y="${stripY + stripH * 0.62}" text-anchor="end" font-family="${SVG_FONT}" font-size="${stripFont}" font-weight="700" fill="${INK}">${rightText}</text>
     </svg>`);
+
+  return { svg, blocks, margin, stripH, stripY, width, height };
+}
+
+async function renderTextLayer(text, width, height, fontfile, align = 'left') {
+  const safeWidth = Math.max(1, Math.round(width));
+  const safeHeight = Math.max(1, Math.round(height));
+  return sharp({
+    text: {
+      text: `<span foreground="${INK}">${escapeXml(text)}</span>`,
+      font: 'DejaVu Sans',
+      fontfile,
+      width: safeWidth,
+      height: safeHeight,
+      align,
+      wrap: 'none',
+      rgba: true,
+    },
+  }).png().toBuffer();
+}
+
+async function buildImageTextComposites(layout, asset) {
+  const composites = [];
+
+  for (const block of layout.blocks) {
+    const brandH = block.height * (block.strong ? 0.23 : 0.21);
+    const labelH = block.height * 0.16;
+    const metaH = block.height * 0.13;
+
+    const brand = await renderTextLayer('AsMade', block.textWidth, brandH, FONT_BOLD);
+    const label = await renderTextLayer('MADE Record', block.textWidth, labelH, FONT_BOLD);
+    const meta = await renderTextLayer(`${asset.recordId} | ${asset.materialId}`, block.textWidth, metaH, FONT_REGULAR);
+
+    composites.push(
+      { input: brand, left: Math.round(block.textX), top: Math.round(block.y + block.height * 0.14) },
+      { input: label, left: Math.round(block.textX), top: Math.round(block.y + block.height * 0.42) },
+      { input: meta, left: Math.round(block.textX), top: Math.round(block.y + block.height * 0.66) },
+    );
+  }
+
+  const leftText = `AsMade | MADE Record | ${asset.recordId} | v${asset.recordVersion} | ${asset.materialId}`;
+  const rightText = 'useasmade.com';
+  const rightWidth = clamp(layout.width * 0.17, 120, 320);
+  const stripTextHeight = layout.stripH * 0.42;
+  const leftWidth = Math.max(1, layout.width - layout.margin * 3 - rightWidth);
+
+  const leftLayer = await renderTextLayer(leftText, leftWidth, stripTextHeight, FONT_BOLD);
+  const rightLayer = await renderTextLayer(rightText, rightWidth, stripTextHeight, FONT_BOLD, 'right');
+
+  composites.push(
+    { input: leftLayer, left: Math.round(layout.margin), top: Math.round(layout.stripY + layout.stripH * 0.28) },
+    { input: rightLayer, left: Math.round(layout.width - layout.margin - rightWidth), top: Math.round(layout.stripY + layout.stripH * 0.28) },
+  );
+
+  return composites;
 }
 
 async function buildImageDerivative(source, asset) {
   const pipeline = sharp(source, { failOn: 'error' });
   const metadata = await pipeline.metadata();
   if (!metadata.width || !metadata.height) throw new Error('missing_image_dimensions');
-  const overlay = buildImageOverlay(metadata.width, metadata.height, asset);
-  const composited = pipeline.composite([{ input: overlay, blend: 'over' }]);
+
+  const layout = buildImageShapeOverlay(metadata.width, metadata.height);
+  const textComposites = await buildImageTextComposites(layout, asset);
+  const composited = pipeline.composite([
+    { input: layout.svg, blend: 'over' },
+    ...textComposites,
+  ]);
+
   if (asset.format === 'webp') {
     return { body: await composited.webp({ quality: 92, effort: 4 }).toBuffer(), contentType: 'image/webp' };
   }
