@@ -4,6 +4,7 @@ const assets = require('../evidence-assets.json');
 
 const MAX_SOURCE_BYTES = 40 * 1024 * 1024;
 const INK = '#111214';
+const SVG_FONT = 'DejaVu Sans, sans-serif';
 
 function clamp(value, min, max) {
   return Math.max(min, Math.min(max, value));
@@ -38,9 +39,9 @@ function imageBlock({ x, y, width, height, asset, opacity, strong }) {
     <g opacity="${opacity}">
       <rect x="${x}" y="${y}" width="${width}" height="${height}" fill="#fff" fill-opacity="0.80" stroke="${INK}" stroke-opacity="0.24" stroke-width="${Math.max(1, height * 0.012)}"/>
       ${gridSvg(markX, markY, markSize)}
-      <text x="${textX}" y="${y + height * 0.35}" font-family="Arial, Helvetica, sans-serif" font-size="${brandSize}" font-weight="700" fill="${INK}">AsMade</text>
-      <text x="${textX}" y="${y + height * 0.57}" font-family="Arial, Helvetica, sans-serif" font-size="${labelSize}" font-weight="700" fill="${INK}">MADE Record</text>
-      <text x="${textX}" y="${y + height * 0.79}" font-family="Arial, Helvetica, sans-serif" font-size="${metaSize}" font-weight="600" fill="${INK}">${escapeXml(asset.recordId)} · ${escapeXml(asset.materialId)}</text>
+      <text x="${textX}" y="${y + height * 0.35}" font-family="${SVG_FONT}" font-size="${brandSize}" font-weight="700" fill="${INK}">AsMade</text>
+      <text x="${textX}" y="${y + height * 0.57}" font-family="${SVG_FONT}" font-size="${labelSize}" font-weight="700" fill="${INK}">MADE Record</text>
+      <text x="${textX}" y="${y + height * 0.79}" font-family="${SVG_FONT}" font-size="${metaSize}" font-weight="600" fill="${INK}">${escapeXml(asset.recordId)} | ${escapeXml(asset.materialId)}</text>
     </g>`;
 }
 
@@ -70,7 +71,7 @@ function buildImageOverlay(width, height, asset) {
 
   const stripFont = clamp(stripH * 0.27, 11, 28);
   const stripY = height - stripH;
-  const leftText = `AsMade · MADE Record · ${asset.recordId} · v${asset.recordVersion} · ${asset.materialId}`;
+  const leftText = `AsMade | MADE Record | ${asset.recordId} | v${asset.recordVersion} | ${asset.materialId}`;
   const rightText = 'useasmade.com';
 
   return Buffer.from(`
@@ -80,8 +81,8 @@ function buildImageOverlay(width, height, asset) {
       ${imageBlock({ ...bottomRight, asset, opacity: 0.78, strong: false })}
       <rect x="0" y="${stripY}" width="${width}" height="${stripH}" fill="#fff" fill-opacity="0.94"/>
       <line x1="0" y1="${stripY}" x2="${width}" y2="${stripY}" stroke="${INK}" stroke-opacity="0.28" stroke-width="${Math.max(1, stripH * 0.018)}"/>
-      <text x="${margin}" y="${stripY + stripH * 0.62}" font-family="Arial, Helvetica, sans-serif" font-size="${stripFont}" font-weight="700" fill="${INK}">${escapeXml(leftText)}</text>
-      <text x="${width - margin}" y="${stripY + stripH * 0.62}" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="${stripFont}" font-weight="700" fill="${INK}">${rightText}</text>
+      <text x="${margin}" y="${stripY + stripH * 0.62}" font-family="${SVG_FONT}" font-size="${stripFont}" font-weight="700" fill="${INK}">${escapeXml(leftText)}</text>
+      <text x="${width - margin}" y="${stripY + stripH * 0.62}" text-anchor="end" font-family="${SVG_FONT}" font-size="${stripFont}" font-weight="700" fill="${INK}">${rightText}</text>
     </svg>`);
 }
 
@@ -123,7 +124,7 @@ function drawPdfBlock(page, fonts, asset, x, y, width, height, opacity, strong) 
   const textX = markX + markSize + height * 0.16;
   page.drawText('AsMade', { x: textX, y: y + height * 0.62, size: height * (strong ? 0.20 : 0.18), font: fonts.bold, color: ink, opacity });
   page.drawText('MADE Record', { x: textX, y: y + height * 0.40, size: height * 0.125, font: fonts.bold, color: ink, opacity });
-  page.drawText(`${asset.recordId} · ${asset.materialId}`, { x: textX, y: y + height * 0.18, size: height * 0.095, font: fonts.regular, color: ink, opacity });
+  page.drawText(`${asset.recordId} | ${asset.materialId}`, { x: textX, y: y + height * 0.18, size: height * 0.095, font: fonts.regular, color: ink, opacity });
 }
 
 async function buildPdfDerivative(source, asset) {
@@ -150,7 +151,7 @@ async function buildPdfDerivative(source, asset) {
 
     page.drawRectangle({ x: 0, y: 0, width, height: stripH, color: rgb(1, 1, 1), opacity: 0.94 });
     page.drawLine({ start: { x: 0, y: stripH }, end: { x: width, y: stripH }, thickness: 0.7, color: ink, opacity: 0.28 });
-    const left = `AsMade · MADE Record · ${asset.recordId} · v${asset.recordVersion} · ${asset.materialId}`;
+    const left = `AsMade | MADE Record | ${asset.recordId} | v${asset.recordVersion} | ${asset.materialId}`;
     page.drawText(left, { x: margin, y: stripH * 0.36, size: clamp(stripH * 0.24, 6.5, 10), font: fonts.bold, color: ink });
     const right = 'useasmade.com';
     const rightSize = clamp(stripH * 0.24, 6.5, 10);
