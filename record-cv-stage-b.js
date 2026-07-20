@@ -182,6 +182,12 @@
     replaceText(evidencePanel, '.full-catalogue .record-boundary-note', 'Material ID M2-007 is unused. A separate earlier-draft file set could not be established, so no Material was created for it.');
   }
 
+  // Route the approved public CV PDF through the branded Evidence Viewer instead of direct B2 delivery.
+  const publicCvPdf = 'https://s3.eu-central-003.backblazeb2.com/asmade-public-presentation-euc1-7f3a9c/public-demo/mr-pilot-cv-001/materials/m2-001/redacted-preview-v1.pdf';
+  document.querySelectorAll('a[href]').forEach((link) => {
+    if (link.href === publicCvPdf) link.href = 'evidence-viewer.html?asset=cv-pdf';
+  });
+
   // History.
   const historyPanel = shell.querySelector('[data-record-panel="history"]');
   if (historyPanel) {
