@@ -30,8 +30,14 @@ if (!prototypeNote.test(html)) {
 }
 html = html.replace(prototypeNote, '\n');
 
-if (!html.includes('href="summary-pdf-overrides.css"')) {
-  html = html.replace('</head>', '  <link rel="stylesheet" href="summary-pdf-overrides.css" />\n</head>');
+const exportStyles = [
+  'summary-pdf-overrides.css',
+  'summary-pdf-cv-export.css'
+];
+for (const stylesheet of exportStyles) {
+  if (!html.includes(`href="${stylesheet}"`)) {
+    html = html.replace('</head>', `  <link rel="stylesheet" href="${stylesheet}" />\n</head>`);
+  }
 }
 
 const forbidden = [
@@ -48,6 +54,7 @@ for (const value of forbidden) {
 const requiredPrivacyMarkers = [
   'EXP-MR-PILOT-CV-001-V0.3-SUMMARY-001',
   'cv-summary-export',
+  'summary-pdf-cv-export.css',
   'branded-redacted-page-1-v1.webp',
   'branded-redacted-page-2-v1.webp',
   'Raw CV and direct contact details remain outside this public-safe Summary PDF.',
