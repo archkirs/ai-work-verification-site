@@ -5,6 +5,7 @@ on:
     paths:
       - 'summary-pdf-comic-export.html'
       - 'summary-pdf.css'
+      - 'summary-pdf-overrides.css'
       - 'style.css'
       - 'asmade-wordmark.svg'
       - 'favicon.svg'
