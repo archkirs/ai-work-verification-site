@@ -1,0 +1,80 @@
+name: Record Export render CI
+
+on:
+  pull_request:
+    paths:
+      - 'summary-pdf-comic-export.html'
+      - 'summary-pdf.css'
+      - 'style.css'
+      - 'asmade-wordmark.svg'
+      - 'favicon.svg'
+      - 'summary-pdf-comic-qr.svg'
+      - 'scripts/render-summary-pdf.mjs'
+      - 'package.json'
+      - '.github/workflows/record-export-render-ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  render-comic-summary-export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Resolve Chrome
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHROME_PATH="$(command -v google-chrome || command -v chromium || command -v chromium-browser || true)"
+          if [ -z "$CHROME_PATH" ]; then
+            echo "No Chrome/Chromium executable available on runner." >&2
+            exit 1
+          fi
+          echo "CHROME_BIN=$CHROME_PATH" >> "$GITHUB_ENV"
+          "$CHROME_PATH" --version
+
+      - name: Render official-mode Comic Summary PDF
+        run: npm run render:summary-pdf:comic:export
+
+      - name: Record immutable build metadata
+        shell: bash
+        run: |
+          set -euo pipefail
+          PDF='artifacts/AsMade_MR-PILOT-EC-P050-001_v0.4_Summary.pdf'
+          test -s "$PDF"
+          SHA256="$(sha256sum "$PDF" | awk '{print $1}')"
+          SIZE="$(stat -c '%s' "$PDF")"
+          python - <<PY
+          import json
+          from pathlib import Path
+          payload = {
+              'record_id': 'MR-PILOT-EC-P050-001',
+              'record_version': '0.4',
+              'export_id': 'EXP-MR-PILOT-EC-P050-001-V0.4-SUMMARY-001',
+              'export_profile': 'summary',
+              'export_profile_version': 'summary-pdf-v1',
+              'renderer_version': 'asmade-site-record-export-render-ci-v1',
+              'content_type': 'application/pdf',
+              'filename': 'AsMade_MR-PILOT-EC-P050-001_v0.4_Summary.pdf',
+              'size_bytes': int('$SIZE'),
+              'sha256': '$SHA256',
+          }
+          Path('artifacts/comic-summary-export-metadata.json').write_text(
+              json.dumps(payload, indent=2) + '\n', encoding='utf-8'
+          )
+          print(json.dumps(payload, indent=2))
+          PY
+
+      - name: Upload controlled render artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: comic-summary-export-candidate
+          path: |
+            artifacts/AsMade_MR-PILOT-EC-P050-001_v0.4_Summary.pdf
+            artifacts/comic-summary-export-metadata.json
+          if-no-files-found: error
+          retention-days: 14
