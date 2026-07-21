@@ -1,0 +1,44 @@
+.preview-card {
+  overflow: hidden;
+  border: 1px solid var(--pdf-line);
+  border-radius: 2.5mm;
+  background: #fff;
+}
+
+.preview-head {
+  padding: 2.7mm 3mm 1.6mm;
+  background: #fff;
+  color: var(--pdf-ink);
+  border-radius: 0;
+}
+
+.preview-image {
+  background: #fff;
+  padding: 0 2.5mm 2.5mm;
+}
+
+.preview-card figcaption {
+  padding: 2.2mm 3mm 2.7mm;
+  background: #fff;
+  color: var(--pdf-ink);
+  border-radius: 0;
+}
+
+.preview-card > span {
+  padding: 0 3mm 2.6mm;
+  margin-top: 0;
+}
+
+.cv-evidence-card .preview-head {
+  background: #fff;
+  color: var(--pdf-muted);
+}
+
+.cv-evidence-image {
+  background: #fff;
+}
+
+.limits-box,
+.cv-limits-box {
+  margin-top: 6mm !important;
+}
