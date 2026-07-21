@@ -9,6 +9,7 @@ let html = await readFile(inputPath, 'utf8');
 
 const replacements = [
   ['<title>MADE Record — Summary PDF Prototype — Professional CV</title>', '<title>MADE Record — Summary PDF — Professional CV</title>'],
+  ['<body class="summary-pdf-prototype cv-summary-prototype">', '<body class="summary-pdf-prototype cv-summary-prototype cv-summary-export">'],
   ['aria-label="MADE Record Summary PDF CV prototype"', 'aria-label="MADE Record Summary PDF CV export"'],
   ['<span>SUMMARY PDF · PRIVACY VALIDATION v0.2</span>', '<span>SUMMARY PDF · summary-pdf-v1</span>'],
   ['Only the approved Issue #66 branded redacted M2-001 Representation is shown. Raw CV and direct contact details remain outside this public-safe prototype.', 'Only the approved Issue #66 branded redacted M2-001 Representation is shown. Raw CV and direct contact details remain outside this public-safe Summary PDF.'],
@@ -46,6 +47,7 @@ for (const value of forbidden) {
 
 const requiredPrivacyMarkers = [
   'EXP-MR-PILOT-CV-001-V0.3-SUMMARY-001',
+  'cv-summary-export',
   'branded-redacted-page-1-v1.webp',
   'branded-redacted-page-2-v1.webp',
   'Raw CV and direct contact details remain outside this public-safe Summary PDF.',
