@@ -1,0 +1,23 @@
+{
+  "comic-summary-v1": {
+    "kind": "record_export",
+    "format": "pdf",
+    "exportId": "EXP-MR-PILOT-EC-P050-001-V0.4-SUMMARY-001",
+    "exportProfile": "summary",
+    "exportProfileVersion": "summary-pdf-v1",
+    "recordId": "MR-PILOT-EC-P050-001",
+    "recordVersion": "0.4",
+    "recordUrl": "/sample-comic.html",
+    "statusAtBinding": "generated",
+    "previewEnabled": true,
+    "productionEnabled": false,
+    "deliveryUrl": "https://s3.eu-central-003.backblazeb2.com/asmade-public-presentation-euc1-7f3a9c/public-demo/mr-pilot-ec-p050-001/record-exports/exp-mr-pilot-ec-p050-001-v0.4-summary-001/summary-pdf-v1.pdf",
+    "provider": "backblaze_b2",
+    "providerVersionId": "4_zd83928ba95e379619ef10916_f107b7b25fe237461_d20260721_m113037_c003_v0312032_t0003_u01784633437667",
+    "contentType": "application/pdf",
+    "sizeBytes": 14607496,
+    "sha256": "9a0e88ffea768c74f7deadc7aeddabbe48d9846bc93487ae8e5e5b57d5d9deca",
+    "etag": "b1ce4e83a1b3c07f186d7b907079256a",
+    "filename": "AsMade_MR-PILOT-EC-P050-001_v0.4_Summary.pdf"
+  }
+}
