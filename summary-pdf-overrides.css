@@ -95,4 +95,201 @@
   .pdf-header-context {
     max-width: none !important;
   }
+
+  /* Page 2: preserve all five findings while keeping the footer on A4. */
+  .pdf-page:nth-of-type(2) .section-title {
+    margin-top: 5mm;
+    margin-bottom: 1mm;
+    font-size: 20pt;
+  }
+
+  .pdf-page:nth-of-type(2) .section-intro {
+    margin-bottom: 3mm;
+    font-size: 7.8pt;
+  }
+
+  .pdf-page:nth-of-type(2) .finding-list {
+    gap: 2.2mm;
+  }
+
+  .pdf-page:nth-of-type(2) .finding-card {
+    padding: 3.2mm 4mm;
+  }
+
+  .pdf-page:nth-of-type(2) .finding-top {
+    margin-bottom: 1.4mm;
+  }
+
+  .pdf-page:nth-of-type(2) .finding-card h2 {
+    font-size: 9.2pt;
+    line-height: 1.22;
+  }
+
+  .pdf-page:nth-of-type(2) .finding-card p {
+    margin-top: 1mm;
+    font-size: 7.1pt;
+    line-height: 1.25;
+  }
+
+  .pdf-page:nth-of-type(2) .material-links {
+    margin-top: 1.4mm;
+    font-size: 6.5pt;
+  }
+
+  .pdf-page:nth-of-type(2) .boundary-box {
+    margin-top: 3mm;
+    padding: 3mm 4mm;
+  }
+
+  .pdf-page:nth-of-type(2) .boundary-box p {
+    margin-top: 1.2mm;
+    font-size: 7pt;
+  }
+
+  .pdf-page:nth-of-type(2) .pdf-footer {
+    margin-top: 3mm;
+    padding-top: 2mm;
+  }
+
+  /* Page 3: compact the same approved content into one print page. */
+  .pdf-page:nth-of-type(3) .section-title {
+    margin-top: 5mm;
+    margin-bottom: 1mm;
+    font-size: 20pt;
+  }
+
+  .pdf-page:nth-of-type(3) .section-intro {
+    margin-bottom: 3mm;
+    font-size: 7.8pt;
+  }
+
+  .pdf-page:nth-of-type(3) .process-evidence-grid {
+    gap: 6mm;
+  }
+
+  .pdf-page:nth-of-type(3) .column-title {
+    margin-bottom: 2mm;
+    font-size: 10pt;
+  }
+
+  .pdf-page:nth-of-type(3) .process-list {
+    gap: 2.2mm;
+  }
+
+  .pdf-page:nth-of-type(3) .process-list li {
+    grid-template-columns: 6mm 1fr;
+    gap: 2.5mm;
+  }
+
+  .pdf-page:nth-of-type(3) .step-number {
+    width: 6mm;
+    height: 6mm;
+    font-size: 6.3pt;
+  }
+
+  .pdf-page:nth-of-type(3) .process-list h3 {
+    font-size: 8.3pt;
+  }
+
+  .pdf-page:nth-of-type(3) .process-list p {
+    margin-top: .6mm;
+    font-size: 6.7pt;
+    line-height: 1.23;
+  }
+
+  .pdf-page:nth-of-type(3) .process-list .material-links {
+    margin-top: .6mm;
+    font-size: 6pt;
+  }
+
+  .pdf-page:nth-of-type(3) .preview-grid {
+    gap: 2.5mm;
+  }
+
+  .pdf-page:nth-of-type(3) .preview-head {
+    padding: 1.6mm 2mm 1mm;
+    font-size: 7.8pt;
+  }
+
+  .pdf-page:nth-of-type(3) .preview-image {
+    height: 25mm;
+    padding: 0 1.5mm 1.5mm;
+  }
+
+  .pdf-page:nth-of-type(3) .preview-card figcaption {
+    padding: 1.2mm 2mm 1.2mm;
+    font-size: 6.9pt;
+  }
+
+  .pdf-page:nth-of-type(3) .preview-card > span {
+    padding: 0 2mm 1.4mm;
+    font-size: 5.7pt;
+  }
+
+  .pdf-page:nth-of-type(3) .evidence-inclusion-box {
+    margin-top: 3mm;
+    padding: 3mm;
+  }
+
+  .pdf-page:nth-of-type(3) .evidence-inclusion-box h2 {
+    font-size: 9.2pt;
+  }
+
+  .pdf-page:nth-of-type(3) .box-intro {
+    margin: 1mm 0 1.5mm;
+    font-size: 6.3pt;
+  }
+
+  .pdf-page:nth-of-type(3) .evidence-inclusion-box dl > div {
+    padding: 1.15mm 0;
+  }
+
+  .pdf-page:nth-of-type(3) .evidence-inclusion-box dt {
+    gap: 1.5mm;
+    font-size: 6.5pt;
+  }
+
+  .pdf-page:nth-of-type(3) .evidence-inclusion-box dd {
+    margin: .4mm 0 0 3.7mm;
+    font-size: 5.8pt;
+    line-height: 1.22;
+  }
+
+  .pdf-page:nth-of-type(3) .legend-dot {
+    width: 2.1mm;
+    height: 2.1mm;
+  }
+
+  .pdf-page:nth-of-type(3) .limits-box {
+    margin-top: 3mm !important;
+    padding: 3mm 4mm;
+  }
+
+  .pdf-page:nth-of-type(3) .limits-box h2 {
+    font-size: 8.5pt;
+  }
+
+  .pdf-page:nth-of-type(3) .limits-box p {
+    margin-top: 1mm;
+    font-size: 6.3pt;
+    line-height: 1.25;
+  }
+
+  .pdf-page:nth-of-type(3) .limits-box h3 {
+    margin-top: 1.5mm;
+    font-size: 7.4pt;
+  }
+
+  .pdf-page:nth-of-type(3) .limits-divider {
+    margin-top: 1.5mm;
+  }
+
+  .pdf-page:nth-of-type(3) .small-boundary {
+    font-size: 5.9pt !important;
+  }
+
+  .pdf-page:nth-of-type(3) .pdf-footer {
+    margin-top: 2mm;
+    padding-top: 1.5mm;
+  }
 }
