@@ -2,6 +2,8 @@ const fs = require('node:fs');
 const path = require('node:path');
 
 const ROOT = path.join(__dirname, '..');
+const RECORD_STYLESHEET = '<link rel="stylesheet" href="record-demo.css" />';
+const EVIDENCE_POLISH_STYLESHEET = '<link rel="stylesheet" href="/record-evidence-polish.css" />';
 
 const replacements = {
   'sample-comic.html': [
@@ -26,9 +28,21 @@ function escapeRegExp(value) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
+function ensureEvidencePolishStylesheet(html, filename) {
+  if (html.includes(EVIDENCE_POLISH_STYLESHEET)) return html;
+  if (!html.includes(RECORD_STYLESHEET)) {
+    throw new Error(`Expected Record stylesheet link in ${filename}.`);
+  }
+  return html.replace(
+    RECORD_STYLESHEET,
+    `${RECORD_STYLESHEET}\n  ${EVIDENCE_POLISH_STYLESHEET}`,
+  );
+}
+
 for (const [filename, assets] of Object.entries(replacements)) {
   const filepath = path.join(ROOT, filename);
   let html = fs.readFileSync(filepath, 'utf8');
+  html = ensureEvidencePolishStylesheet(html, filename);
 
   for (const { asset, source } of assets) {
     const sourcePattern = escapeRegExp(source);
@@ -49,5 +63,5 @@ for (const [filename, assets] of Object.entries(replacements)) {
   }
 
   fs.writeFileSync(filepath, html, 'utf8');
-  console.log(`Patched protected Evidence Work previews in ${filename}.`);
+  console.log(`Patched protected Evidence Work previews and heading polish in ${filename}.`);
 }
