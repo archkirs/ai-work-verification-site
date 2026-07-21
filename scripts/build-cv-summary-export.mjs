@@ -44,5 +44,19 @@ for (const value of forbidden) {
   if (html.includes(value)) throw new Error(`Prototype-only marker remained in CV export source: ${value}`);
 }
 
+const requiredPrivacyMarkers = [
+  'EXP-MR-PILOT-CV-001-V0.3-SUMMARY-001',
+  'branded-redacted-page-1-v1.webp',
+  'branded-redacted-page-2-v1.webp',
+  'Raw CV and direct contact details remain outside this public-safe Summary PDF.',
+  'Phone, personal email, address, website and LinkedIn URL are excluded from the approved redacted M2-001 preview.',
+  'The raw CV remains restricted.',
+  'M2-002 · M2-004 · M2-006 · raw files or conversations are not embedded.',
+  'M2-005 · M2-008'
+];
+for (const value of requiredPrivacyMarkers) {
+  if (!html.includes(value)) throw new Error(`Required CV privacy/export marker missing: ${value}`);
+}
+
 await writeFile(outputPath, html, 'utf8');
 console.log(`Generated ${outputPath}`);
