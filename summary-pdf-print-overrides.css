@@ -1,0 +1,53 @@
+@media print {
+  html,
+  body.summary-pdf-prototype {
+    width: 210mm !important;
+    min-width: 210mm !important;
+  }
+
+  .pdf-page {
+    width: 210mm !important;
+    min-width: 210mm !important;
+    min-height: 297mm !important;
+    padding: 13mm 14mm 12mm !important;
+    overflow: hidden !important;
+  }
+
+  .identity-strip {
+    grid-template-columns: 1.1fr .65fr 1.1fr .8fr !important;
+  }
+
+  .identity-strip > div + div {
+    border-left: 1px solid var(--pdf-line) !important;
+    border-top: 0 !important;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1.22fr .92fr !important;
+  }
+
+  .snapshot-card {
+    grid-template-columns: 1fr auto !important;
+  }
+
+  .process-evidence-grid {
+    grid-template-columns: 1fr 1.02fr !important;
+  }
+
+  .preview-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .snapshot-link {
+    justify-items: end !important;
+    text-align: right !important;
+  }
+
+  .pdf-header {
+    align-items: center !important;
+  }
+
+  .pdf-header-context {
+    max-width: none !important;
+  }
+}
