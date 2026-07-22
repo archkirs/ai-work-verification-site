@@ -23,12 +23,23 @@
 })();
 
 (() => {
+  const style = document.createElement('style');
+  style.textContent = `
+    .landing-main .hero-stage h1 .hero-title-line {
+      display: block;
+    }
+
+    .landing-main .hero-lede,
+    .landing-main .cta-helper,
+    .landing-main .micro-note {
+      max-width: 860px !important;
+    }
+  `;
+  document.head.appendChild(style);
+})();
+
+(() => {
   const variants = {
-    '/': 'home',
-    '/index.html': 'home',
-    '/student.html': 'student',
-    '/artist.html': 'artist',
-    '/reviewer.html': 'reviewer',
     '/index-v2.html': 'home',
     '/student-v2.html': 'student',
     '/artist-v2.html': 'artist',
@@ -45,14 +56,6 @@
     if (!hero || !title) return;
 
     const ledes = [...hero.querySelectorAll('.hero-lede')];
-
-    const style = document.createElement('style');
-    style.textContent = `
-      .landing-main .hero-stage h1 .hero-title-line {
-        display: block;
-      }
-    `;
-    document.head.appendChild(style);
 
     if (variant === 'home') {
       title.innerHTML = '<span class="made-word">Was AI used?</span><span class="hero-title-line">That\'s only the first question.</span>';
@@ -80,24 +83,22 @@
       ledes[1].innerHTML = '<strong>A MADE Record</strong> brings that context together for one specific work. It shows what the person did, how AI was used, the actions and decisions that shaped the work, what information is available about the process, and what remains unknown.';
     }
 
-    if (pathname.endsWith('-v2.html')) {
-      const variantLinks = {
-        '/': '/index-v2.html',
-        'student.html': '/student-v2.html',
-        '/student.html': '/student-v2.html',
-        'artist.html': '/artist-v2.html',
-        '/artist.html': '/artist-v2.html',
-        'reviewer.html': '/reviewer-v2.html',
-        '/reviewer.html': '/reviewer-v2.html',
-      };
+    const variantLinks = {
+      '/': '/index-v2.html',
+      'student.html': '/student-v2.html',
+      '/student.html': '/student-v2.html',
+      'artist.html': '/artist-v2.html',
+      '/artist.html': '/artist-v2.html',
+      'reviewer.html': '/reviewer-v2.html',
+      '/reviewer.html': '/reviewer-v2.html',
+    };
 
-      document.querySelectorAll('a[href]').forEach((link) => {
-        const href = link.getAttribute('href');
-        if (Object.prototype.hasOwnProperty.call(variantLinks, href)) {
-          link.setAttribute('href', variantLinks[href]);
-        }
-      });
-    }
+    document.querySelectorAll('a[href]').forEach((link) => {
+      const href = link.getAttribute('href');
+      if (Object.prototype.hasOwnProperty.call(variantLinks, href)) {
+        link.setAttribute('href', variantLinks[href]);
+      }
+    });
 
     document.documentElement.dataset.heroVariant = '2';
   };
