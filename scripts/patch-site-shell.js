@@ -41,6 +41,7 @@ const pages = [
 
 const headerPattern = /<header[^>]*class="[^"]*(?:v4-header|site-header)[^"]*"[^>]*>[\s\S]*?<\/header>/i;
 const footerPattern = /<footer[^>]*class="[^"]*(?:v4-footer|site-footer|footer)[^"]*"[^>]*>[\s\S]*?<\/footer>/i;
+const noindexPattern = /\s*<meta\s+name=["']robots["']\s+content=["'][^"']*\bnoindex\b[^"']*["']\s*\/?>/gi;
 
 function current(name, active) {
   return name === active ? 'aria-current="page"' : '';
@@ -85,6 +86,11 @@ function enhanceMotionMarkup(html, page) {
     .replace(/class="legal-section"/g, 'class="legal-section fade"');
 }
 
+function removeProductionPreviewRobots(html, page) {
+  if (preview || page.file.startsWith('lab/v4/')) return html;
+  return html.replace(noindexPattern, '');
+}
+
 function injectHeadAssets(html) {
   const assets = [];
   if (!html.includes('/site-shell.css')) {
@@ -118,6 +124,7 @@ for (const page of pages) {
   html = html.replace(headerPattern, render(headerTemplate, values));
   html = html.replace(footerPattern, render(footerTemplate, values));
   html = enhanceMotionMarkup(html, page);
+  html = removeProductionPreviewRobots(html, page);
   html = injectHeadAssets(html);
   fs.writeFileSync(absolute, html, 'utf8');
 }
