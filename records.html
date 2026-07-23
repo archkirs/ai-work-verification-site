@@ -24,6 +24,7 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="/v4-site.css" />
   <link rel="stylesheet" href="/records-v4-polish.css" />
+  <link rel="stylesheet" href="/v4-motion.css" />
   <script src="/vercel-observability.js" defer></script>
 </head>
 <body class="v4-surface records-v4">
@@ -45,7 +46,7 @@
 
   <main id="main-content" class="v4-main">
     <div class="records-v4-hero-zone">
-      <section class="records-v4-hero" aria-labelledby="records-title">
+      <section class="records-v4-hero fade" aria-labelledby="records-title">
         <p class="v4-label">Public MADE Records</p>
         <h1 id="records-title">See how AI-assisted work was made.</h1>
         <p>Explore MADE Records for two different kinds of work. Each Record brings together who was involved, what they did, how AI was used, key decisions, available supporting materials, and important limits.</p>
@@ -54,13 +55,13 @@
 
     <section class="records-v4-section" aria-labelledby="available-records-title">
       <div class="records-v4-inner">
-        <div class="records-v4-head">
+        <div class="records-v4-head fade">
           <h2 id="available-records-title">Current public Records</h2>
           <p>Two controlled demo Records show the current format across a creative work and a professional document.</p>
         </div>
 
         <div class="records-v4-grid">
-          <a class="record-v4-card record-v4-comic" href="/sample-comic.html">
+          <a class="record-v4-card record-v4-comic fade" href="/sample-comic.html">
             <div class="record-v4-visual">
               <img src="https://s3.eu-central-003.backblazeb2.com/asmade-public-presentation-euc1-7f3a9c/public-demo/mr-pilot-ec-p050-001/materials/m-001/presentation-v1.png" alt="Comic Page 050 public presentation copy" />
             </div>
@@ -76,7 +77,7 @@
             </div>
           </a>
 
-          <a class="record-v4-card record-v4-cv" href="/sample-cv.html">
+          <a class="record-v4-card record-v4-cv fade" href="/sample-cv.html">
             <div class="record-v4-visual">
               <img class="record-v4-page record-v4-page-primary" src="https://s3.eu-central-003.backblazeb2.com/asmade-public-presentation-euc1-7f3a9c/public-demo/mr-pilot-cv-001/materials/m2-001/redacted-page-1-v1.webp" alt="English page of approved redacted Professional CV preview" />
               <img class="record-v4-page record-v4-page-secondary" src="https://s3.eu-central-003.backblazeb2.com/asmade-public-presentation-euc1-7f3a9c/public-demo/mr-pilot-cv-001/materials/m2-001/redacted-page-2-v1.webp" alt="" />
@@ -94,7 +95,7 @@
           </a>
         </div>
 
-        <p class="records-v4-note">This page lists the public MADE Records currently available on AsMade. It is a browsing directory, not a complete registry of AI-assisted work.</p>
+        <p class="records-v4-note fade">This page lists the public MADE Records currently available on AsMade. It is a browsing directory, not a complete registry of AI-assisted work.</p>
       </div>
     </section>
   </main>
@@ -119,5 +120,6 @@
       </div>
     </div>
   </footer>
+  <script src="/v4-motion.js"></script>
 </body>
 </html>
