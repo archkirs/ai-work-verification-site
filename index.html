@@ -21,134 +21,104 @@
   <meta name="twitter:image" content="https://useasmade.com/social-preview.png" />
   <meta name="twitter:image:alt" content="AsMade — Understand how the work was made." />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="record-demo.css" />
-  <link rel="stylesheet" href="/footer-contact.css" />
-  <link rel="stylesheet" href="/legal-utility-refresh.css" />
-  <link rel="stylesheet" href="landing-preview.css" />
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"AsMade","url":"https://useasmade.com/"}</script>
   <script src="/vercel-observability.js" defer></script>
+  <link rel="stylesheet" href="/v4-audience-base.css" />
+  <link rel="stylesheet" href="/v4-audience-pages.css" />
+  <link rel="stylesheet" href="/v4-audience-polish.css" />
 </head>
 <body>
-  <a class="skip-link" href="#main-content">Skip to content</a>
-  <header class="site-header">
-    <div class="topbar">
-      <a class="brand" href="/" aria-label="AsMade home"><img src="asmade-wordmark.svg" alt="AsMade" width="78" height="15" /></a>
-      <nav class="nav" aria-label="Primary navigation"><a class="active" aria-current="page" href="/">Home</a><a href="student.html">Students</a><a href="artist.html">Creative Work</a><a href="reviewer.html">Reviewers</a><a href="records.html">MADE Records</a></nav>
-      <a class="top-button" href="https://tally.so/r/NpQkRB?landing=general" target="_blank" rel="noopener">Apply for the MVP Pilot</a>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="v4-header">
+    <div class="v4-nav">
+      <a href="/" aria-label="AsMade V4 home"><img src="/asmade-wordmark.svg" alt="AsMade" /></a>
+      <nav class="audience-nav" aria-label="V4 audience pages"><a href="/" aria-current="page">Home</a><a href="/student.html">Students</a><a href="/artist.html">Creative Work</a><a href="/reviewer.html">Reviewers</a><a href="/records.html">MADE Records</a></nav>
+      <a class="nav-cta" href="https://tally.so/r/NpQkRB?landing=general" target="_blank" rel="noopener">Apply for the MVP Pilot</a>
     </div>
   </header>
-  <main id="main-content" class="landing-main">
-    <section class="hero-stage" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <p class="section-label">AsMade · See what MADE it.</p>
-        <h1 id="hero-title"><span class="made-word">Was AI used?</span><span class="hero-title-line">That's only the first question.</span></h1>
-        <p class="hero-lede">What did the person actually do? How was AI used? Which decisions shaped the work?</p>
-        <p class="hero-lede">A finished work doesn't always make those answers visible.</p>
-        <p class="hero-lede"><strong>AsMade creates a MADE Record</strong> for one specific work. It brings that context together — including what information is available about the process and what remains unknown.</p>
-        <div class="hero-actions">
-          <a class="primary-button" href="records.html">See MADE Records</a>
-          <a class="secondary-button" href="https://tally.so/r/NpQkRB?landing=general" target="_blank" rel="noopener">Apply for the MVP Pilot</a>
+
+  <main id="main">
+    <div class="dark-zone">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy fade">
+          <p class="hero-kicker">A content passport for one AI-assisted work</p>
+          <h1 id="hero-title">Was AI used?<em>That's only the first question.</em></h1>
+          <p class="hero-lede">Knowing AI was used is only a starting point. It does not show who did what, which decisions shaped the work, or what information supports that account.</p>
+          <p class="hero-lede"><strong>AsMade creates a MADE Record</strong>: a readable account of how one specific work was made, what supports that account, and what remains uncertain.</p>
+          <div class="hero-actions"><a class="pill solid" href="#trace">Explore a real work trace</a><a class="pill" href="/sample-comic.html">Open the full Record</a></div>
         </div>
-        <p class="cta-helper">Start by exploring real MADE Records. Then decide whether you'd like to learn more or apply to test AsMade with your own work.</p>
-        <p class="micro-note"><span aria-hidden="true">i</span>AsMade does not tell you what to trust. It gives you more context so you can make your own judgment.</p>
+
+        <section class="trace-card fade" id="trace" aria-label="Interactive trace of the Comic MADE Record">
+          <div class="trace-top"><strong>WORK TRACE · MR-PILOT-EC-P050-001</strong><span>Issued · v0.4</span></div>
+          <div class="trace-work"><img src="https://s3.eu-central-003.backblazeb2.com/asmade-public-presentation-euc1-7f3a9c/public-demo/mr-pilot-ec-p050-001/materials/m-001/presentation-v1.png" alt="Final assembled comic Page 050, approved public presentation copy" /><div class="trace-work-copy"><span>The Count of Monte Cristo · Page 050</span><h2>The final page is one moment. The Record traces the choices around it.</h2></div></div>
+          <div class="trace-nav" role="tablist" aria-label="Work trace stages">
+            <button class="trace-step is-active" type="button" role="tab" aria-selected="true" data-trace="direction">Direction</button>
+            <button class="trace-step" type="button" role="tab" aria-selected="false" data-trace="generation">Generation</button>
+            <button class="trace-step" type="button" role="tab" aria-selected="false" data-trace="rejection">Rejection</button>
+            <button class="trace-step" type="button" role="tab" aria-selected="false" data-trace="selection">Selection</button>
+            <button class="trace-step" type="button" role="tab" aria-selected="false" data-trace="assembly">Assembly</button>
+          </div>
+          <div class="trace-detail" aria-live="polite"><span class="trace-role" data-trace-role>Creator</span><h3 data-trace-title>Set the dramatic direction.</h3><p data-trace-copy>The Creator planned the page and defined the dramatic function before the final visual arrangement was selected.</p></div>
+          <div class="trace-footer"><span>Evidence status varies by finding.</span><strong>Missing history stays visible.</strong></div>
+        </section>
+      </section>
+    </div>
+
+    <section class="manifesto">
+      <div class="manifesto-grid fade"><p class="label">The premise</p><div><h2>The final file is the result. The useful context is how it got there.</h2><p class="big-copy">The same kind of final result can come from very different processes. A reader may need to understand who set direction, what AI contributed, what was rejected or changed, and which parts of that account are supported by available information.</p></div></div>
+      <div class="question-line fade"><div class="question"><span>Without a Record</span><strong>The reader reconstructs context from the result, chats, screenshots, drafts, notes and explanations.</strong></div><div class="question"><span>With a MADE Record</span><strong>The important context is organised around one identifiable Work and presented with its support and limits.</strong></div></div>
+    </section>
+
+    <section class="record-map" id="record-map">
+      <div class="map-shell">
+        <div class="map-head fade"><h2>One Record. Four questions.</h2><p>Start with the Work, then move to contribution, support and limits only when needed. The Record adds structure without turning the page into a raw evidence dump.</p></div>
+        <div class="map-flow fade">
+          <div class="map-node"><span>01 · Work</span><h3>What are we looking at?</h3><p>A specific work and version. The Record is not a person-level score.</p></div>
+          <div class="map-node"><span>02 · Contribution</span><h3>Who did what?</h3><p>Human direction, AI assistance, editing, selection and other significant roles.</p></div>
+          <div class="map-node"><span>03 · Support</span><h3>What backs the account?</h3><p>Available materials and Evidence Status remain connected to individual findings.</p></div>
+          <div class="map-node"><span>04 · Limits</span><h3>What do we still not know?</h3><p>Gaps and uncertainty remain part of the Record instead of being silently filled in.</p></div>
+        </div>
+        <div class="map-caption fade"><span>MADE can organise Materials, Actions, Decisions and Evolution where useful.</span><strong>The reader still makes the final judgment.</strong></div>
       </div>
     </section>
 
-    <section class="content-block" aria-labelledby="what-title">
-      <p class="section-label">What AsMade creates</p>
-      <h2 id="what-title">One work. One record of how it was made.</h2>
-      <p>A MADE Record is linked to one specific work and brings the key context about how it was created into one place.</p>
-      <div class="trust-grid">
-        <article class="trust-card"><h3>Who was involved?</h3><p>The people and roles involved in creating the work.</p></article>
-        <article class="trust-card"><h3>What did the person do?</h3><p>The actions, choices, edits, and decisions that shaped the result.</p></article>
-        <article class="trust-card"><h3>Where was AI used?</h3><p>Where AI was used and how its output became part of the work.</p></article>
-        <article class="trust-card"><h3>What materials are available?</h3><p>Available drafts, files, versions, AI chats, notes, and other process materials.</p></article>
-        <article class="trust-card"><h3>What remains unknown?</h3><p>Information that is missing, uncertain, or cannot be established from what is available.</p></article>
+    <section class="proof" id="proof">
+      <div class="proof-head fade"><h2>See the product, not a mockup.</h2><p>Two controlled demo Records show the current product on authorised real work.</p></div>
+      <div class="case-grid fade">
+        <a class="case case-comic" href="/sample-comic.html"><img src="https://s3.eu-central-003.backblazeb2.com/asmade-public-presentation-euc1-7f3a9c/public-demo/mr-pilot-ec-p050-001/materials/m-001/presentation-v1.png" alt="Comic Page 050 public presentation copy" /><div class="case-content"><div class="case-meta"><span>Creative work</span><span>MR-PILOT-EC-P050-001</span></div><div><h3>The Count of Monte Cristo — Page 050</h3><p>Human direction and selection shaped an AI-assisted visual workflow. The Record links principal findings to available materials and states important gaps.</p></div><span class="case-action">Open the full Record <span aria-hidden="true">↗</span></span></div></a>
+        <a class="case case-cv case-cv-real" href="/sample-cv.html"><div class="cv-case-visual"><img class="cv-page cv-page-primary" src="https://s3.eu-central-003.backblazeb2.com/asmade-public-presentation-euc1-7f3a9c/public-demo/mr-pilot-cv-001/materials/m2-001/redacted-page-1-v1.webp" alt="English page of approved redacted Professional CV preview" /><img class="cv-page cv-page-secondary" src="https://s3.eu-central-003.backblazeb2.com/asmade-public-presentation-euc1-7f3a9c/public-demo/mr-pilot-cv-001/materials/m2-001/redacted-page-2-v1.webp" alt="" /></div><div class="case-content"><div class="case-meta"><span>Professional document</span><span>MR-PILOT-CV-001</span></div><div><h3>Professional CV</h3><p>A privacy-sensitive example with source information, AI-assisted wording and translation, creator review, redacted public evidence and explicit access limits.</p></div><span class="case-action">Open the full Record <span aria-hidden="true">↗</span></span></div></a>
       </div>
     </section>
 
-    <section id="samples" class="samples-section" aria-labelledby="samples-title">
-      <p class="section-label">Real examples</p>
-      <h2 id="samples-title">See MADE Records for two very different kinds of work.</h2>
-      <p>See how the same Record format works across different kinds of AI-assisted work.</p>
-      <div class="samples-grid">
-        <a class="sample-link-card" href="sample-comic.html"><span>Creative work example</span><h3>The Count of Monte Cristo — Page 050</h3><p>A creative-work example where the person set the direction, used AI for image generation, rejected unsuitable options, selected final images, and assembled the finished page.</p><strong>View MADE Record →</strong></a>
-        <a class="sample-link-card" href="sample-cv.html"><span>Professional document example</span><h3>Professional CV</h3><p>A document example where the person provided the source information, used AI for wording and translation, and reviewed the final result.</p><strong>View MADE Record →</strong></a>
+    <section class="boundary">
+      <div class="boundary-shell">
+        <p class="label fade">What a MADE Record is not</p>
+        <h2 class="fade">More context. The judgment stays with the reader.</h2>
+        <div class="boundary-list fade"><span>Not an AI detector</span><span>Not legal certification</span><span>Not copyright or ownership proof</span><span>Not proof of fully human authorship</span><span>Not a truth guarantee</span></div>
+        <div class="close fade"><p>AsMade records what can be said about one Work from the available information, keeps the basis and uncertainty visible, and leaves the final decision with the reader.</p><a class="pill solid" href="https://tally.so/r/NpQkRB?landing=general" target="_blank" rel="noopener">Apply for the MVP Pilot</a></div>
       </div>
-    </section>
-
-    <section class="content-block" aria-labelledby="missing-title">
-      <p class="section-label">The missing context</p>
-      <h2 id="missing-title">The result is visible. The human contribution and the role of AI may not be.</h2>
-      <div class="trust-grid">
-        <article class="trust-card"><h3>Finished work</h3><p>Shows the final result, but not always who made the key decisions or what role AI played.</p></article>
-        <article class="trust-card"><h3>AI chat</h3><p>Shows part of the interaction with AI, but the work may also involve research, drafts, files, other tools, selection, editing, and decisions made outside the chat.</p></article>
-        <article class="trust-card"><h3>MADE Record</h3><p>Brings the key context around one specific work into one place. It doesn't try to capture everything; it helps people understand how the work was created without having to piece the process together from scattered files and chats.</p></article>
-      </div>
-    </section>
-
-    <section id="how" class="content-block" aria-labelledby="how-title">
-      <p class="section-label">How it works</p>
-      <h2 id="how-title">From one specific work to a clearer picture of how it was made.</h2>
-      <div class="steps-grid">
-        <article class="step-card"><span>1</span><h3>Identify the specific work</h3><p>Each MADE Record is linked to a defined work and version.</p></article>
-        <article class="step-card"><span>2</span><h3>Review available information</h3><p>Available drafts, files, versions, notes, AI chats, and other materials connected to the work may be reviewed.</p></article>
-        <article class="step-card"><span>3</span><h3>Create the MADE Record</h3><p>AsMade brings together what the person did, how AI was used, key actions and decisions, available materials, and important limitations.</p></article>
-        <article class="step-card"><span>4</span><h3>The reader reviews and decides</h3><p>The reader can start with the main picture, then explore the process and available materials in more detail when needed. The final judgment remains theirs.</p></article>
-      </div>
-    </section>
-
-    <section class="content-block" aria-labelledby="made-title">
-      <p class="section-label">More about the structure</p>
-      <h2 id="made-title">MADE helps organise information about how the work was created.</h2>
-      <p>MADE offers four ways to look at how the work was created.</p>
-      <div class="comparison-table" role="table" aria-label="MADE structure">
-        <div class="comparison-row comparison-head" role="row"><span role="columnheader">MADE</span><span role="columnheader">What it covers</span></div>
-        <div class="comparison-row" role="row"><span role="cell">Materials</span><span role="cell">The work itself and available drafts, files, notes, sources, versions, AI chats, and other materials</span></div>
-        <div class="comparison-row" role="row"><span role="cell">Actions</span><span role="cell">Researching, creating, using AI, selecting, editing, checking, and revising</span></div>
-        <div class="comparison-row" role="row"><span role="cell">Decisions</span><span role="cell">What was accepted, changed, rejected, or approved, and how those choices shaped the result</span></div>
-        <div class="comparison-row" role="row"><span role="cell">Evolution</span><span role="cell">How the work changed over time, when that history is available</span></div>
-      </div>
-      <p>MADE is not a rigid template with four required, equally detailed parts. It is a flexible way to organise information about how a work was created.</p>
-    </section>
-
-    <section class="content-block" aria-labelledby="basis-title">
-      <p class="section-label">More context, not a ready-made verdict</p>
-      <h2 id="basis-title">Not every statement in a MADE Record is supported in the same way.</h2>
-      <p>A MADE Record can distinguish, for example, between:</p>
-      <div class="trust-grid">
-        <article class="trust-card"><h3>Creator-provided information</h3><p>Information provided by the creator about the work and process.</p></article>
-        <article class="trust-card"><h3>Information linked to materials</h3><p>Statements linked to drafts, files, versions, AI chats, notes, or other materials.</p></article>
-        <article class="trust-card"><h3>Findings from analysis</h3><p>Conclusions drawn from the available information.</p></article>
-        <article class="trust-card"><h3>Unresolved questions</h3><p>Information that remains incomplete, uncertain, or cannot be established from the available information.</p></article>
-      </div>
-      <p>AsMade does not reduce these differences to a simple “verified” label.</p>
-    </section>
-
-    <section id="limits" class="content-block limits-block" aria-labelledby="limits-title">
-      <p class="section-label">What AsMade does not do</p>
-      <h2 id="limits-title">More information. The decision remains yours.</h2>
-      <p>A MADE Record is not an AI detector, a legal certificate, proof of copyright or ownership, proof that a work was created entirely by a person, or a guarantee that the content itself is true or correct.</p>
-      <p>AsMade helps people better understand how a work was created. It does not make the final decision for you.</p>
-      <div class="limits-row"><span>Not an AI detector</span><span>Not legal certification</span><span>Not copyright or ownership proof</span><span>Not proof of fully human authorship</span><span>Not a truth guarantee</span></div>
-    </section>
-
-    <section id="pilot" class="content-block final-cta" aria-labelledby="pilot-title">
-      <div><p class="section-label">MVP Pilot</p><h2 id="pilot-title">Help us test whether MADE Records make it easier to understand how AI-assisted work was created.</h2><p>We're testing AsMade with different kinds of AI-assisted work and in different real-world situations. The initial application takes about two minutes. No project files are uploaded at this stage.</p></div>
-      <a class="primary-button" href="https://tally.so/r/NpQkRB?landing=general" target="_blank" rel="noopener">Apply for the MVP Pilot</a>
     </section>
   </main>
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-brand"><img src="asmade-wordmark.svg" alt="AsMade" width="72" height="14" /><p>A clearer record of how AI-assisted work was made.</p><p class="footer-boundary">AsMade is not an AI detector or a legal certification service.</p></div>
-      <div class="footer-links">
-        <nav class="footer-group" aria-label="Site links"><p class="footer-heading">Site</p><a href="/">Home</a><a href="/student.html">Students</a><a href="/artist.html">Creative Work</a><a href="/reviewer.html">Reviewers</a><a href="/records.html">MADE Records</a></nav>
-        <nav class="footer-group" aria-label="Project links"><p class="footer-heading">Project</p><a href="/about.html">About</a><a href="/contact">Contact</a></nav>
-        <nav class="footer-group" aria-label="Legal links"><p class="footer-heading">Legal</p><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/pilot-notice.html">Pilot Notice</a></nav>
-      </div>
-      <div class="footer-legal"><p>© 2026 AsMade. Operated by IAN KIRS PR BANJA KOVILJAČA, Serbia. Registration no. 68433266 · Tax ID 115550070 · Not registered for VAT.</p><p><a href="/contact">hello@useasmade.com</a></p></div>
-    </div>
-  </footer>
+
+  <footer class="v4-footer"><div class="v4-footer-inner"><div class="v4-footer-main"><div class="v4-footer-brand"><img src="/asmade-wordmark.svg" alt="AsMade" /><p>A clearer record of how AI-assisted work was made.</p><p class="footer-boundary">AsMade is not an AI detector or a legal certification service.</p></div><div class="v4-footer-links"><nav class="footer-group" aria-label="Site links"><p class="footer-heading">Site</p><a href="/" aria-current="page">Home</a><a href="/student.html">Students</a><a href="/artist.html">Creative Work</a><a href="/reviewer.html">Reviewers</a><a href="/records.html">MADE Records</a></nav><nav class="footer-group" aria-label="Project links"><p class="footer-heading">Project</p><a href="/about.html">About</a><a href="/contact">Contact</a></nav><nav class="footer-group" aria-label="Legal links"><p class="footer-heading">Legal</p><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/pilot-notice.html">Pilot Notice</a></nav></div></div><div class="v4-footer-legal"><p>© 2026 AsMade. Operated by IAN KIRS PR BANJA KOVILJAČA, Serbia. Registration no. 68433266 · Tax ID 115550070 · Not registered for VAT.</p><p><a href="/contact">hello@useasmade.com</a></p></div></div></footer>
+
+  <script>
+    (()=>{
+      const content={
+        direction:{role:'Creator',title:'Set the dramatic direction.',copy:'The Creator planned the page and defined the dramatic function before the final visual arrangement was selected.'},
+        generation:{role:'AI-assisted',title:'Generated scene and visual alternatives.',copy:'AI supported scene breakdowns, prompt language and image generation in response to Creator direction.'},
+        rejection:{role:'Creator',title:'Rejected repetitive staging.',copy:'The Creator redirected the camera strategy and changed the workflow after unsuitable visual results.'},
+        selection:{role:'Creator',title:'Selected the final panels.',copy:'Earlier alternatives were replaced by the later selected set. The available materials preserve part of that iteration history.'},
+        assembly:{role:'Creator',title:'Assembled the finished page.',copy:'The selected images, text, balloons, caption and page layout were integrated into the final page; operator identity is partly declaration-based.'}
+      };
+      const steps=[...document.querySelectorAll('[data-trace]')];
+      const role=document.querySelector('[data-trace-role]');const title=document.querySelector('[data-trace-title]');const copy=document.querySelector('[data-trace-copy]');
+      steps.forEach(step=>step.addEventListener('click',()=>{const key=step.dataset.trace;const item=content[key];steps.forEach(s=>{const active=s===step;s.classList.toggle('is-active',active);s.setAttribute('aria-selected',active?'true':'false')});role.textContent=item.role;title.textContent=item.title;copy.textContent=item.copy}));
+      const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if(reduce){document.querySelectorAll('.fade').forEach(el=>el.classList.add('on'));return;}
+      const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('on');observer.unobserve(entry.target)}}),{threshold:.1});
+      document.querySelectorAll('.fade').forEach(el=>observer.observe(el));
+    })();
+  </script>
 </body>
 </html>
