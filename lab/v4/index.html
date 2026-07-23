@@ -8,14 +8,17 @@
   <meta name="description" content="AsMade Design Lab clean-sheet Home prototype." />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="./v4.css" />
+  <link rel="stylesheet" href="./audience.css" />
+  <link rel="stylesheet" href="./polish.css" />
   <link rel="stylesheet" href="../lab-controls.css" />
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
   <header class="v4-header">
     <div class="v4-nav">
-      <a href="/" aria-label="AsMade production home"><img src="/asmade-wordmark.svg" alt="AsMade" /></a>
-      <nav class="nav-right" aria-label="Prototype navigation"><a href="#record-map">What a Record holds</a><a href="#proof">Real Records</a><a class="nav-cta" href="https://tally.so/r/NpQkRB?landing=general" target="_blank" rel="noopener">MVP Pilot</a></nav>
+      <a href="/lab/v4/" aria-label="AsMade V4 home"><img src="/asmade-wordmark.svg" alt="AsMade" /></a>
+      <nav class="audience-nav" aria-label="V4 audience pages"><a href="/lab/v4/" aria-current="page">Home</a><a href="/lab/v4/student.html">Students</a><a href="/lab/v4/artist.html">Creative Work</a><a href="/lab/v4/reviewer.html">Reviewers</a><a href="/records.html">MADE Records</a></nav>
+      <a class="nav-cta" href="https://tally.so/r/NpQkRB?landing=general" target="_blank" rel="noopener">Apply for the MVP Pilot</a>
     </div>
   </header>
 
@@ -24,10 +27,10 @@
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-copy fade">
           <p class="hero-kicker">A content passport for one AI-assisted work</p>
-          <h1 id="hero-title">AI was part of the work.<em>What else was?</em></h1>
-          <p class="hero-lede">A binary disclosure cannot show direction, rejection, selection, editing, assembly, or what evidence is actually available.</p>
+          <h1 id="hero-title">Was AI used?<em>That's only the first question.</em></h1>
+          <p class="hero-lede">Knowing AI was used is only a starting point. It does not show who did what, which decisions shaped the work, or what information supports that account.</p>
           <p class="hero-lede"><strong>AsMade creates a MADE Record</strong>: a readable account of how one specific work was made, what supports that account, and what remains uncertain.</p>
-          <div class="hero-actions"><a class="pill solid" href="#trace">Trace a real work</a><a class="pill" href="/sample-comic.html">Open the full Record</a></div>
+          <div class="hero-actions"><a class="pill solid" href="#trace">Explore a real work trace</a><a class="pill" href="/sample-comic.html">Open the full Record</a></div>
         </div>
 
         <section class="trace-card fade" id="trace" aria-label="Interactive trace of the Comic MADE Record">
@@ -47,13 +50,13 @@
     </div>
 
     <section class="manifesto">
-      <div class="manifesto-grid fade"><p class="label">The premise</p><div><h2>The final file is the ending. The useful context came before it.</h2><p class="big-copy">When AI is involved, the question is not only whether a tool appeared. A reader may need to understand who set direction, what the tool contributed, what was rejected, what changed, what was selected, and which parts of that account can actually be supported.</p></div></div>
+      <div class="manifesto-grid fade"><p class="label">The premise</p><div><h2>The final file is the result. The useful context is how it got there.</h2><p class="big-copy">The same kind of final result can come from very different processes. A reader may need to understand who set direction, what AI contributed, what was rejected or changed, and which parts of that account are supported by available information.</p></div></div>
       <div class="question-line fade"><div class="question"><span>Without a Record</span><strong>The reader reconstructs context from the result, chats, screenshots, drafts, notes and explanations.</strong></div><div class="question"><span>With a MADE Record</span><strong>The important context is organised around one identifiable Work and presented with its support and limits.</strong></div></div>
     </section>
 
     <section class="record-map" id="record-map">
       <div class="map-shell">
-        <div class="map-head fade"><h2>One Record. Four questions.</h2><p>Not four equal boxes. Four reading moves that help a person move from the finished Work to the basis behind the Record without turning the page into a raw evidence dump.</p></div>
+        <div class="map-head fade"><h2>One Record. Four questions.</h2><p>Start with the Work, then move to contribution, support and limits only when needed. The Record adds structure without turning the page into a raw evidence dump.</p></div>
         <div class="map-flow fade">
           <div class="map-node"><span>01 · Work</span><h3>What are we looking at?</h3><p>A specific work and version. The Record is not a person-level score.</p></div>
           <div class="map-node"><span>02 · Contribution</span><h3>Who did what?</h3><p>Human direction, AI assistance, editing, selection and other significant roles.</p></div>
@@ -65,27 +68,27 @@
     </section>
 
     <section class="proof" id="proof">
-      <div class="proof-head fade"><h2>Open the evidence, not a marketing illustration.</h2><p>The current public product already has two controlled demo Records. These prototypes use the real product as proof.</p></div>
+      <div class="proof-head fade"><h2>See the product, not a mockup.</h2><p>Two controlled demo Records show the current product on authorised real work.</p></div>
       <div class="case-grid fade">
-        <a class="case case-comic" href="/sample-comic.html"><img src="https://s3.eu-central-003.backblazeb2.com/asmade-public-presentation-euc1-7f3a9c/public-demo/mr-pilot-ec-p050-001/materials/m-001/presentation-v1.png" alt="Comic Page 050 public presentation copy" /><div class="case-content"><div class="case-meta"><span>Creative work</span><span>MR-PILOT-EC-P050-001</span></div><div><h3>The Count of Monte Cristo — Page 050</h3><p>Human direction and selection shaped an AI-assisted visual workflow. The Record links principal findings to available materials and states important gaps.</p></div><span class="case-arrow" aria-hidden="true">↗</span></div></a>
-        <a class="case case-cv" href="/sample-cv.html"><div><div class="case-meta"><span>Professional document</span><span>MR-PILOT-CV-001</span></div><div class="paper-icon" aria-hidden="true"></div></div><div><h3>Professional CV</h3><p>A privacy-sensitive example with source information, AI-assisted wording and translation, creator review, redacted public evidence and explicit access limits.</p></div><span class="case-arrow" aria-hidden="true">↗</span></a>
+        <a class="case case-comic" href="/sample-comic.html"><img src="https://s3.eu-central-003.backblazeb2.com/asmade-public-presentation-euc1-7f3a9c/public-demo/mr-pilot-ec-p050-001/materials/m-001/presentation-v1.png" alt="Comic Page 050 public presentation copy" /><div class="case-content"><div class="case-meta"><span>Creative work</span><span>MR-PILOT-EC-P050-001</span></div><div><h3>The Count of Monte Cristo — Page 050</h3><p>Human direction and selection shaped an AI-assisted visual workflow. The Record links principal findings to available materials and states important gaps.</p></div><span class="case-action">Open the full Record <span aria-hidden="true">↗</span></span></div></a>
+        <a class="case case-cv case-cv-real" href="/sample-cv.html"><div class="cv-case-visual"><img class="cv-page cv-page-primary" src="https://s3.eu-central-003.backblazeb2.com/asmade-public-presentation-euc1-7f3a9c/public-demo/mr-pilot-cv-001/materials/m2-001/redacted-page-1-v1.webp" alt="English page of approved redacted Professional CV preview" /><img class="cv-page cv-page-secondary" src="https://s3.eu-central-003.backblazeb2.com/asmade-public-presentation-euc1-7f3a9c/public-demo/mr-pilot-cv-001/materials/m2-001/redacted-page-2-v1.webp" alt="" /></div><div class="case-content"><div class="case-meta"><span>Professional document</span><span>MR-PILOT-CV-001</span></div><div><h3>Professional CV</h3><p>A privacy-sensitive example with source information, AI-assisted wording and translation, creator review, redacted public evidence and explicit access limits.</p></div><span class="case-action">Open the full Record <span aria-hidden="true">↗</span></span></div></a>
       </div>
     </section>
 
     <section class="boundary">
       <div class="boundary-shell">
         <p class="label fade">What a MADE Record is not</p>
-        <h2 class="fade">More context without pretending the context is a verdict.</h2>
+        <h2 class="fade">More context. The judgment stays with the reader.</h2>
         <div class="boundary-list fade"><span>Not an AI detector</span><span>Not legal certification</span><span>Not copyright or ownership proof</span><span>Not proof of fully human authorship</span><span>Not a truth guarantee</span></div>
         <div class="close fade"><p>AsMade records what can be said about one Work from the available information, keeps the basis and uncertainty visible, and leaves the final decision with the reader.</p><a class="pill solid" href="https://tally.so/r/NpQkRB?landing=general" target="_blank" rel="noopener">Apply for the MVP Pilot</a></div>
       </div>
     </section>
   </main>
 
-  <footer class="v4-footer"><div class="footer-row"><img src="/asmade-wordmark.svg" alt="AsMade" /><div class="footer-links"><a href="/records.html">MADE Records</a><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/contact">Contact</a></div><span>© 2026 AsMade</span></div></footer>
+  <footer class="v4-footer"><div class="v4-footer-inner"><div class="v4-footer-main"><div class="v4-footer-brand"><img src="/asmade-wordmark.svg" alt="AsMade" /><p>A clearer record of how AI-assisted work was made.</p><p class="footer-boundary">AsMade is not an AI detector or a legal certification service.</p></div><div class="v4-footer-links"><nav class="footer-group" aria-label="Site links"><p class="footer-heading">Site</p><a href="/lab/v4/" aria-current="page">Home</a><a href="/lab/v4/student.html">Students</a><a href="/lab/v4/artist.html">Creative Work</a><a href="/lab/v4/reviewer.html">Reviewers</a><a href="/records.html">MADE Records</a></nav><nav class="footer-group" aria-label="Project links"><p class="footer-heading">Project</p><a href="/about.html">About</a><a href="/contact">Contact</a></nav><nav class="footer-group" aria-label="Legal links"><p class="footer-heading">Legal</p><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/pilot-notice.html">Pilot Notice</a></nav></div></div><div class="v4-footer-legal"><p>© 2026 AsMade. Operated by IAN KIRS PR BANJA KOVILJAČA, Serbia. Registration no. 68433266 · Tax ID 115550070 · Not registered for VAT.</p><p><a href="/contact">hello@useasmade.com</a></p></div></div></footer>
 
   <aside class="design-lab-panel" data-design-lab aria-label="AsMade Design Lab controls">
-    <div class="lab-panel-main"><div class="lab-panel-title"><strong>AsMade Design Lab</strong><span>Home comparison</span></div><nav class="lab-variants" aria-label="Design variants"><a class="lab-variant" data-lab-version="v2" href="/lab/v2/">Current / V2</a><a class="lab-variant" data-lab-version="v3" href="/lab/v3/">V3 · Product-first</a><a class="lab-variant" data-lab-version="v4" href="/lab/v4/">V4 · Clean-sheet</a></nav><button class="lab-hide" type="button" data-lab-hide title="Hide controls. Press Shift+L to toggle.">Hide controls</button></div><button class="lab-restore" type="button" data-lab-restore title="Show Design Lab controls">Lab</button>
+    <div class="lab-panel-main"><div class="lab-panel-title"><strong>AsMade Design Lab</strong><span>Home · V4 selected</span></div><nav class="lab-variants" aria-label="Design variants"><a class="lab-variant" data-lab-version="v2" href="/lab/v2/">Current / V2</a><a class="lab-variant" data-lab-version="v3" href="/lab/v3/">V3 · Product-first</a><a class="lab-variant" data-lab-version="v4" href="/lab/v4/">V4 · Clean-sheet</a></nav><button class="lab-hide" type="button" data-lab-hide title="Hide controls. Press Shift+L to toggle.">Hide controls</button></div><button class="lab-restore" type="button" data-lab-restore title="Show Design Lab controls">Lab</button>
   </aside>
 
   <script>
