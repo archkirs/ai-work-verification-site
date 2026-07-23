@@ -11,11 +11,15 @@ const pages = [
   { canonical: 'reviewer.html', source: 'lab/v4/reviewer.html' },
 ];
 
-const productionStyles = [
-  '<link rel="stylesheet" href="/lab/v4/v4.css" />',
-  '<link rel="stylesheet" href="/lab/v4/audience.css" />',
-  '<link rel="stylesheet" href="/lab/v4/polish.css" />',
+const productionAssets = [
+  { source: 'lab/v4/v4.css', target: 'v4-audience-base.css' },
+  { source: 'lab/v4/audience.css', target: 'v4-audience-pages.css' },
+  { source: 'lab/v4/polish.css', target: 'v4-audience-polish.css' },
 ];
+
+const productionStyles = productionAssets.map(
+  ({ target }) => `<link rel="stylesheet" href="/${target}" />`,
+);
 
 function extract(html, pattern, label, file) {
   const match = html.match(pattern);
@@ -65,7 +69,7 @@ function buildCanonical(canonicalHtml, v4Html, mapping) {
   if (output.includes('design-lab-panel')) failures.push('Design Lab panel remains');
   if (output.includes('lab-controls.js')) failures.push('Design Lab script remains');
   if (/meta\s+name=["']robots["'][^>]*noindex/i.test(output)) failures.push('noindex remains');
-  if (body.includes('/lab/v4/')) failures.push('Design Lab route remains in body');
+  if (output.includes('/lab/v4/')) failures.push('Design Lab path remains in canonical output');
   if (!head.includes('rel="canonical"')) failures.push('canonical metadata missing');
   if (!productionStyles.every((style) => head.includes(style))) failures.push('V4 production styles missing');
 
@@ -74,6 +78,19 @@ function buildCanonical(canonicalHtml, v4Html, mapping) {
   }
   return output;
 }
+
+function publishCanonicalAssets() {
+  if (!isProduction) return;
+
+  for (const asset of productionAssets) {
+    const sourcePath = path.join(root, asset.source);
+    const targetPath = path.join(root, asset.target);
+    if (!fs.existsSync(sourcePath)) throw new Error(`Missing V4 source asset: ${asset.source}`);
+    fs.copyFileSync(sourcePath, targetPath);
+  }
+}
+
+publishCanonicalAssets();
 
 for (const mapping of pages) {
   const canonicalPath = path.join(root, mapping.canonical);
@@ -89,6 +106,6 @@ for (const mapping of pages) {
 
 console.log(
   isProduction
-    ? `Promoted approved V4 audience pages to ${pages.length} canonical production routes.`
-    : `Validated V4 production promotion for ${pages.length} canonical routes (Preview dry run).`
+    ? `Promoted approved V4 audience pages to ${pages.length} canonical production routes with canonical V4 assets.`
+    : `Validated V4 production promotion for ${pages.length} canonical routes (Preview dry run).`,
 );
