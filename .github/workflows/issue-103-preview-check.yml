@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - bugfix/issue-103-track-v4-audience-assets
+  pull_request:
+    branches:
+      - main
 
 permissions:
   contents: read
