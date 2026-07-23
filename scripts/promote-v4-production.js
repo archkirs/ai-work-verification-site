@@ -2,119 +2,61 @@ const fs = require('fs');
 const path = require('path');
 
 const root = path.resolve(__dirname, '..');
-const isProduction = process.env.VERCEL_ENV === 'production';
 
 const pages = [
-  { canonical: 'index.html', source: 'lab/v4/index.html' },
-  { canonical: 'student.html', source: 'lab/v4/student.html' },
-  { canonical: 'artist.html', source: 'lab/v4/artist.html' },
-  { canonical: 'reviewer.html', source: 'lab/v4/reviewer.html' },
+  { file: 'index.html', marker: 'A content passport for one AI-assisted work', interactive: false },
+  { file: 'student.html', marker: 'AsMade for Students · one assignment, more context', interactive: true },
+  { file: 'artist.html', marker: 'AsMade for Creative Work · show the choices behind the output', interactive: true },
+  { file: 'reviewer.html', marker: 'AsMade for Reviewers · start with context, not a verdict', interactive: true },
 ];
 
-const productionAssets = [
-  { source: 'lab/v4/v4.css', target: 'v4-audience-base.css' },
-  { source: 'lab/v4/audience.css', target: 'v4-audience-pages.css' },
-  { source: 'lab/v4/polish.css', target: 'v4-audience-polish.css' },
+const publicAssets = [
+  { source: '/v4-audience-base.css', destination: '/lab/v4/v4.css' },
+  { source: '/v4-audience-pages.css', destination: '/lab/v4/audience.css' },
+  { source: '/v4-audience-polish.css', destination: '/lab/v4/polish.css' },
+  { source: '/audience.js', destination: '/lab/v4/audience.js' },
 ];
 
-const productionStyles = productionAssets.map(
-  ({ target }) => `<link rel="stylesheet" href="/${target}" />`,
-);
-
-function extract(html, pattern, label, file) {
-  const match = html.match(pattern);
-  if (!match) throw new Error(`Missing ${label} in ${file}`);
-  return match[0];
-}
-
-function prepareHead(canonicalHtml, file) {
-  let head = extract(canonicalHtml, /<head>[\s\S]*?<\/head>/i, '<head>', file);
-
-  // Keep the canonical production metadata, schema, favicon and observability,
-  // but replace legacy page CSS with the approved V4 audience-page system.
-  head = head.replace(/\s*<link[^>]+rel=["']stylesheet["'][^>]*\/?>/gi, '');
-  head = head.replace('</head>', `  ${productionStyles.join('\n  ')}\n</head>`);
-  return head;
-}
-
-function prepareBody(v4Html, file) {
-  let body = extract(v4Html, /<body[^>]*>[\s\S]*?<\/body>/i, '<body>', file);
-
-  // Design Lab controls are review-only and must never ship on canonical routes.
-  body = body.replace(/\s*<aside[^>]*class=["'][^"']*design-lab-panel[^"']*["'][^>]*>[\s\S]*?<\/aside>/i, '');
-  body = body.replace(/\s*<script[^>]+src=["'](?:\.\.\/|\/)?lab-controls\.js["'][^>]*><\/script>/gi, '');
-
-  // Canonical audience navigation must never point back into the Design Lab.
-  body = body
-    .replaceAll('/lab/v4/student.html', '/student.html')
-    .replaceAll('/lab/v4/artist.html', '/artist.html')
-    .replaceAll('/lab/v4/reviewer.html', '/reviewer.html')
-    .replaceAll('/lab/v4/', '/');
-
-  return body;
-}
-
-function buildCanonical(canonicalHtml, v4Html, mapping) {
-  const head = prepareHead(canonicalHtml, mapping.canonical);
-  const body = prepareBody(v4Html, mapping.source);
-  const headIndex = canonicalHtml.indexOf('<head>');
-  if (headIndex < 0) throw new Error(`Missing canonical document prefix in ${mapping.canonical}`);
-  const prefix = canonicalHtml.slice(0, headIndex);
-  const output = `${prefix}${head}\n${body}\n</html>\n`;
-
-  const failures = [];
-  if (!output.includes('A content passport for one AI-assisted work') && mapping.canonical === 'index.html') {
-    failures.push('V4 Home marker missing');
-  }
-  if (output.includes('design-lab-panel')) failures.push('Design Lab panel remains');
-  if (output.includes('lab-controls.js')) failures.push('Design Lab script remains');
-  if (/meta\s+name=["']robots["'][^>]*noindex/i.test(output)) failures.push('noindex remains');
-  if (output.includes('/lab/v4/')) failures.push('Design Lab path remains in canonical output');
-  if (!head.includes('rel="canonical"')) failures.push('canonical metadata missing');
-  if (!productionStyles.every((style) => head.includes(style))) failures.push('V4 production styles missing');
-
-  if (failures.length) {
-    throw new Error(`${mapping.canonical}: ${failures.join('; ')}`);
-  }
-  return output;
-}
-
-function validateCanonicalAssetDelivery() {
-  const vercelPath = path.join(root, 'vercel.json');
-  const vercel = JSON.parse(fs.readFileSync(vercelPath, 'utf8'));
+function validateAssetDelivery() {
+  const vercel = JSON.parse(fs.readFileSync(path.join(root, 'vercel.json'), 'utf8'));
   const rewrites = Array.isArray(vercel.rewrites) ? vercel.rewrites : [];
 
-  for (const asset of productionAssets) {
-    const sourcePath = path.join(root, asset.source);
-    if (!fs.existsSync(sourcePath)) throw new Error(`Missing adopted V4 source asset: ${asset.source}`);
-
-    const expectedSource = `/${asset.target}`;
-    const expectedDestination = `/${asset.source}`;
+  for (const asset of publicAssets) {
+    const sourcePath = path.join(root, asset.destination.replace(/^\//, ''));
+    if (!fs.existsSync(sourcePath)) {
+      throw new Error(`Missing adopted V4 source asset: ${asset.destination}`);
+    }
     const mapped = rewrites.some(
-      (rewrite) => rewrite.source === expectedSource && rewrite.destination === expectedDestination,
+      (rewrite) => rewrite.source === asset.source && rewrite.destination === asset.destination,
     );
     if (!mapped) {
-      throw new Error(`Missing Vercel rewrite ${expectedSource} -> ${expectedDestination}`);
+      throw new Error(`Missing Vercel rewrite ${asset.source} -> ${asset.destination}`);
     }
   }
 }
 
-validateCanonicalAssetDelivery();
+function validateCanonicalPage(page) {
+  const html = fs.readFileSync(path.join(root, page.file), 'utf8');
+  const failures = [];
 
-for (const mapping of pages) {
-  const canonicalPath = path.join(root, mapping.canonical);
-  const sourcePath = path.join(root, mapping.source);
-  const canonicalHtml = fs.readFileSync(canonicalPath, 'utf8');
-  const v4Html = fs.readFileSync(sourcePath, 'utf8');
-  const output = buildCanonical(canonicalHtml, v4Html, mapping);
+  if (!html.includes(page.marker)) failures.push('approved V4 marker missing');
+  if (!html.includes('rel="canonical"')) failures.push('canonical metadata missing');
+  if (!html.includes('/v4-audience-base.css')) failures.push('V4 base stylesheet missing');
+  if (!html.includes('/v4-audience-pages.css')) failures.push('V4 audience stylesheet missing');
+  if (!html.includes('/v4-audience-polish.css')) failures.push('V4 polish stylesheet missing');
+  if (html.includes('/lab/v4/')) failures.push('Design Lab path leaked into canonical HTML');
+  if (html.includes('design-lab-panel')) failures.push('Design Lab controls leaked into canonical HTML');
+  if (/meta\s+name=["']robots["'][^>]*noindex/i.test(html)) failures.push('canonical noindex present');
+  if (page.interactive && !html.includes('src="./audience.js"')) {
+    failures.push('audience interaction script missing');
+  }
 
-  if (isProduction) {
-    fs.writeFileSync(canonicalPath, output, 'utf8');
+  if (failures.length) {
+    throw new Error(`${page.file}: ${failures.join('; ')}`);
   }
 }
 
-console.log(
-  isProduction
-    ? `Promoted approved V4 audience pages to ${pages.length} canonical production routes with canonical V4 asset rewrites.`
-    : `Validated V4 production promotion for ${pages.length} canonical routes (Preview dry run).`,
-);
+validateAssetDelivery();
+pages.forEach(validateCanonicalPage);
+
+console.log(`Validated ${pages.length} canonical V4 audience sources with identical Preview/production content selection.`);
