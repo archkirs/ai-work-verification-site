@@ -1,0 +1,60 @@
+/* Issue #98 Records-directory refinement after mobile review. */
+.records-v4-hero-zone {
+  background: var(--v4-night);
+  color: #f9f7f1;
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+
+.records-v4-hero-zone .records-v4-hero h1 { color: #f9f7f1; }
+.records-v4-hero-zone .records-v4-hero p:last-child { color: rgba(255,255,255,.66); }
+
+/* Keep all five navigation items visible against the dark V4 header. */
+body.v4-surface .v4-primary-nav a {
+  color: rgba(255,255,255,.64) !important;
+}
+body.v4-surface .v4-primary-nav a:hover,
+body.v4-surface .v4-primary-nav a[aria-current="page"] {
+  color: #fff !important;
+}
+
+/* Registry/file hierarchy: Record identity first, Work title second. */
+.record-v4-content h3 {
+  overflow-wrap: anywhere;
+  font-size: clamp(22px,2.6vw,30px);
+  font-weight: 600;
+  letter-spacing: -.026em;
+}
+
+.record-v4-type {
+  margin: -10px 0 5px !important;
+  color: var(--v4-accent) !important;
+  font-size: 10px !important;
+  font-weight: 760;
+  letter-spacing: .075em;
+  line-height: 1.35 !important;
+  text-transform: uppercase;
+}
+
+.record-v4-work-title {
+  margin: 0 0 10px !important;
+  color: var(--v4-ink) !important;
+  font-size: 19px !important;
+  font-weight: 560;
+  line-height: 1.18 !important;
+  letter-spacing: -.022em;
+}
+
+@media (max-width: 820px) {
+  body.v4-surface .v4-primary-nav a {
+    color: rgba(255,255,255,.68) !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .records-v4-hero-zone .records-v4-hero {
+    padding-top: 44px;
+    padding-bottom: 44px;
+  }
+  .record-v4-content h3 { font-size: 24px; }
+  .record-v4-work-title { font-size: 18px !important; }
+}
