@@ -1,0 +1,534 @@
+@import url('/v4-site.css');
+
+/* Issue #98 Stage 3 — V4 product-surface layer for MADE Records. */
+:root {
+  --record-v4-night: #11110f;
+  --record-v4-paper: #fbfaf7;
+  --record-v4-cream: #f3efe7;
+  --record-v4-ink: #161512;
+  --record-v4-muted: #706c63;
+  --record-v4-line: #d8d1c5;
+  --record-v4-line-strong: #b8b0a4;
+  --record-v4-accent: #7088b7;
+}
+
+body.record-demo-page {
+  --accent: var(--record-v4-accent);
+  --accent-soft: #e9edf4;
+  --ink: var(--record-v4-ink);
+  --muted: var(--record-v4-muted);
+  --line: var(--record-v4-line);
+  --line-strong: var(--record-v4-line-strong);
+  --surface-soft: #f0ede6;
+  margin: 0;
+  background: var(--record-v4-night);
+  color: var(--record-v4-ink);
+}
+
+/* Shared V4 header, adapted to the existing Record-page markup. */
+body.record-demo-page .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 80;
+  border-bottom: 1px solid rgba(255,255,255,.12);
+  background: rgba(17,17,15,.97);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+body.record-demo-page .topbar {
+  width: min(1320px, calc(100% - 56px));
+  min-height: 78px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas: "brand nav cta";
+  align-items: center;
+  gap: 24px;
+}
+
+body.record-demo-page .brand {
+  grid-area: brand;
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+}
+
+body.record-demo-page .brand img {
+  display: block;
+  width: 84px;
+  filter: invert(1);
+}
+
+body.record-demo-page .nav {
+  grid-area: nav;
+  justify-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  min-width: 0;
+  color: rgba(255,255,255,.62);
+  font-size: 10px;
+}
+
+body.record-demo-page .nav a {
+  position: relative;
+  padding: 9px 0;
+  color: rgba(255,255,255,.62);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+body.record-demo-page .nav a:hover,
+body.record-demo-page .nav a.active,
+body.record-demo-page .nav a[aria-current="page"] { color: #fff; }
+
+body.record-demo-page .nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 2px;
+  height: 1px;
+  background: transparent;
+}
+
+body.record-demo-page .nav a.active::after,
+body.record-demo-page .nav a[aria-current="page"]::after { background: var(--record-v4-accent); }
+
+body.record-demo-page .top-button {
+  grid-area: cta;
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 18px;
+  border: 1px solid var(--record-v4-accent);
+  border-radius: 999px;
+  background: var(--record-v4-accent);
+  color: var(--record-v4-night);
+  font-size: 11px;
+  font-weight: 740;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+body.record-demo-page .top-button:hover {
+  border-color: #fff;
+  background: #fff;
+  color: var(--record-v4-night);
+}
+
+/* Product workspace. */
+body.record-demo-page main {
+  width: 100%;
+  margin: 0;
+  padding: 0 0 76px;
+  background: var(--record-v4-cream);
+}
+
+body.record-demo-page main > div:first-child {
+  width: min(1240px, calc(100% - 48px));
+  margin: 0 auto !important;
+  padding: 24px 0 16px;
+}
+
+body.record-demo-page main > div:first-child .record-link-button {
+  min-height: 38px;
+  padding: 0 13px;
+  border-color: var(--record-v4-line-strong);
+  border-radius: 999px;
+  background: rgba(255,255,255,.42);
+  font-size: 11px;
+}
+
+body.record-demo-page main > div:first-child .record-link-button:hover {
+  border-color: var(--record-v4-ink);
+  background: #fff;
+}
+
+body.record-demo-page .record-file {
+  width: min(1240px, calc(100% - 48px));
+  margin: 0 auto;
+  overflow: hidden;
+  border: 1px solid var(--record-v4-line-strong);
+  border-radius: 18px;
+  background: var(--record-v4-paper);
+  box-shadow: 0 22px 54px rgba(22,21,18,.08);
+  animation: recordV4ShellIn .55s ease both;
+}
+
+/* Record identity becomes the dark product anchor. */
+body.record-demo-page .record-file-header {
+  min-height: 104px;
+  padding: 22px 28px;
+  border-bottom: 1px solid rgba(255,255,255,.12);
+  background: var(--record-v4-night);
+  color: #f9f7f1;
+}
+
+body.record-demo-page .record-file-brand img { filter: invert(1); }
+body.record-demo-page .record-file-product {
+  border-left-color: rgba(255,255,255,.28);
+  color: rgba(255,255,255,.72);
+}
+body.record-demo-page .record-file-grid-mark i { background: #fff; opacity: .58; }
+
+body.record-demo-page .record-meta-item { border-left-color: rgba(255,255,255,.14); }
+body.record-demo-page .record-meta-item span { color: var(--record-v4-accent); }
+body.record-demo-page .record-meta-item strong { color: #fff; }
+
+/* Functional tabs remain restrained and file-like. */
+body.record-demo-page .record-file-tabs {
+  gap: 5px !important;
+  padding: 10px 22px 0 !important;
+  border-bottom: 1px solid var(--record-v4-line);
+  background: #e9e4da !important;
+}
+
+body.record-demo-page .record-file-tab {
+  min-height: 42px;
+  border-color: transparent !important;
+  border-radius: 8px 8px 0 0 !important;
+  background: transparent !important;
+  color: var(--record-v4-muted) !important;
+  font-size: 12px !important;
+  font-weight: 650;
+}
+
+body.record-demo-page .record-file-tab:hover {
+  background: rgba(255,255,255,.55) !important;
+  color: var(--record-v4-ink) !important;
+}
+
+body.record-demo-page .record-file-tab.is-active {
+  border: 1px solid var(--record-v4-line-strong) !important;
+  border-bottom-color: var(--record-v4-paper) !important;
+  background: var(--record-v4-paper) !important;
+  color: var(--record-v4-ink) !important;
+}
+
+body.record-demo-page .record-file-panel {
+  min-height: 0;
+  padding: clamp(30px,4vw,48px);
+  background: var(--record-v4-paper);
+}
+
+body.record-demo-page .record-file-panel.is-active {
+  animation: recordV4PanelIn .28s ease both;
+}
+
+body.record-demo-page .record-tab-kicker {
+  color: var(--record-v4-accent);
+  font-size: 11px;
+  font-weight: 760;
+  letter-spacing: .075em;
+}
+
+body.record-demo-page .record-tab-title {
+  margin-bottom: 14px;
+  color: var(--record-v4-ink);
+  font-size: clamp(30px,4vw,46px) !important;
+  font-weight: 540;
+  line-height: 1.02 !important;
+  letter-spacing: -.042em !important;
+}
+
+body.record-demo-page .record-tab-lede {
+  color: var(--record-v4-muted);
+  line-height: 1.58;
+}
+
+body.record-demo-page .record-primary-grid {
+  gap: clamp(30px,5vw,58px);
+}
+
+body.record-demo-page .work-preview {
+  border-color: var(--record-v4-line);
+  border-radius: 14px;
+  background: #e9e3d9;
+}
+
+body.record-demo-page .work-preview-caption {
+  border-top-color: var(--record-v4-line);
+  background: #fff;
+}
+
+body.record-demo-page .record-identity-block {
+  padding-bottom: 20px;
+  margin-bottom: 18px;
+  border-bottom-color: var(--record-v4-line);
+}
+
+body.record-demo-page .record-identity-row {
+  grid-template-columns: 90px 1fr;
+  padding: 6px 0;
+}
+
+body.record-demo-page .record-result {
+  padding-top: 20px;
+}
+
+body.record-demo-page .record-result h2 {
+  font-size: clamp(25px,3vw,34px);
+  font-weight: 540;
+  line-height: 1.08;
+  letter-spacing: -.035em;
+}
+
+body.record-demo-page .record-result p {
+  color: #4f4c46;
+  font-size: 16px;
+  line-height: 1.58;
+}
+
+body.record-demo-page .principal-findings { margin-top: 34px; }
+body.record-demo-page .principal-findings-head { margin-bottom: 14px; }
+body.record-demo-page .principal-findings-head h2 {
+  font-size: 25px;
+  font-weight: 560;
+  letter-spacing: -.025em;
+}
+
+body.record-demo-page .finding-list {
+  border-color: var(--record-v4-line);
+  border-radius: 12px;
+  background: var(--record-v4-line);
+}
+
+body.record-demo-page .finding-item {
+  padding: 17px 19px;
+  background: #fff;
+}
+
+body.record-demo-page .finding-copy h3 {
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+body.record-demo-page .finding-button,
+body.record-demo-page .evidence-selector,
+body.record-demo-page .record-link-button,
+body.record-demo-page .record-export-button {
+  border-radius: 8px;
+  transition: background-color .16s ease,border-color .16s ease,color .16s ease,transform .16s ease;
+}
+
+body.record-demo-page .record-export-button {
+  min-height: 44px !important;
+  padding: 0 17px !important;
+  border-color: var(--record-v4-accent) !important;
+  background: var(--record-v4-accent) !important;
+  color: var(--record-v4-night) !important;
+  font-weight: 720 !important;
+}
+
+body.record-demo-page .record-export-button:hover {
+  border-color: var(--record-v4-night) !important;
+  background: var(--record-v4-night) !important;
+  color: #fff !important;
+}
+
+body.record-demo-page .record-limitation {
+  margin-top: 22px;
+  padding: 17px 19px;
+  border-left: 3px solid var(--record-v4-accent);
+  background: #eee9df;
+}
+
+body.record-demo-page .process-list { margin-top: 28px; }
+body.record-demo-page .process-list::before { background: var(--record-v4-line-strong); }
+body.record-demo-page .process-marker {
+  border-color: var(--record-v4-line-strong);
+  background: var(--record-v4-paper);
+}
+
+body.record-demo-page .process-step,
+body.record-demo-page .evidence-layout,
+body.record-demo-page .full-catalogue,
+body.record-demo-page .history-item,
+body.record-demo-page .record-limitation {
+  animation-name: recordV4ScrollReveal;
+  animation-duration: 1ms;
+  animation-fill-mode: both;
+  animation-timing-function: linear;
+  animation-timeline: view();
+  animation-range: entry 0% cover 22%;
+}
+
+body.record-demo-page .evidence-selector.is-active {
+  border-color: var(--record-v4-night);
+  background: var(--record-v4-night);
+  color: #fff;
+}
+
+body.record-demo-page .material-card,
+body.record-demo-page .evidence-catalogue {
+  border-color: var(--record-v4-line);
+  background: #fff;
+}
+
+body.record-demo-page .record-boundary-note {
+  border-color: var(--record-v4-line);
+  background: #eee9df;
+}
+
+/* Existing CV footer and legacy Comic footer both enter the V4 dark family. */
+body.record-demo-page .footer,
+body.record-demo-page .site-footer {
+  border-top: 1px solid rgba(255,255,255,.12);
+  background: var(--record-v4-night);
+  color: rgba(255,255,255,.62);
+}
+
+body.record-demo-page .footer .footer-inner {
+  width: min(1180px,calc(100% - 48px));
+  padding-top: 46px;
+  padding-bottom: 84px;
+  border-top: 0;
+}
+
+body.record-demo-page .footer .footer-brand img,
+body.record-demo-page .site-footer img { filter: invert(1); }
+body.record-demo-page .footer .footer-heading { color: #fff !important; }
+body.record-demo-page .footer .footer-group a,
+body.record-demo-page .footer p,
+body.record-demo-page .footer-legal,
+body.record-demo-page .site-footer,
+body.record-demo-page .site-footer a { color: rgba(255,255,255,.58); }
+body.record-demo-page .footer .footer-boundary { color: rgba(255,255,255,.42) !important; }
+body.record-demo-page .footer-legal { border-top-color: rgba(255,255,255,.12); }
+body.record-demo-page .footer-legal a { color: rgba(255,255,255,.75); }
+
+body.record-demo-page .site-footer {
+  width: 100%;
+  margin: 0;
+  padding: 44px max(24px,calc((100% - 1180px)/2)) 78px;
+}
+
+body.record-demo-page .site-footer-primary,
+body.record-demo-page .site-footer-secondary {
+  border-color: rgba(255,255,255,.12);
+}
+
+body.record-demo-page a:focus-visible,
+body.record-demo-page button:focus-visible {
+  outline: 3px solid var(--record-v4-accent);
+  outline-offset: 3px;
+}
+
+@keyframes recordV4ShellIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes recordV4PanelIn {
+  from { opacity: 0; transform: translateY(7px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes recordV4ScrollReveal {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 1050px) {
+  body.record-demo-page .topbar { width: min(100% - 36px,1320px); }
+  body.record-demo-page .nav { gap: 13px; }
+  body.record-demo-page .nav a { font-size: 9px; }
+  body.record-demo-page .top-button { padding: 0 12px; }
+}
+
+@media (max-width: 820px) {
+  body.record-demo-page .topbar {
+    width: min(100% - 28px,1320px);
+    min-height: 108px;
+    grid-template-columns: 1fr auto;
+    grid-template-areas: "brand cta" "nav nav";
+    gap: 8px 16px;
+    padding: 10px 0 9px;
+  }
+
+  body.record-demo-page .brand img { width: 80px; }
+  body.record-demo-page .top-button {
+    min-height: 40px;
+    padding: 0 14px;
+    font-size: 10px;
+  }
+
+  body.record-demo-page .nav {
+    display: grid;
+    grid-template-columns: repeat(5,minmax(0,1fr));
+    justify-self: stretch;
+    width: 100%;
+    gap: 0;
+    border-top: 1px solid rgba(255,255,255,.12);
+  }
+
+  body.record-demo-page .nav a {
+    min-width: 0;
+    padding: 9px 2px 10px;
+    font-size: 10px;
+    line-height: 1.16;
+    text-align: center;
+  }
+
+  body.record-demo-page .nav a[href$="artist.html"],
+  body.record-demo-page .nav a[href$="records.html"] { font-size: 0; }
+  body.record-demo-page .nav a[href$="artist.html"]::before,
+  body.record-demo-page .nav a[href$="records.html"]::before { font-size: 10px; }
+  body.record-demo-page .nav a[href$="artist.html"]::before { content: "Creative"; }
+  body.record-demo-page .nav a[href$="records.html"]::before { content: "Records"; }
+  body.record-demo-page .nav a.active::after,
+  body.record-demo-page .nav a[aria-current="page"]::after { left: 6px; right: 6px; bottom: -1px; height: 2px; }
+
+  body.record-demo-page main > div:first-child,
+  body.record-demo-page .record-file { width: min(100% - 28px,1240px); }
+
+  body.record-demo-page main > div:first-child { padding-top: 18px; }
+  body.record-demo-page .record-file-header { padding: 18px; }
+  body.record-demo-page .record-file-tabs { padding: 8px 8px 0 !important; }
+  body.record-demo-page .record-file-tab { min-width: 0 !important; padding: 10px 3px 9px !important; font-size: 10.5px !important; }
+  body.record-demo-page .record-file-panel { padding: 26px 18px 32px; }
+}
+
+@media (max-width: 600px) {
+  body.record-demo-page main { padding-bottom: 54px; }
+  body.record-demo-page main > div:first-child {
+    display: grid !important;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 8px !important;
+  }
+  body.record-demo-page main > div:first-child .record-link-button {
+    width: 100%;
+    min-width: 0;
+    padding-inline: 9px;
+    font-size: 10px;
+  }
+  body.record-demo-page .record-file { border-radius: 14px; }
+  body.record-demo-page .record-file-header { gap: 14px; }
+  body.record-demo-page .record-file-meta { border-top-color: rgba(255,255,255,.14); }
+  body.record-demo-page .record-meta-item,
+  body.record-demo-page .record-meta-item:nth-child(3) { border-color: rgba(255,255,255,.14); }
+  body.record-demo-page .record-primary-grid > .work-preview { margin-top: 20px; }
+  body.record-demo-page .record-result { margin-top: 24px !important; }
+  body.record-demo-page .principal-findings { margin-top: 30px; }
+  body.record-demo-page .finding-item { padding: 16px; }
+  body.record-demo-page .footer .footer-inner { width: min(100% - 28px,1180px); padding: 38px 0 72px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.record-demo-page .record-file,
+  body.record-demo-page .record-file-panel.is-active,
+  body.record-demo-page .process-step,
+  body.record-demo-page .evidence-layout,
+  body.record-demo-page .full-catalogue,
+  body.record-demo-page .history-item,
+  body.record-demo-page .record-limitation {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

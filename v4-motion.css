@@ -1,0 +1,23 @@
+@import url('/v4-editorial-polish.css');
+
+/* Shared V4 motion layer for Preview-only site surfaces.
+   Mirrors the selected landing-page reveal behaviour.
+   Preview deployment touch after Stage 5 legal-shell update. */
+.fade {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .55s ease, transform .55s ease;
+}
+
+.fade.on {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

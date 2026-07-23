@@ -2,7 +2,7 @@
   "name": "asmade-site",
   "private": true,
   "scripts": {
-    "postinstall": "node scripts/patch-evidence-previews.js && node scripts/patch-summary-pdf-prototype.js",
+    "postinstall": "node scripts/patch-evidence-previews.js && node scripts/patch-summary-pdf-prototype.js && node scripts/promote-v4-production.js && node scripts/patch-site-shell.js && node scripts/check-site-shell.js",
     "render:summary-pdf:comic": "node scripts/render-summary-pdf.mjs summary-pdf-comic-prototype.html artifacts/AsMade_MR-PILOT-EC-P050-001_v0.4_Summary_Prototype.pdf",
     "render:summary-pdf:comic:export": "node scripts/render-summary-pdf.mjs summary-pdf-comic-export.html artifacts/AsMade_MR-PILOT-EC-P050-001_v0.4_Summary.pdf",
     "render:summary-pdf:cv": "node scripts/render-summary-pdf.mjs summary-pdf-cv-prototype.html artifacts/AsMade_MR-PILOT-CV-001_v0.3_Summary_Prototype.pdf"

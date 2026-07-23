@@ -1,0 +1,62 @@
+/* V4 progressive-motion guard.
+   Meaningful content stays fully readable: no scroll-linked opacity dependency.
+   With JavaScript available, existing .fade elements may use the V4 rise motion.
+   Without JavaScript, content remains in its final readable position. */
+.fade,
+.fade.on {
+  opacity: 1 !important;
+}
+
+.fade {
+  transform: none !important;
+}
+
+html.v4-motion-enabled .fade {
+  transform: translateY(16px) !important;
+  transition: transform .55s ease !important;
+}
+
+html.v4-motion-enabled .fade.on {
+  transform: none !important;
+}
+
+/* Legal hero panels must keep their dark surface fixed while the content rises.
+   Moving the whole panel briefly exposed the light document background beneath it. */
+html.v4-motion-enabled body.legal-utility-page .legal-hero.fade,
+html.v4-motion-enabled body.legal-utility-page .legal-hero.fade.on {
+  overflow: hidden;
+  transform: none !important;
+  transition: none !important;
+}
+
+html.v4-motion-enabled body.legal-utility-page .legal-hero.fade > * {
+  transform: translateY(16px);
+  transition: transform .55s ease;
+}
+
+html.v4-motion-enabled body.legal-utility-page .legal-hero.fade.on > * {
+  transform: none;
+}
+
+/* Keep deeper Record content readable and independent of scroll-linked opacity.
+   The Record shell/tab interactions retain their own non-scroll functional motion. */
+body.record-demo-page .process-step,
+body.record-demo-page .evidence-layout,
+body.record-demo-page .full-catalogue,
+body.record-demo-page .history-item,
+body.record-demo-page .record-limitation {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
+  animation-timeline: auto !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.v4-motion-enabled .fade,
+  html.v4-motion-enabled .fade.on,
+  html.v4-motion-enabled body.legal-utility-page .legal-hero.fade > *,
+  html.v4-motion-enabled body.legal-utility-page .legal-hero.fade.on > * {
+    transform: none !important;
+    transition: none !important;
+  }
+}

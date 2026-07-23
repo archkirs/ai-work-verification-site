@@ -1,0 +1,44 @@
+/* Issue #98 Stage 3 fixes shared by both MADE Record pages. */
+
+/* Product content must never remain partially transparent while scrolling.
+   Keep motion on the Record shell and tab transitions only. */
+body.record-demo-page .process-step,
+body.record-demo-page .evidence-layout,
+body.record-demo-page .full-catalogue,
+body.record-demo-page .history-item,
+body.record-demo-page .record-limitation {
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+@media (max-width: 600px) {
+  body.record-demo-page main > div:first-child .record-link-button {
+    min-height: 40px;
+    font-size: 0 !important;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  body.record-demo-page main > div:first-child .record-link-button::before {
+    display: inline;
+    font-size: 10px;
+    line-height: 1.2;
+  }
+
+  body.record-demo-page main > div:first-child .record-link-button[href$="records.html"]::before {
+    content: "← All Records";
+  }
+
+  body.record-demo-page main > div:first-child .record-link-button[href$="sample-cv.html"]::before {
+    content: "Next: CV →";
+  }
+
+  body.record-demo-page main > div:first-child .record-link-button[href$="sample-comic.html"]::before {
+    content: "← Comic";
+  }
+
+  body.record-demo-page main > div:first-child .record-link-button::after {
+    content: none !important;
+  }
+}

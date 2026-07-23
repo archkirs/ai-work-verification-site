@@ -1,3 +1,6 @@
+@import url('/v4-record.css');
+@import url('/v4-record-fixes.css');
+
 .record-export-actions {
   margin: -8px 0 4px;
 }
@@ -27,6 +30,11 @@
 .record-export-button:focus-visible {
   outline: 3px solid color-mix(in srgb, var(--focus) 70%, white);
   outline-offset: 3px;
+}
+
+/* V4 global header owns the product-page branding; avoid the older Comic-only lockup. */
+body.record-demo-page.comic-stage-b-record .site-header .brand::after {
+  display: none !important;
 }
 
 @media (max-width: 760px) {
