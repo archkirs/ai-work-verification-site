@@ -1,0 +1,35 @@
+name: Issue 104 canonical materializer
+
+on:
+  push:
+    branches:
+      - bugfix/issue-104-canonical-v4-source-parity
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: bugfix/issue-104-canonical-v4-source-parity
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Materialize the exact approved V4 production output
+        run: VERCEL_ENV=production node scripts/promote-v4-production.js
+      - name: Commit canonical HTML if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html student.html artist.html reviewer.html
+          if git diff --cached --quiet; then
+            echo "Canonical files already materialized."
+            exit 0
+          fi
+          git commit -m "Materialize canonical V4 audience pages"
+          git push origin HEAD:bugfix/issue-104-canonical-v4-source-parity
