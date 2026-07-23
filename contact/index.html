@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow, noarchive" />
   <title>Contact AsMade</title>
   <meta name="description" content="Contact the AsMade team about the project, MVP pilot, privacy, or another brief question." />
   <link rel="canonical" href="https://useasmade.com/contact" />
@@ -21,101 +22,128 @@
   <meta name="twitter:image" content="https://useasmade.com/social-preview.png" />
   <meta name="twitter:image:alt" content="AsMade — Understand how the work was made." />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="/style.css" />
-  <link rel="stylesheet" href="/footer-contact.css" />
   <link rel="stylesheet" href="/contact-form-refinement.css" />
-  <link rel="stylesheet" href="/legal-utility-refresh.css" />
+  <link rel="stylesheet" href="/v4-editorial.css" />
+  <link rel="stylesheet" href="/v4-motion.css" />
   <script src="/contact-form.js" defer></script>
   <script src="/vercel-observability.js" defer></script>
 </head>
-<body class="legal-utility-page">
-  <a class="skip-link" href="#main-content">Skip to content</a>
-  <header class="site-header">
-    <div class="topbar">
-      <a class="brand" href="/" aria-label="AsMade home"><img src="/asmade-wordmark.svg" alt="AsMade" width="78" height="15" /></a>
-      <nav class="nav" aria-label="Primary navigation"><a href="/">Home</a><a href="/student.html">Students</a><a href="/artist.html">Creative Work</a><a href="/reviewer.html">Reviewers</a><a href="/records.html">MADE Records</a></nav>
-      <a class="top-button" href="https://tally.so/r/NpQkRB?landing=general" target="_blank" rel="noopener">Apply for the MVP Pilot</a>
+<body class="v4-surface v4-editorial-page contact-v4">
+  <a class="v4-skip" href="#main-content">Skip to content</a>
+
+  <header class="v4-header">
+    <div class="v4-nav">
+      <a href="/lab/v4/" aria-label="AsMade V4 home"><img src="/asmade-wordmark.svg" alt="AsMade" /></a>
+      <nav class="v4-primary-nav" aria-label="Primary navigation">
+        <a href="/lab/v4/">Home</a>
+        <a href="/lab/v4/student.html">Students</a>
+        <a href="/lab/v4/artist.html">Creative Work</a>
+        <a href="/lab/v4/reviewer.html">Reviewers</a>
+        <a href="/records.html">MADE Records</a>
+      </nav>
+      <a class="v4-nav-cta" href="https://tally.so/r/NpQkRB?landing=general" target="_blank" rel="noopener">Apply for the MVP Pilot</a>
     </div>
   </header>
 
-  <main id="main-content" class="legal-main">
-    <section class="legal-hero" aria-labelledby="page-title">
-      <p class="section-label">Contact</p>
-      <h1 id="page-title">Contact AsMade</h1>
-      <p class="hero-lede">Send a brief question about AsMade, the MVP pilot, privacy, or another project matter.</p>
-    </section>
-
-    <div class="legal-content">
-      <section class="legal-section contact-form-layout" aria-labelledby="form-title">
-        <h2 id="form-title">Send a message</h2>
-        <p>The form sends your message to the AsMade team. No account is required and no file can be uploaded.</p>
-
-        <p class="contact-safety-line"><strong>Please do not include confidential or sensitive information.</strong> Do not send project files, passwords, financial, medical, legal, client, or school materials.</p>
-
-        <form id="contact-form" class="contact-form" novalidate>
-          <div class="form-field">
-            <label for="contact-name">Name <span class="optional-label">Optional</span></label>
-            <input id="contact-name" name="name" type="text" maxlength="100" autocomplete="name" aria-describedby="name-note name-error" />
-            <p id="name-note" class="field-note">Maximum 100 characters.</p>
-            <p id="name-error" class="field-error" data-error-for="name" aria-live="polite"></p>
-          </div>
-
-          <div class="form-field">
-            <label for="contact-email">Email</label>
-            <input id="contact-email" name="email" type="email" maxlength="254" autocomplete="email" inputmode="email" required aria-describedby="email-error" />
-            <p id="email-error" class="field-error" data-error-for="email" aria-live="polite"></p>
-          </div>
-
-          <div class="form-field">
-            <label for="contact-topic">Topic</label>
-            <select id="contact-topic" name="topic" required aria-describedby="topic-error">
-              <option value="">Choose a topic</option>
-              <option value="general">General question</option>
-              <option value="pilot">Pilot question</option>
-              <option value="privacy">Privacy or deletion request</option>
-              <option value="other">Other</option>
-            </select>
-            <p id="topic-error" class="field-error" data-error-for="topic" aria-live="polite"></p>
-          </div>
-
-          <div class="form-field">
-            <label for="contact-message">Message</label>
-            <textarea id="contact-message" name="message" rows="8" maxlength="3000" required aria-describedby="message-note message-error"></textarea>
-            <p id="message-note" class="field-note">Maximum 3,000 characters. Do not include files or sensitive material.</p>
-            <p id="message-error" class="field-error" data-error-for="message" aria-live="polite"></p>
-          </div>
-
-          <div class="honeypot" aria-hidden="true">
-            <label for="contact-website">Website</label>
-            <input id="contact-website" name="website" type="text" tabindex="-1" autocomplete="off" />
-          </div>
-
-          <div class="form-submit-row">
-            <button class="primary-button" type="submit">Send message</button>
-            <p class="form-status" role="status" aria-live="polite"></p>
-          </div>
-
-          <p class="contact-privacy-note">Your message is processed through Vercel and Resend and delivered to the AsMade team so we can respond. See our <a href="/privacy.html">Privacy Policy</a>.</p>
-
-          <div class="contact-email-fallback">
-            <p>Prefer email? Write to <a href="mailto:hello@useasmade.com">hello@useasmade.com</a> or <button class="copy-address-button" type="button" data-copy-email="hello@useasmade.com">copy the address</button>.</p>
-            <p class="copy-status" role="status" aria-live="polite"></p>
-          </div>
-        </form>
+  <main id="main-content" class="editorial-v4-main">
+    <div class="editorial-v4-hero-zone">
+      <section class="editorial-v4-hero fade" aria-labelledby="page-title">
+        <p class="v4-label">Contact</p>
+        <h1 id="page-title">Contact AsMade</h1>
+        <p class="hero-lede">Send a brief question about AsMade, the MVP pilot, privacy, or another project matter.</p>
       </section>
     </div>
+
+    <section class="editorial-v4-section contact-v4-stage" aria-labelledby="form-title">
+      <div class="editorial-v4-inner contact-v4-grid">
+        <aside class="contact-v4-aside fade">
+          <h2 id="form-title">Send a message</h2>
+          <p>The form sends your message to the AsMade team. No account is required and no file can be uploaded.</p>
+          <p>For the MVP pilot application itself, use the dedicated pilot form rather than this contact form.</p>
+          <div class="editorial-v4-action-row">
+            <a class="v4-action" href="https://tally.so/r/NpQkRB?landing=general" target="_blank" rel="noopener">Apply for the MVP Pilot</a>
+          </div>
+          <a class="direct-email" href="mailto:hello@useasmade.com">hello@useasmade.com</a>
+        </aside>
+
+        <div class="contact-v4-form-card fade">
+          <p class="contact-safety-line"><strong>Please do not include confidential or sensitive information.</strong> Do not send project files, passwords, financial, medical, legal, client, or school materials.</p>
+
+          <form id="contact-form" class="contact-form" novalidate>
+            <div class="form-field">
+              <label for="contact-name">Name <span class="optional-label">Optional</span></label>
+              <input id="contact-name" name="name" type="text" maxlength="100" autocomplete="name" aria-describedby="name-note name-error" />
+              <p id="name-note" class="field-note">Maximum 100 characters.</p>
+              <p id="name-error" class="field-error" data-error-for="name" aria-live="polite"></p>
+            </div>
+
+            <div class="form-field">
+              <label for="contact-email">Email</label>
+              <input id="contact-email" name="email" type="email" maxlength="254" autocomplete="email" inputmode="email" required aria-describedby="email-error" />
+              <p id="email-error" class="field-error" data-error-for="email" aria-live="polite"></p>
+            </div>
+
+            <div class="form-field">
+              <label for="contact-topic">Topic</label>
+              <select id="contact-topic" name="topic" required aria-describedby="topic-error">
+                <option value="">Choose a topic</option>
+                <option value="general">General question</option>
+                <option value="pilot">Pilot question</option>
+                <option value="privacy">Privacy or deletion request</option>
+                <option value="other">Other</option>
+              </select>
+              <p id="topic-error" class="field-error" data-error-for="topic" aria-live="polite"></p>
+            </div>
+
+            <div class="form-field">
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" name="message" rows="8" maxlength="3000" required aria-describedby="message-note message-error"></textarea>
+              <p id="message-note" class="field-note">Maximum 3,000 characters. Do not include files or sensitive material.</p>
+              <p id="message-error" class="field-error" data-error-for="message" aria-live="polite"></p>
+            </div>
+
+            <div class="honeypot" aria-hidden="true">
+              <label for="contact-website">Website</label>
+              <input id="contact-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+            </div>
+
+            <div class="form-submit-row">
+              <button class="primary-button" type="submit">Send message</button>
+              <p class="form-status" role="status" aria-live="polite"></p>
+            </div>
+
+            <p class="contact-privacy-note">Your message is processed through Vercel and Resend and delivered to the AsMade team so we can respond. See our <a href="/privacy.html">Privacy Policy</a>.</p>
+
+            <div class="contact-email-fallback">
+              <p>Prefer email? Write to <a href="mailto:hello@useasmade.com">hello@useasmade.com</a> or <button class="copy-address-button" type="button" data-copy-email="hello@useasmade.com">copy the address</button>.</p>
+              <p class="copy-status" role="status" aria-live="polite"></p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-brand"><img src="/asmade-wordmark.svg" alt="AsMade" width="72" height="14" /><p>A clearer record of how AI-assisted work was made.</p><p class="footer-boundary">AsMade is not an AI detector or a legal certification service.</p></div>
-      <div class="footer-links">
-        <nav class="footer-group" aria-label="Site links"><p class="footer-heading">Site</p><a href="/">Home</a><a href="/student.html">Students</a><a href="/artist.html">Creative Work</a><a href="/reviewer.html">Reviewers</a><a href="/records.html">MADE Records</a></nav>
-        <nav class="footer-group" aria-label="Project links"><p class="footer-heading">Project</p><a href="/about.html">About</a><a href="/contact" aria-current="page">Contact</a></nav>
-        <nav class="footer-group" aria-label="Legal links"><p class="footer-heading">Legal</p><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/pilot-notice.html">Pilot Notice</a></nav>
+  <footer class="v4-footer">
+    <div class="v4-footer-inner">
+      <div class="v4-footer-main">
+        <div class="v4-footer-brand">
+          <img src="/asmade-wordmark.svg" alt="AsMade" />
+          <p>A clearer record of how AI-assisted work was made.</p>
+          <p class="footer-boundary">AsMade is not an AI detector or a legal certification service.</p>
+        </div>
+        <div class="v4-footer-links">
+          <nav class="footer-group" aria-label="Site links"><p class="footer-heading">Site</p><a href="/lab/v4/">Home</a><a href="/lab/v4/student.html">Students</a><a href="/lab/v4/artist.html">Creative Work</a><a href="/lab/v4/reviewer.html">Reviewers</a><a href="/records.html">MADE Records</a></nav>
+          <nav class="footer-group" aria-label="Project links"><p class="footer-heading">Project</p><a href="/about.html">About</a><a href="/contact" aria-current="page">Contact</a></nav>
+          <nav class="footer-group" aria-label="Legal links"><p class="footer-heading">Legal</p><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/pilot-notice.html">Pilot Notice</a></nav>
+        </div>
       </div>
-      <div class="footer-legal"><p>© 2026 AsMade. Operated by IAN KIRS PR BANJA KOVILJAČA, Serbia. Registration no. 68433266 · Tax ID 115550070 · Not registered for VAT.</p><p><a href="/contact">hello@useasmade.com</a></p></div>
+      <div class="v4-footer-legal">
+        <p>© 2026 AsMade. Operated by IAN KIRS PR BANJA KOVILJAČA, Serbia. Registration no. 68433266 · Tax ID 115550070 · Not registered for VAT.</p>
+        <p><a href="/contact">hello@useasmade.com</a></p>
+      </div>
     </div>
   </footer>
+  <script src="/v4-motion.js"></script>
 </body>
 </html>
