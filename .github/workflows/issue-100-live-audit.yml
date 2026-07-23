@@ -1,0 +1,40 @@
+name: Issue 100 live production audit
+
+on:
+  push:
+    branches:
+      - audit/issue-100-live-production
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  live-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout audit branch
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Playwright
+        run: |
+          npm install --no-save --package-lock=false playwright@1.55.0
+          npx playwright install --with-deps chromium
+
+      - name: Audit live production
+        run: node scripts/issue-100-live-audit.mjs
+
+      - name: Upload audit report and screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: issue-100-live-audit
+          path: audit-output/
+          if-no-files-found: warn
+          retention-days: 7
