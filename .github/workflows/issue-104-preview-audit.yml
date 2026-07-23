@@ -1,0 +1,27 @@
+name: Issue 104 full Preview audit
+
+on:
+  push:
+    branches:
+      - audit/issue-104-preview-verification
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install Playwright Chromium
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Audit PR 28 Preview
+        env:
+          AUDIT_BASE: https://asmade-site-git-bugfix-issue-104-canon-8c293a-archkirs-projects.vercel.app
+        run: node scripts/issue-104-preview-audit.mjs
