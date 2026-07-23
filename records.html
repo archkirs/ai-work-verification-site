@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow, noarchive" />
   <title>MADE Records — AsMade</title>
   <meta name="description" content="Explore public MADE Records and see who was involved, what they did, how AI was used, key decisions, available supporting materials, and important limits." />
   <link rel="canonical" href="https://useasmade.com/records.html" />
@@ -21,60 +22,88 @@
   <meta name="twitter:image" content="https://useasmade.com/social-preview.png" />
   <meta name="twitter:image:alt" content="AsMade — Understand how the work was made." />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="record-demo.css" />
-  <link rel="stylesheet" href="/footer-contact.css" />
-  <link rel="stylesheet" href="/legal-utility-refresh.css" />
-  <link rel="stylesheet" href="landing-preview.css" />
+  <link rel="stylesheet" href="/v4-site.css" />
   <script src="/vercel-observability.js" defer></script>
 </head>
-<body>
-  <a class="skip-link" href="#main-content">Skip to content</a>
-  <header class="site-header">
-    <div class="topbar">
-      <a class="brand" href="/" aria-label="AsMade home"><img src="asmade-wordmark.svg" alt="AsMade" width="78" height="15" /></a>
-      <nav class="nav" aria-label="Primary navigation"><a href="/">Home</a><a href="student.html">Students</a><a href="artist.html">Creative Work</a><a href="reviewer.html">Reviewers</a><a class="active" aria-current="page" href="records.html">MADE Records</a></nav>
-      <a class="top-button" href="https://tally.so/r/NpQkRB?landing=general" target="_blank" rel="noopener">Apply for the MVP Pilot</a>
+<body class="v4-surface records-v4">
+  <a class="v4-skip" href="#main-content">Skip to content</a>
+
+  <header class="v4-header">
+    <div class="v4-nav">
+      <a href="/lab/v4/" aria-label="AsMade V4 home"><img src="/asmade-wordmark.svg" alt="AsMade" /></a>
+      <nav class="v4-primary-nav" aria-label="Primary navigation">
+        <a href="/lab/v4/">Home</a>
+        <a href="/lab/v4/student.html">Students</a>
+        <a href="/lab/v4/artist.html">Creative Work</a>
+        <a href="/lab/v4/reviewer.html">Reviewers</a>
+        <a href="/records.html" aria-current="page">MADE Records</a>
+      </nav>
+      <a class="v4-nav-cta" href="https://tally.so/r/NpQkRB?landing=general" target="_blank" rel="noopener">Apply for the MVP Pilot</a>
     </div>
   </header>
-  <main id="main-content" class="landing-main records-main">
-    <section class="hero-stage" aria-labelledby="records-title">
-      <div class="hero-copy">
-        <p class="section-label">Public MADE Records</p>
-        <h1 id="records-title">See how AI-assisted work was made.</h1>
-        <p class="hero-lede">Explore MADE Records for two different kinds of work. Each Record brings together who was involved, what they did, how AI was used, key decisions, available supporting materials, and important limits.</p>
-      </div>
+
+  <main id="main-content" class="v4-main">
+    <section class="records-v4-hero" aria-labelledby="records-title">
+      <p class="v4-label">Public MADE Records</p>
+      <h1 id="records-title">See how AI-assisted work was made.</h1>
+      <p>Explore MADE Records for two different kinds of work. Each Record brings together who was involved, what they did, how AI was used, key decisions, available supporting materials, and important limits.</p>
     </section>
 
-    <section class="samples-section" aria-label="Available MADE Records">
-      <div class="samples-grid">
-        <a class="sample-link-card" href="sample-comic.html">
-          <span>Creative work</span>
-          <h3>The Count of Monte Cristo — Page 050</h3>
-          <p>Record ID: MR-PILOT-EC-P050-001 · Version 0.4</p>
-          <p>See how the Creator directed the page, used AI to generate images, selected the final visuals, and assembled the finished comic page.</p>
-          <strong>View MADE Record →</strong>
-        </a>
-        <a class="sample-link-card" href="sample-cv.html">
-          <span>Professional document</span>
-          <h3>Professional CV</h3>
-          <p>Record ID: MR-PILOT-CV-001 · Version 0.3</p>
-          <p>See how the Creator provided the source information, used AI for wording and translation, and reviewed the finished CV.</p>
-          <strong>View MADE Record →</strong>
-        </a>
+    <section class="records-v4-section" aria-labelledby="available-records-title">
+      <div class="records-v4-inner">
+        <div class="records-v4-head">
+          <h2 id="available-records-title">Current public Records</h2>
+          <p>Two controlled demo Records show the current format across a creative work and a professional document.</p>
+        </div>
+
+        <div class="records-v4-grid">
+          <a class="record-v4-card record-v4-comic" href="/sample-comic.html">
+            <div class="record-v4-visual">
+              <img src="https://s3.eu-central-003.backblazeb2.com/asmade-public-presentation-euc1-7f3a9c/public-demo/mr-pilot-ec-p050-001/materials/m-001/presentation-v1.png" alt="Comic Page 050 public presentation copy" />
+            </div>
+            <div class="record-v4-content">
+              <div class="record-v4-meta"><span>Creative work</span><span>MR-PILOT-EC-P050-001 · v0.4</span></div>
+              <div><h3>The Count of Monte Cristo — Page 050</h3><p>See how the Creator directed the page, used AI to generate images, selected the final visuals, and assembled the finished comic page.</p></div>
+              <span class="record-v4-open">Open the full Record <span aria-hidden="true">↗</span></span>
+            </div>
+          </a>
+
+          <a class="record-v4-card record-v4-cv" href="/sample-cv.html">
+            <div class="record-v4-visual">
+              <img class="record-v4-page record-v4-page-primary" src="https://s3.eu-central-003.backblazeb2.com/asmade-public-presentation-euc1-7f3a9c/public-demo/mr-pilot-cv-001/materials/m2-001/redacted-page-1-v1.webp" alt="English page of approved redacted Professional CV preview" />
+              <img class="record-v4-page record-v4-page-secondary" src="https://s3.eu-central-003.backblazeb2.com/asmade-public-presentation-euc1-7f3a9c/public-demo/mr-pilot-cv-001/materials/m2-001/redacted-page-2-v1.webp" alt="" />
+            </div>
+            <div class="record-v4-content">
+              <div class="record-v4-meta"><span>Professional document</span><span>MR-PILOT-CV-001 · v0.3</span></div>
+              <div><h3>Professional CV</h3><p>See how the Creator provided the source information, used AI for wording and translation, and reviewed the finished CV.</p></div>
+              <span class="record-v4-open">Open the full Record <span aria-hidden="true">↗</span></span>
+            </div>
+          </a>
+        </div>
+
+        <p class="records-v4-note">This page lists the public MADE Records currently available on AsMade. It is a browsing directory, not a complete registry of AI-assisted work.</p>
       </div>
-      <p class="micro-note"><span aria-hidden="true">i</span>This page lists the public MADE Records currently available on AsMade. It is a browsing directory, not a complete registry of AI-assisted work.</p>
     </section>
   </main>
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-brand"><img src="asmade-wordmark.svg" alt="AsMade" width="72" height="14" /><p>A clearer record of how AI-assisted work was made.</p><p class="footer-boundary">AsMade is not an AI detector or a legal certification service.</p></div>
-      <div class="footer-links">
-        <nav class="footer-group" aria-label="Site links"><p class="footer-heading">Site</p><a href="/">Home</a><a href="/student.html">Students</a><a href="/artist.html">Creative Work</a><a href="/reviewer.html">Reviewers</a><a href="/records.html" aria-current="page">MADE Records</a></nav>
-        <nav class="footer-group" aria-label="Project links"><p class="footer-heading">Project</p><a href="/about.html">About</a><a href="/contact">Contact</a></nav>
-        <nav class="footer-group" aria-label="Legal links"><p class="footer-heading">Legal</p><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/pilot-notice.html">Pilot Notice</a></nav>
+
+  <footer class="v4-footer">
+    <div class="v4-footer-inner">
+      <div class="v4-footer-main">
+        <div class="v4-footer-brand">
+          <img src="/asmade-wordmark.svg" alt="AsMade" />
+          <p>A clearer record of how AI-assisted work was made.</p>
+          <p class="footer-boundary">AsMade is not an AI detector or a legal certification service.</p>
+        </div>
+        <div class="v4-footer-links">
+          <nav class="footer-group" aria-label="Site links"><p class="footer-heading">Site</p><a href="/lab/v4/">Home</a><a href="/lab/v4/student.html">Students</a><a href="/lab/v4/artist.html">Creative Work</a><a href="/lab/v4/reviewer.html">Reviewers</a><a href="/records.html" aria-current="page">MADE Records</a></nav>
+          <nav class="footer-group" aria-label="Project links"><p class="footer-heading">Project</p><a href="/about.html">About</a><a href="/contact">Contact</a></nav>
+          <nav class="footer-group" aria-label="Legal links"><p class="footer-heading">Legal</p><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/pilot-notice.html">Pilot Notice</a></nav>
+        </div>
       </div>
-      <div class="footer-legal"><p>© 2026 AsMade. Operated by IAN KIRS PR BANJA KOVILJAČA, Serbia. Registration no. 68433266 · Tax ID 115550070 · Not registered for VAT.</p><p><a href="/contact">hello@useasmade.com</a></p></div>
+      <div class="v4-footer-legal">
+        <p>© 2026 AsMade. Operated by IAN KIRS PR BANJA KOVILJAČA, Serbia. Registration no. 68433266 · Tax ID 115550070 · Not registered for VAT.</p>
+        <p><a href="/contact">hello@useasmade.com</a></p>
+      </div>
     </div>
   </footer>
 </body>
