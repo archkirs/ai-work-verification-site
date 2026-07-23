@@ -79,18 +79,27 @@ function buildCanonical(canonicalHtml, v4Html, mapping) {
   return output;
 }
 
-function publishCanonicalAssets() {
-  if (!isProduction) return;
+function validateCanonicalAssetDelivery() {
+  const vercelPath = path.join(root, 'vercel.json');
+  const vercel = JSON.parse(fs.readFileSync(vercelPath, 'utf8'));
+  const rewrites = Array.isArray(vercel.rewrites) ? vercel.rewrites : [];
 
   for (const asset of productionAssets) {
     const sourcePath = path.join(root, asset.source);
-    const targetPath = path.join(root, asset.target);
-    if (!fs.existsSync(sourcePath)) throw new Error(`Missing V4 source asset: ${asset.source}`);
-    fs.copyFileSync(sourcePath, targetPath);
+    if (!fs.existsSync(sourcePath)) throw new Error(`Missing adopted V4 source asset: ${asset.source}`);
+
+    const expectedSource = `/${asset.target}`;
+    const expectedDestination = `/${asset.source}`;
+    const mapped = rewrites.some(
+      (rewrite) => rewrite.source === expectedSource && rewrite.destination === expectedDestination,
+    );
+    if (!mapped) {
+      throw new Error(`Missing Vercel rewrite ${expectedSource} -> ${expectedDestination}`);
+    }
   }
 }
 
-publishCanonicalAssets();
+validateCanonicalAssetDelivery();
 
 for (const mapping of pages) {
   const canonicalPath = path.join(root, mapping.canonical);
@@ -106,6 +115,6 @@ for (const mapping of pages) {
 
 console.log(
   isProduction
-    ? `Promoted approved V4 audience pages to ${pages.length} canonical production routes with canonical V4 assets.`
+    ? `Promoted approved V4 audience pages to ${pages.length} canonical production routes with canonical V4 asset rewrites.`
     : `Validated V4 production promotion for ${pages.length} canonical routes (Preview dry run).`,
 );
