@@ -1,11 +1,27 @@
-/* V4 content visibility guard.
-   Meaningful content must never depend on scroll-linked opacity or JavaScript. */
+/* V4 progressive-motion guard.
+   Meaningful content stays fully readable: no scroll-linked opacity dependency.
+   With JavaScript available, existing .fade elements may use the V4 rise motion.
+   Without JavaScript, content remains in its final readable position. */
 .fade,
 .fade.on {
   opacity: 1 !important;
+}
+
+.fade {
   transform: none !important;
 }
 
+html.v4-motion-enabled .fade {
+  transform: translateY(16px) !important;
+  transition: transform .55s ease !important;
+}
+
+html.v4-motion-enabled .fade.on {
+  transform: none !important;
+}
+
+/* Keep deeper Record content readable and independent of scroll-linked opacity.
+   The Record shell/tab interactions retain their own non-scroll functional motion. */
 body.record-demo-page .process-step,
 body.record-demo-page .evidence-layout,
 body.record-demo-page .full-catalogue,
@@ -18,6 +34,9 @@ body.record-demo-page .record-limitation {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .fade,
-  .fade.on { transition: none !important; }
+  html.v4-motion-enabled .fade,
+  html.v4-motion-enabled .fade.on {
+    transform: none !important;
+    transition: none !important;
+  }
 }
