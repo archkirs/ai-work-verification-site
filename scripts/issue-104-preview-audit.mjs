@@ -79,12 +79,13 @@ for(const [key,width,height] of [['desktop',1440,900],['mobile390',390,844],['mo
     const overflow=await p.evaluate(()=>Math.max(0,document.documentElement.scrollWidth-document.documentElement.clientWidth)); check(overflow<=1,`Browser ${key} ${name}`,`horizontal overflow ${overflow}px`);
     const hidden=await p.evaluate(()=>[...document.querySelectorAll('.fade')].filter(el=>{const s=getComputedStyle(el); const r=el.getBoundingClientRect(); return r.height>0&&r.width>0&&(s.display==='none'||s.visibility==='hidden'||Number(s.opacity)===0)}).length); check(hidden===0,`Browser ${key} ${name}`,`hidden meaningful fade nodes ${hidden}`);
     if(audienceRoutes.has(route)){
-      check(await p.locator('.dark-zone .hero').count()===1,`V4 ${key} ${name}`,'dark V4 hero present');
-      const display=await p.locator('.hero').evaluate(el=>getComputedStyle(el).display); check(display==='grid',`V4 ${key} ${name}`,`hero display ${display}`);
+      const heroCount=await p.locator('.dark-zone .hero').count();
+      check(heroCount===1,`V4 ${key} ${name}`,'dark V4 hero present');
+      if(heroCount===1){const display=await p.locator('.hero').evaluate(el=>getComputedStyle(el).display); check(display==='grid',`V4 ${key} ${name}`,`hero display ${display}`);}
     }
     if(route==='/sample-comic.html'||route==='/sample-cv.html'){
-      const tabs=p.getByRole('tab'); check(await tabs.count()===4,`Record ${key} ${name}`,'four tabs');
-      for(let i=1;i<4;i++) await tabs.nth(i).click(); check((await tabs.nth(3).getAttribute('aria-selected'))==='true',`Record ${key} ${name}`,'History tab activates');
+      const tabs=p.getByRole('tab'); const tabCount=await tabs.count(); check(tabCount===4,`Record ${key} ${name}`,'four tabs');
+      if(tabCount===4){for(let i=1;i<4;i++) await tabs.nth(i).click(); check((await tabs.nth(3).getAttribute('aria-selected'))==='true',`Record ${key} ${name}`,'History tab activates');}
     }
   }
   await context.close();
