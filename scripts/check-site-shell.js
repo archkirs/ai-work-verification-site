@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const root = path.resolve(__dirname, '..');
+const production = process.env.VERCEL_ENV === 'production';
 const pages = [
   'lab/v4/index.html',
   'lab/v4/student.html',
@@ -25,9 +26,15 @@ function count(html, pattern) {
   return (html.match(pattern) || []).length;
 }
 
+function hasNoindex(html) {
+  return /<meta\s+name=["']robots["']\s+content=["'][^"']*\bnoindex\b[^"']*["'][^>]*>/i.test(html);
+}
+
 const failures = [];
 for (const file of pages) {
   const html = fs.readFileSync(path.join(root, file), 'utf8');
+  const isLab = file.startsWith('lab/v4/');
+  const noindex = hasNoindex(html);
   const checks = [
     [count(html, /class="asmade-header"/g) === 1, 'shared header'],
     [count(html, /class="asmade-footer"/g) === 1, 'shared footer'],
@@ -43,6 +50,8 @@ for (const file of pages) {
     [!html.includes('class="v4-header"'), 'no legacy V4 header'],
     [!html.includes('class="site-footer"'), 'no legacy site-footer'],
     [!html.includes('{{'), 'no unresolved shell tokens'],
+    [!isLab || noindex, 'Design Lab remains noindex'],
+    [!production || isLab || !noindex, 'canonical production page has no accidental noindex'],
   ];
   for (const [ok, label] of checks) {
     if (!ok) failures.push(`${file}: ${label}`);
